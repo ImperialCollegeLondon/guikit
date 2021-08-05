@@ -1,9 +1,4 @@
 repos:
-  - repo: https://github.com/timothycrosley/isort
-    rev: "5.4.2"
-    hooks:
-      - id: isort
-        additional_dependencies: [toml]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.2.1
     hooks:

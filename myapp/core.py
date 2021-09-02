@@ -11,17 +11,18 @@ from __future__ import annotations
 
 import sys
 from abc import ABC, abstractmethod
-from typing import List, Mapping, Type, Union
+from typing import List, Mapping, Type, Union, NamedTuple, Callable, Optional
+import itertools
 
 from PySide2.QtWidgets import (
     QAction,
-    QApplication,
     QMainWindow,
     QProgressBar,
     QStatusBar,
     QTabWidget,
     QWidget,
 )
+import wx
 
 if sys.platform == "darwin":
     # There is an issue with pyside2 and MacOS BigSur. This hack sorts it
@@ -29,6 +30,15 @@ if sys.platform == "darwin":
     import os
 
     os.environ["QT_MAC_WANTS_LAYER"] = "1"
+
+
+class MenuItem(NamedTuple):
+    menu: str
+    id: int
+    text: str = ""
+    description: str = ""
+    callback: Optional[None, Callable[[wx.Event], None]] = None
+    kind: wx.ItemKind = wx.ITEM_NORMAL
 
 
 class ViewBase(ABC):
@@ -42,9 +52,7 @@ class ViewBase(ABC):
             KNOWN_VIEWS.append(cls)
 
     @abstractmethod
-    def menu_entries(
-        self,
-    ) -> Mapping[str, Union[List[QAction], Mapping[str, List[QAction]]]]:
+    def menu_entries(self) -> List[MenuItem]:
         """Return a dictionary with the menu elements provided by this view.
 
         Menus group all commands that we can use in an application.
@@ -186,19 +194,69 @@ class MainWindow(QMainWindow):
                     menu.addActions(items)
 
 
-class DefaultMenu(ViewBase):
-    def toolbar_items(self) -> Mapping[str, List[QAction]]:
-        return {}
+class Window(wx.Frame):
+    def __init__(self, parent, title):
+        super(Window, self).__init__(parent, title=title)
 
-    def tabs(self) -> Mapping[str, QWidget]:
-        return {}
+        self._make_central_widget()
+        self._make_status_bar()
+        self._make_toolbar()
+        self._make_menubar()
 
-    def menu_entries(
-        self,
-    ) -> Mapping[str, Union[List[QAction], Mapping[str, List[QAction]]]]:
-        exit_app = QAction("Exit")
-        exit_app.triggered.connect(QApplication.instance().closeAllWindows)
+        self.Show(True)
 
-        documentation = QAction("Documentation")
-        about = QAction("About")
-        return {"File": [exit_app], "Help": [documentation, about]}
+    def _make_menubar(self):
+        # Collecting the menu entries
+        entries = itertools.chain.from_iterable(
+            [
+                [
+                    MenuItem(
+                        menu="&File",
+                        id=wx.ID_EXIT,
+                        text="E&xit",
+                        description=f" Terminate {self.Label}",
+                        callback=self.on_exit,
+                    ),
+                ],
+            ]
+            + [view().menu_entries() for view in KNOWN_VIEWS]
+        )
+
+        # Creating the menus
+        menus = dict()
+        for entry in entries:
+            if entry.menu not in menus:
+                menus[entry.menu] = wx.Menu()
+
+            menu_entry = menus[entry.menu].Append(
+                entry.id, entry.text, entry.description, entry.kind
+            )
+
+            if entry.callback is not None:
+                self.Bind(wx.EVT_MENU, entry.callback, menu_entry)
+
+        # Creating the menubar.
+        menu_bar = wx.MenuBar()
+        for name, item in menus.items():
+            menu_bar.Append(item, name)
+
+        # Adding the MenuBar to the Frame content.
+        self.SetMenuBar(menu_bar)
+
+    def _make_toolbar(self):
+        pass
+
+    def _make_status_bar(self):
+        self.CreateStatusBar()  # A StatusBar in the bottom of the window
+
+    def _make_central_widget(self):
+        self.control = wx.TextCtrl(self, style=wx.TE_MULTILINE)
+
+    def on_exit(self, e):
+        self.Close(True)
+
+
+if __name__ == "__main__":
+    app = wx.App(False)
+    frame = Window(None, "Sample editor")
+    app.MainLoop()

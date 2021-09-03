@@ -3,11 +3,16 @@ Contains all the machinery to register and load plugins.
 """
 from __future__ import annotations
 
+import importlib
+import sys
 from abc import ABC
 from dataclasses import dataclass
-from typing import List, Type, Callable, Optional
+from pathlib import Path
+from typing import Callable, List, Optional, Type
+
 import wx
 
+from .logging import logger
 
 KNOWN_PLUGINS: List[Type[PluginBase]] = []
 """List of plugins registered as subclasses of PluginBase."""
@@ -100,3 +105,78 @@ class PluginBase(ABC):
             wx.MainWindow (pretty much, any widget).
         """
         return None
+
+
+def collect_plugins(
+    path: Path, package: Optional[str] = None, add_to_path: bool = False
+) -> List[str]:
+    """Collects the plugins from the given location.
+
+    This function collects the modules and packages available in chosen location. If
+    they are not directly importable by Python (i.e. they are not in the path), either
+    the name of the containing package should be supplied or the add_to_path flag must
+    be set to True.
+
+    Eg. If path = "/some/location/with/tools/mytool", and "mytool" is an importable
+    package with "import mytool", plugins within "mytool" folder will be included with
+    no extra arguments.
+
+    If "mytool" is not importable but "tools" is, i.e. 'import tools.mytool' works,
+    then you should add "package='tools'".
+
+    If neither "mytool" nor anything else in its path is importable, then the path can
+    be added to the module's import path, sys.path, so the plugins within can be
+    imported as "import plugin".
+
+    Args:
+        path: Directory to explore.
+        package: Package in which the directory is contained.
+        add_to_path: If the directory should be added to the import path.
+
+    Returns:
+        List of modules and packages to be imported in the form
+        "package.subpackage.plugin", where "plugin" can be a module (a python file) or
+        a package itself (a folder containing a __init__.py file).
+    """
+    if add_to_path:
+        sys.path.insert(1, str(path))
+        pkg = ""
+    else:
+        pkg = f"{path.stem}." if package is None else f"{package}.{path.stem}."
+
+    plugin_names = []
+    for p in path.glob("*.py"):
+        if not p.stem.startswith("__"):
+            plugin_names.append(f"{pkg}{p.stem}")
+
+    for p in path.glob("*/"):
+        if p.is_dir() and (p / "__init__.py").exists():
+            plugin_names.append(f"{pkg}{p.stem}")
+
+    return plugin_names
+
+
+def collect_builtin_extensions():
+    """Search for plugins to be loaded in the "extensions" subfolder.
+
+    These plugins can be single modules (simple_plugin.py) or more complex modules
+    defined as packages (i.e. they are folders with a __init__.py file).
+
+    Returns:
+        A list of plugins names to be loaded.
+    """
+    extensions = Path(__file__).parent / "extensions"
+    return collect_plugins(extensions, Path(__file__).parent.stem)
+
+
+def load_plugins(plugin_list: List[str]):
+    """Loads the plugins of the list.
+
+    Args:
+        plugin_list: A list of plugins to be loaded.
+    """
+    for plugin in plugin_list:
+        try:
+            importlib.import_module(plugin)
+        except ModuleNotFoundError as err:
+            logger.warning(f"Plugin '{err.name}' could not be loaded. {err}")

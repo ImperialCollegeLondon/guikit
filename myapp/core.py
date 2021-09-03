@@ -9,11 +9,11 @@ instance can be access directly from the class anywhere else where you import th
 """
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
 import itertools
 import wx
 
-from .plugins import KNOWN_PLUGINS, PluginBase, MenuTool
+from .plugins import KNOWN_PLUGINS, PluginBase, MenuTool, load_plugins
 
 
 class MainWindow(wx.Frame):
@@ -163,18 +163,20 @@ class MainApp(wx.App):
         self,
         *args,
         title: str,
+        plugins_list: Optional[List[str]] = None,
         notebook_layout: bool = True,
         tab_style: int = wx.NB_TOP,
         **kwargs,
     ):
         self.title = title
+        self.plugins_list = plugins_list if plugins_list is not None else []
         self.notebook_layout = notebook_layout
         self.tab_style = tab_style
         super(MainApp, self).__init__(*args, **kwargs)
 
     def OnInit(self) -> bool:
         self.SetAppName(self.title)
-        # search for plugins
+        load_plugins(self.plugins_list)
         window = MainWindow(None, self.title, self.notebook_layout, self.tab_style)
         window.Show(True)
         self.SetTopWindow(window)

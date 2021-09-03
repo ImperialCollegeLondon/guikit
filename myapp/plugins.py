@@ -52,8 +52,7 @@ class PluginBase(ABC):
         if cls not in KNOWN_PLUGINS:
             KNOWN_PLUGINS.append(cls)
 
-    @staticmethod
-    def menu_entries() -> List[MenuTool]:
+    def menu_entries(self) -> List[MenuTool]:
         """Return a list of menu entries provided by this plugin.
 
         The items of the list must be MenuTool objects.
@@ -64,8 +63,7 @@ class PluginBase(ABC):
         """
         return []
 
-    @staticmethod
-    def toolbar_items() -> List[MenuTool]:
+    def toolbar_items(self) -> List[MenuTool]:
         """Return a list of toolbar items provided by this plugin.
 
         The items of the list must be MenuTool objects.
@@ -76,8 +74,7 @@ class PluginBase(ABC):
         """
         return []
 
-    @staticmethod
-    def tabs(parent) -> List[Tab]:
+    def tabs(self, parent) -> List[Tab]:
         """Create and return the list of tabs provided by this plugin.
 
         The elements of the list must be Tab objects.
@@ -92,8 +89,7 @@ class PluginBase(ABC):
         """
         return []
 
-    @staticmethod
-    def central(parent) -> Optional[wx.Window]:
+    def central(self, parent) -> Optional[wx.Window]:
         """Central widget provided by this plugin.
 
         Args:

@@ -96,7 +96,7 @@ class PluginBase(ABC):
             widget.
 
         Returns:
-            None (if no central widget provided) or any object derived from  wx.Window
-            (pretty much, any widget).
+            None (if no central widget provided) or any object derived from
+            wx.MainWindow (pretty much, any widget).
         """
         return None

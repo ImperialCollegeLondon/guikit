@@ -16,7 +16,7 @@ import wx
 from .plugins import KNOWN_PLUGINS, PluginBase, MenuTool
 
 
-class Window(wx.Frame):
+class MainWindow(wx.Frame):
     def __init__(
         self,
         parent,
@@ -24,7 +24,7 @@ class Window(wx.Frame):
         notebook_layout: bool = True,
         tab_style: int = wx.NB_TOP,
     ):
-        super(Window, self).__init__(parent, title=title)
+        super(MainWindow, self).__init__(parent, title=title)
 
         if notebook_layout:
             self._make_notebook(tab_style)
@@ -156,3 +156,26 @@ class BuiltInActions(PluginBase):
                 description="Terminate application",
             ),
         ]
+
+
+class MainApp(wx.App):
+    def __init__(
+        self,
+        *args,
+        title: str,
+        notebook_layout: bool = True,
+        tab_style: int = wx.NB_TOP,
+        **kwargs,
+    ):
+        self.title = title
+        self.notebook_layout = notebook_layout
+        self.tab_style = tab_style
+        super(MainApp, self).__init__(*args, **kwargs)
+
+    def OnInit(self) -> bool:
+        self.SetAppName(self.title)
+        # search for plugins
+        window = MainWindow(None, self.title, self.notebook_layout, self.tab_style)
+        window.Show(True)
+        self.SetTopWindow(window)
+        return True

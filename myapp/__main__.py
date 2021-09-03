@@ -2,10 +2,11 @@
 The entry point of the program. It launches the main application - i.e. it starts
 whatever represents de mainloop in the chosen GUI toolkit.
 """
-from . import APP_NAME
-from .plugins import collect_builtin_extensions
-from .core import MainApp
 import wx
+
+from . import APP_NAME
+from .core import MainApp
+from .plugins import collect_builtin_extensions
 
 app = MainApp(
     title=APP_NAME,

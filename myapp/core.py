@@ -9,11 +9,12 @@ instance can be access directly from the class anywhere else where you import th
 """
 from __future__ import annotations
 
-from typing import List, Optional
 import itertools
+from typing import List, Optional
+
 import wx
 
-from .plugins import KNOWN_PLUGINS, PluginBase, MenuTool, load_plugins
+from .plugins import KNOWN_PLUGINS, MenuTool, PluginBase, load_plugins
 
 
 class MainWindow(wx.Frame):

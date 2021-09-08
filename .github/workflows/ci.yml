@@ -62,15 +62,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          python-version: 3.8
-      - name: Install Linux dependencies
-        run: |
-          pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04 wxPython
       - name: Build docs
         uses: ammaraskar/sphinx-action@master
         with:
           docs-folder: "docs/"
           pre-build-command: |
             python -m pip install --upgrade pip setuptools wheel
+            pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04 wxPython
             pip install -e .[doc]

@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - with:
+        with:
           python-version: 3.8
       - name: Install Linux dependencies
         run: |

@@ -28,7 +28,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-20.04]
+        os: [windows-latest, ubuntu-latest]
         python-version: [3.8, 3.9]
         exclude:
           - os: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
 
   docs:
     needs: test
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:

@@ -10,11 +10,64 @@ instance can be access directly from the class anywhere else where you import th
 from __future__ import annotations
 
 import itertools
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 import wx
 
 from .plugins import KNOWN_PLUGINS, MenuTool, PluginBase, load_plugins
+
+
+class StatusBar(wx.StatusBar):
+    """
+    Singleton class to manage the top level status and progress bar.
+
+    It provides three fields:
+        - field 0: Automatic display of menu and tools descriptions
+        - field 1: Custom status messages
+        - field 2: Holds the progress bar. Do not use it for displaying text.
+
+    Use 'StatusBar().SomeMethod` to manage the status bar messages and properties. See
+    'wx.StatusBar' for more information about the options available.
+
+    Use `StatusBar().progress_bar.SomeMethod` to manage the progress bar properties.
+    See 'wx.Gauge' for more information about the options available.
+    """
+
+    _instance: Optional[StatusBar] = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = wx.StatusBar.__new__(cls)
+        return cls._instance
+
+    def __init__(self, *args, widths: Tuple[int, ...] = (150, -1, 150), **kwargs):
+        super(StatusBar, self).__init__(*args, **kwargs)
+        self.SetFieldsCount(3, widths)
+        self.progress_bar = wx.Gauge(
+            self,
+            wx.ID_ANY,
+            size=(widths[-1], 10),
+            style=wx.GA_HORIZONTAL | wx.GA_SMOOTH,
+        )
+        sizer = wx.BoxSizer(wx.HORIZONTAL)
+        sizer.Add(wx.StaticText(self, -1, ""), 1, wx.ALL)
+        sizer.Add(self.progress_bar, 0, wx.ALL, 10)
+        self.SetSizer(sizer)
+        self.Layout()
+
+    def SetStatusWidths(self, widths: List[int]):
+        """Ensures that progress bar is resized if fields are resized.
+
+        Args:
+            widths: Contains an array of n integers, each of which is either an absolute
+             status field width in pixels if positive or indicates a variable width
+             field if negative.
+
+        See Also:
+            wx.StatusBar.SetStatusWidths
+        """
+        super(StatusBar, self).SetStatusWidths(widths)
+        self.progress_bar.SetSize(self.GetStatusWidth(2), 10)
 
 
 class MainWindow(wx.Frame):
@@ -26,23 +79,21 @@ class MainWindow(wx.Frame):
         tab_style: int = wx.NB_TOP,
     ):
         super(MainWindow, self).__init__(parent, title=title)
+        self.notebook_layout = notebook_layout
+        self.tab_style = tab_style
+        self.SetStatusBar(StatusBar(self))
 
-        if notebook_layout:
-            self._make_notebook(tab_style)
+    def populate_window(self):
+        """Adds menu items, tools and other widgets in plugins to the main window."""
+        if self.notebook_layout:
+            self._make_notebook(self.tab_style)
         else:
             self._make_central_widget()
-        self._make_status_bar()
         self._make_toolbar()
         self._make_menubar()
 
-        self.Show(True)
-
     def _make_menubar(self) -> None:
-        """Create the menu bar.
-
-        An "Exit" entry in a "File" menu is created automatically. Any other entry is
-        obtained from the plugins.
-        """
+        """Create the menu bar from the entries provided by the widgets."""
         # Collecting the menu entries
         entries = itertools.chain.from_iterable(
             [view().menu_entries() for view in KNOWN_PLUGINS]
@@ -70,11 +121,7 @@ class MainWindow(wx.Frame):
         self.SetMenuBar(menu_bar)
 
     def _make_toolbar(self):
-        """
-
-        Returns:
-
-        """
+        """Create the tool bar from the entries provided by the widgets."""
         # Collect tools
         tools = itertools.chain.from_iterable(
             [view().toolbar_items() for view in KNOWN_PLUGINS]
@@ -91,14 +138,6 @@ class MainWindow(wx.Frame):
                 self.Bind(wx.EVT_MENU, tool.callback, item)
 
         toolbar.Realize()
-
-    def _make_status_bar(self):
-        """
-
-        Returns:
-
-        """
-        self.CreateStatusBar()  # A StatusBar in the bottom of the window
 
     def _make_notebook(self, tab_style: int = wx.NB_TOP) -> None:
         """Create the central widget of the window as a notebook.
@@ -147,8 +186,7 @@ class MainWindow(wx.Frame):
 class BuiltInActions(PluginBase):
     """Actions and features builtin with the core window."""
 
-    @staticmethod
-    def menu_entries() -> List[MenuTool]:
+    def menu_entries(self) -> List[MenuTool]:
         return [
             MenuTool(
                 menu="File",
@@ -177,8 +215,11 @@ class MainApp(wx.App):
 
     def OnInit(self) -> bool:
         self.SetAppName(self.title)
-        load_plugins(self.plugins_list)
         window = MainWindow(None, self.title, self.notebook_layout, self.tab_style)
-        window.Show(True)
         self.SetTopWindow(window)
+
+        load_plugins(self.plugins_list)
+        window.populate_window()
+        window.Show(True)
+
         return True

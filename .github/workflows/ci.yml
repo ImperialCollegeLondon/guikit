@@ -68,4 +68,5 @@ jobs:
           docs-folder: "docs/"
           pre-build-command: |
             python -m pip install --upgrade pip setuptools wheel
-            pip install -r requirements-doc.txt
+            pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04 wxPython
+            pip install -e .[doc]

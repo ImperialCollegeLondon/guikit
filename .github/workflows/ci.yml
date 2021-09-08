@@ -4,7 +4,7 @@ on: [push, pull_request, release]
 
 jobs:
   style:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - uses: actions/checkout@v2
@@ -28,7 +28,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest]
+        os: [windows-latest, ubuntu-20.04]
         python-version: [3.8, 3.9]
         exclude:
           - os: ubuntu-latest
@@ -59,9 +59,14 @@ jobs:
 
   docs:
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+      - with:
+          python-version: 3.8
+      - name: Install Linux dependencies
+        run: |
+          pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04 wxPython
       - name: Build docs
         uses: ammaraskar/sphinx-action@master
         with:

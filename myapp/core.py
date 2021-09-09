@@ -10,7 +10,7 @@ instance can be access directly from the class anywhere else where you import th
 from __future__ import annotations
 
 import itertools
-from typing import List, Optional, Tuple
+from typing import List, Optional
 
 import wx
 
@@ -22,9 +22,9 @@ class StatusBar(wx.StatusBar):
     Singleton class to manage the top level status and progress bar.
 
     It provides three fields:
-        - field 0: Automatic display of menu and tools descriptions
-        - field 1: Custom status messages
-        - field 2: Holds the progress bar. Do not use it for displaying text.
+        - field 0: Automatic display of menu and tools descriptions as well as custom
+            status messages
+        - field 1: Holds the progress bar. Do not use it for displaying text.
 
     Use 'StatusBar().SomeMethod` to manage the status bar messages and properties. See
     'wx.StatusBar' for more information about the options available.
@@ -40,13 +40,13 @@ class StatusBar(wx.StatusBar):
             cls._instance = wx.StatusBar.__new__(cls)
         return cls._instance
 
-    def __init__(self, *args, widths: Tuple[int, ...] = (150, -1, 150), **kwargs):
+    def __init__(self, *args, progress_bar_width: int = 150, **kwargs):
         super(StatusBar, self).__init__(*args, **kwargs)
-        self.SetFieldsCount(3, widths)
+        self.SetFieldsCount(2, (-1, progress_bar_width))
         self.progress_bar = wx.Gauge(
             self,
             wx.ID_ANY,
-            size=(widths[-1], 10),
+            size=(progress_bar_width, 10),
             style=wx.GA_HORIZONTAL | wx.GA_SMOOTH,
         )
         sizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -55,19 +55,14 @@ class StatusBar(wx.StatusBar):
         self.SetSizer(sizer)
         self.Layout()
 
-    def SetStatusWidths(self, widths: List[int]):
+    def SetStatusWidths(self, width: int):
         """Ensures that progress bar is resized if fields are resized.
 
         Args:
-            widths: Contains an array of n integers, each of which is either an absolute
-             status field width in pixels if positive or indicates a variable width
-             field if negative.
-
-        See Also:
-            wx.StatusBar.SetStatusWidths
+            width: Width of the progress bar.
         """
-        super(StatusBar, self).SetStatusWidths(widths)
-        self.progress_bar.SetSize(self.GetStatusWidth(2), 10)
+        super(StatusBar, self).SetStatusWidths((-1, width))
+        self.progress_bar.SetSize(self.GetStatusWidth(1), 10)
 
 
 class MainWindow(wx.Frame):

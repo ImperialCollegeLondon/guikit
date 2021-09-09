@@ -74,7 +74,7 @@ class PluginBase(ABC):
         """
         return []
 
-    def tabs(self, parent) -> List[Tab]:
+    def tabs(self, parent=None) -> List[Tab]:
         """Create and return the list of tabs provided by this plugin.
 
         The elements of the list must be Tab objects.
@@ -89,7 +89,7 @@ class PluginBase(ABC):
         """
         return []
 
-    def central(self, parent) -> Optional[wx.Window]:
+    def central(self, parent=None) -> Optional[wx.Window]:
         """Central widget provided by this plugin.
 
         Args:

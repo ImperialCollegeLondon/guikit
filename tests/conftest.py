@@ -23,17 +23,35 @@ def main_window():
 
 
 @pytest.fixture()
-def menu_tool():
+def plugin():
     import wx
-    from myapp.plugins import MenuTool
+    from typing import List
+    from myapp.plugins import PluginBase, MenuTool
 
-    return (
-        MenuTool(
-            id=wx.ID_STOP,
-            text="Exit",
-            short_help="Terminate application",
-            bitmap=wx.ArtProvider.GetBitmap(
-                wx.ART_QUIT, wx.ART_TOOLBAR, wx.Size(50, 50)
-            ),
-        ),
-    )
+    class ExamplePlugin(PluginBase):
+        def central(self, parent=None) -> wx.Window:
+            return wx.TextCtrl(parent, style=wx.TE_MULTILINE)
+
+        def toolbar_items(self) -> List[MenuTool]:
+            return [
+                MenuTool(
+                    id=wx.ID_STOP,
+                    text="Exit",
+                    short_help="Terminate application",
+                    bitmap=wx.ArtProvider.GetBitmap(
+                        wx.ART_QUIT, wx.ART_TOOLBAR, wx.Size(50, 50)
+                    ),
+                ),
+            ]
+
+    return ExamplePlugin
+
+
+@pytest.fixture()
+def empty_plugin():
+    from myapp.plugins import PluginBase
+
+    class EmptyPlugin(PluginBase):
+        pass
+
+    return EmptyPlugin

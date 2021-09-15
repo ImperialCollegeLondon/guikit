@@ -21,7 +21,7 @@ class StatusBar(wx.StatusBar):
     """
     Singleton class to manage the top level status and progress bar.
 
-    It provides three fields:
+    It provides two fields:
         - field 0: Automatic display of menu and tools descriptions as well as custom
             status messages
         - field 1: Holds the progress bar. Do not use it for displaying text.

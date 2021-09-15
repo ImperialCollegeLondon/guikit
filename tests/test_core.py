@@ -64,6 +64,13 @@ class TestMainWindow:
 
         main_window._make_central_widget()
 
+        class SomeOtherPlugin(PluginBase):
+            def central(self, parent):
+                return wx.TextCtrl(parent, style=wx.TE_MULTILINE)
+
+        with pytest.raises(ValueError):
+            main_window._make_central_widget()
+
 
 class TestBuiltInActions:
     def test_menu_entries(self):

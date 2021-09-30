@@ -1,5 +1,5 @@
 def test_logger(caplog):
-    from myapp.logging import app_dir, logger
+    from pyguitemp.logging import app_dir, logger
 
     msg = "Some function executed."
 

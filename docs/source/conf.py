@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 from typing import List
 
-project = "myapp"
+project = "Python GUI Template"
 copyright = "2021, Research Computing Service, Imperial College London"
 author = "Research Computing Service, Imperial College London"
 

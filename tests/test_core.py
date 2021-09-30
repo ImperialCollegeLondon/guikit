@@ -6,7 +6,7 @@ import pytest
 class TestStatusBar:
     def test_set_status_widths(self, window):
         import wx
-        from myapp.core import StatusBar
+        from pyguitemp.core import StatusBar
 
         bar = StatusBar(window)
         assert isinstance(bar.progress_bar, wx.Gauge)
@@ -53,7 +53,7 @@ class TestMainWindow:
 
     def test__make_central_widget(self, main_window):
         import wx
-        from myapp.plugins import PluginBase
+        from pyguitemp.plugins import PluginBase
 
         with pytest.raises(ValueError):
             main_window._make_central_widget()
@@ -74,8 +74,8 @@ class TestMainWindow:
 
 class TestBuiltInActions:
     def test_menu_entries(self):
-        from myapp.core import BuiltInActions
-        from myapp.plugins import MenuTool
+        from pyguitemp.core import BuiltInActions
+        from pyguitemp.plugins import MenuTool
 
         entries = BuiltInActions().menu_entries()
         assert len(entries) > 0
@@ -85,7 +85,7 @@ class TestBuiltInActions:
 
 class TestMainApp:
     def test_on_init(self):
-        from myapp.core import MainApp, MainWindow
+        from pyguitemp.core import MainApp, MainWindow
 
         app = MainApp(title="Some App")
         assert isinstance(app.GetTopWindow(), MainWindow)

@@ -154,7 +154,7 @@ class MainWindow(wx.Frame):
 
         # Add tabs to notebook
         for tab in tabs:
-            self.notebook.AddPage(*tab)
+            self.notebook.AddPage(tab.page, tab.text, tab.select, tab.imageId)
 
         if self.notebook.PageCount > 0:
             self.notebook.SetSelection(0)

@@ -86,6 +86,7 @@ class MainWindow(wx.Frame):
             self._make_central_widget()
         self._make_toolbar()
         self._make_menubar()
+        self.SetInitialSize(wx.Size(800, 600))
 
     def _make_menubar(self) -> None:
         """Create the menu bar from the entries provided by the widgets."""

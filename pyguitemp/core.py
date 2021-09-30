@@ -154,14 +154,11 @@ class MainWindow(wx.Frame):
         )
 
         # Add tabs to notebook
-        select = 0
-        for i, tab in enumerate(tabs):
+        for tab in sorted(tabs, key=lambda x: x.order):
             self.notebook.AddPage(tab.page, tab.text, tab.select, tab.imageId)
-            if tab.select:
-                select = i
 
         if self.notebook.PageCount > 0:
-            self.notebook.SetSelection(select)
+            self.notebook.SetSelection(0)
 
     def _make_central_widget(self) -> None:
         """Create the central widget of the window.

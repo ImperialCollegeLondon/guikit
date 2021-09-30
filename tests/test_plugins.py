@@ -3,7 +3,7 @@ from unittest.mock import patch, MagicMock
 
 class TestPluginBase:
     def test_plugin_registration(self, plugin):
-        from myapp.plugins import KNOWN_PLUGINS
+        from pyguitemp.plugins import KNOWN_PLUGINS
 
         assert plugin in KNOWN_PLUGINS
 
@@ -26,7 +26,7 @@ class TestPluginBase:
 
 def test_collect_plugins():
     from pathlib import Path
-    from myapp.plugins import collect_plugins
+    from pyguitemp.plugins import collect_plugins
 
     this_file = Path(__file__)
     plugins = collect_plugins(this_file.parent)
@@ -40,8 +40,8 @@ def test_collect_plugins():
 
 
 def test_collect_builtin_extensions():
-    with patch("myapp.plugins.collect_plugins", MagicMock()):
-        from myapp.plugins import collect_builtin_extensions, collect_plugins
+    with patch("pyguitemp.plugins.collect_plugins", MagicMock()):
+        from pyguitemp.plugins import collect_builtin_extensions, collect_plugins
 
         collect_builtin_extensions()
         collect_plugins.assert_called_once()
@@ -50,7 +50,7 @@ def test_collect_builtin_extensions():
 def test_load_plugins(caplog):
     with patch("importlib.import_module", MagicMock()):
         from importlib import import_module
-        from myapp.plugins import collect_builtin_extensions, load_plugins
+        from pyguitemp.plugins import collect_builtin_extensions, load_plugins
 
         plugins = collect_builtin_extensions()
         load_plugins(plugins)

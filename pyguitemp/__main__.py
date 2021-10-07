@@ -5,8 +5,11 @@ whatever represents the mainloop in the chosen GUI toolkit.
 import wx
 
 from . import APP_NAME
+from .logging import logger
 from .core import MainApp
 from .plugins import collect_builtin_extensions
+
+logger.app_name = APP_NAME
 
 app = MainApp(
     title=APP_NAME,

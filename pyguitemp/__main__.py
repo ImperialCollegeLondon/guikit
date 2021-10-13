@@ -6,6 +6,8 @@ from __future__ import annotations
 import argparse
 from abc import ABC, abstractmethod
 from typing import Dict, List
+from pathlib import Path
+from shutil import copytree
 
 from . import APP_NAME
 from .config import APP_LONG_NAME, AUTO_PLUGINS, NOTEBOOK_LAYOUT, PLUGINS, TAB_STYLE
@@ -53,10 +55,23 @@ class InitSubCommand(SubCommand):
         )
 
     def add_arguments(self, parser: argparse.ArgumentParser):
-        pass
+        parser.add_argument(
+            "name",
+            type=str,
+            help="Name of the app. To be used as package name.",
+        )
+        parser.add_argument(
+            "-t",
+            "--target",
+            default=".",
+            type=str,
+            help="Target location for the app. Default: Current directory.",
+        )
 
     def run(self, args: argparse.Namespace):
-        print("Initialising...")
+        full_dir = Path(args.target).absolute() / args.name
+        logger.info(f"Initialising '{args.name}' in `{full_dir}`...")
+        copytree(Path(__file__).parent / "skeleton", full_dir)
 
 
 SUB_COMMANDS: List[SubCommand] = [RunSubCommand(), InitSubCommand()]
@@ -88,3 +103,7 @@ def run(args: argparse.Namespace):
 def main(argv: List[str] = None):
     args = parse_args(argv)
     run(args)
+
+
+if __name__ == "__main__":
+    main()

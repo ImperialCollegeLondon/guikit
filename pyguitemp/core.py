@@ -10,7 +10,7 @@ instance can be access directly from the class anywhere else where you import th
 from __future__ import annotations
 
 import itertools
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 import wx
 
@@ -193,6 +193,14 @@ class BuiltInActions(PluginBase):
         ]
 
 
+_tab_location: Dict[str, int] = {
+    "top": wx.NB_TOP,
+    "bottom": wx.NB_BOTTOM,
+    "left": wx.NB_LEFT,
+    "right": wx.NB_RIGHT,
+}
+
+
 class MainApp(wx.App):
     def __init__(
         self,
@@ -200,13 +208,13 @@ class MainApp(wx.App):
         title: str,
         plugins_list: Optional[List[str]] = None,
         notebook_layout: bool = True,
-        tab_style: int = wx.NB_TOP,
+        tab_style: str = "top",
         **kwargs,
     ):
         self.title = title
         self.plugins_list = plugins_list if plugins_list is not None else []
         self.notebook_layout = notebook_layout
-        self.tab_style = tab_style
+        self.tab_style = _tab_location[tab_style]
         super(MainApp, self).__init__(*args, **kwargs)
 
     def OnInit(self) -> bool:

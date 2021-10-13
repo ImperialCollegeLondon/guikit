@@ -95,14 +95,9 @@ def parse_args(argv: List[str] = None) -> argparse.Namespace:
     return args
 
 
-def run(args: argparse.Namespace):
-    sub_command = SUB_COMMAND_BY_NAME[args.command]
-    sub_command.run(args)
-
-
 def main(argv: List[str] = None):
     args = parse_args(argv)
-    run(args)
+    SUB_COMMAND_BY_NAME[args.command].run(args)
 
 
 if __name__ == "__main__":

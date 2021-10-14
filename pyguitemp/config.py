@@ -3,6 +3,7 @@ Settings for configuring the application general behavior, plugging collection a
 aspects of the tool.
 """
 from typing import List
+
 from .plugins import collect_builtin_extensions
 
 APP_LONG_NAME: str = "Python GUI Template"

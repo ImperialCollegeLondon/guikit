@@ -1,9 +1,10 @@
 from __future__ import annotations
+
 import argparse
 from abc import ABC, abstractmethod
-from typing import Dict, List
 from pathlib import Path
 from shutil import copytree
+from typing import Dict, List
 
 from . import APP_NAME
 from .config import APP_LONG_NAME, AUTO_PLUGINS, NOTEBOOK_LAYOUT, PLUGINS, TAB_STYLE

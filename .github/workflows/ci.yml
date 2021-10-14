@@ -63,7 +63,7 @@ jobs:
       - name: Build docs
         uses: ammaraskar/sphinx-action@master
         with:
-          docs-folder: "docs/"
+          docs-folder: "docs/source"
           pre-build-command: |
             python -m pip install --upgrade pip setuptools wheel
             pip install -U sphinx myst-parser

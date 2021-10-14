@@ -2,19 +2,17 @@
 The entry point of the program. It launches the main application - i.e. it starts
 whatever represents the mainloop in the chosen GUI toolkit.
 """
-import wx
-
 from . import APP_NAME
+from .config import APP_LONG_NAME, AUTO_PLUGINS, NOTEBOOK_LAYOUT, PLUGINS, TAB_STYLE
 from .core import MainApp
 from .logging import logger
-from .plugins import collect_builtin_extensions
 
 logger.app_name = APP_NAME
 
 app = MainApp(
-    title=APP_NAME,
-    plugins_list=collect_builtin_extensions(),
-    notebook_layout=True,
-    tab_style=wx.NB_TOP,
+    title=APP_LONG_NAME,
+    plugins_list=PLUGINS + AUTO_PLUGINS,
+    notebook_layout=NOTEBOOK_LAYOUT,
+    tab_style=TAB_STYLE,
 )
 app.MainLoop()

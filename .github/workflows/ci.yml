@@ -63,11 +63,10 @@ jobs:
       - name: Build docs
         uses: ammaraskar/sphinx-action@master
         with:
-          docs-folder: "docs/source"
           pre-build-command: |
             python -m pip install --upgrade pip setuptools wheel
             pip install -U sphinx myst-parser
-          build-command: sphinx-build -n -b html . ../build/html
+          build-command: sphinx-build -n -b html docs/source build/html
       - uses: actions/upload-artifact@v1
         with:
           name: DocumentationHTML

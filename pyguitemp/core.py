@@ -14,6 +14,7 @@ from typing import List, Optional, Dict
 
 import wx
 
+from .logging import logger
 from .plugins import KNOWN_PLUGINS, MenuTool, PluginBase, load_plugins
 
 
@@ -214,7 +215,15 @@ class MainApp(wx.App):
         self.title = title
         self.plugins_list = plugins_list if plugins_list is not None else []
         self.notebook_layout = notebook_layout
-        self.tab_style = _tab_location[tab_style]
+        try:
+            self.tab_style = _tab_location[tab_style]
+        except KeyError:
+            logger.warning(
+                f"Invalid tab_style '{tab_style}'. Valid values are "
+                f"{list(_tab_location.keys())}. Defaulting to 'top'"
+            )
+            self.tab_style = _tab_location["top"]
+
         super(MainApp, self).__init__(*args, **kwargs)
 
     def OnInit(self) -> bool:

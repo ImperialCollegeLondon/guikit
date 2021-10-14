@@ -84,8 +84,11 @@ class TestBuiltInActions:
 
 
 class TestMainApp:
-    def test_on_init(self):
+    def test_on_init(self, caplog):
         from pyguitemp.core import MainApp, MainWindow
+        import wx
 
-        app = MainApp(title="Some App")
+        app = MainApp(title="Some App", tab_style="a corner")
+        assert "Invalid tab_style" in caplog.messages[-1]
+        assert app.tab_style == wx.NB_TOP
         assert isinstance(app.GetTopWindow(), MainWindow)

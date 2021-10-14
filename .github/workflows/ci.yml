@@ -66,5 +66,15 @@ jobs:
           docs-folder: "docs/"
           pre-build-command: |
             python -m pip install --upgrade pip setuptools wheel
-            pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04 wxPython
-            pip install -e .[doc]
+            pip install -U sphinx myst-parser
+          build-command: sphinx-build -n -b html . ../build/html
+      - uses: actions/upload-artifact@v1
+        with:
+          name: DocumentationHTML
+          path: build/html/
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/master'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/html

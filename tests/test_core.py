@@ -6,6 +6,7 @@ import pytest
 class TestStatusBar:
     def test_set_status_widths(self, window):
         import wx
+
         from pyguitemp.core import StatusBar
 
         bar = StatusBar(window)
@@ -53,6 +54,7 @@ class TestMainWindow:
 
     def test__make_central_widget(self, main_window):
         import wx
+
         from pyguitemp.plugins import PluginBase
 
         with pytest.raises(ValueError):
@@ -84,8 +86,12 @@ class TestBuiltInActions:
 
 
 class TestMainApp:
-    def test_on_init(self):
+    def test_on_init(self, caplog):
+        import wx
+
         from pyguitemp.core import MainApp, MainWindow
 
-        app = MainApp(title="Some App")
+        app = MainApp(title="Some App", tab_style="a corner")
+        assert "Invalid tab_style" in caplog.messages[-1]
+        assert app.tab_style == wx.NB_TOP
         assert isinstance(app.GetTopWindow(), MainWindow)

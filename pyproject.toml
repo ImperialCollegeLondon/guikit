@@ -3,4 +3,4 @@ requires = ["setuptools>=45", "wheel", "setuptools_scm>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
-local_scheme = ""
+local_scheme = "no-local-version"

@@ -6,6 +6,7 @@ import pytest
 class TestStatusBar:
     def test_set_status_widths(self, window):
         import wx
+
         from pyguitemp.core import StatusBar
 
         bar = StatusBar(window)
@@ -53,6 +54,7 @@ class TestMainWindow:
 
     def test__make_central_widget(self, main_window):
         import wx
+
         from pyguitemp.plugins import PluginBase
 
         with pytest.raises(ValueError):

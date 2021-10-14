@@ -3,9 +3,9 @@ The entry point of the program. It launches the main application - i.e. it start
 whatever represents the mainloop in the chosen GUI toolkit.
 """
 from . import APP_NAME
-from .logging import logger
+from .config import APP_LONG_NAME, AUTO_PLUGINS, NOTEBOOK_LAYOUT, PLUGINS, TAB_STYLE
 from .core import MainApp
-from .config import PLUGINS, AUTO_PLUGINS, APP_LONG_NAME, NOTEBOOK_LAYOUT, TAB_STYLE
+from .logging import logger
 
 logger.app_name = APP_NAME
 

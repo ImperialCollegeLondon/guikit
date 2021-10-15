@@ -1,7 +1,6 @@
 def test_logger(caplog):
-    from myapp.logging import app_dir, logger
+    from pyguitemp.logging import app_dir, logger
 
-    print("hi")
     msg = "Some function executed."
 
     def some_func():

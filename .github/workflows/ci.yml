@@ -65,8 +65,8 @@ jobs:
         with:
           pre-build-command: |
             python -m pip install --upgrade pip setuptools wheel
-            pip install -U sphinx myst-parser
-          build-command: sphinx-build -n -b html source ../build/html
+            pip install -U sphinx myst-parser sphinx-autoapi sphinx-rtd-theme
+          build-command: sphinx-build -n -b html . ../build/html
       - uses: actions/upload-artifact@v1
         with:
           name: DocumentationHTML

@@ -10,7 +10,7 @@ Welcome to DT-CMR's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   technical/api/index
 
 Indices and tables
 ==================

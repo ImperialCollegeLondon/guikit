@@ -65,7 +65,7 @@ jobs:
         with:
           pre-build-command: |
             python -m pip install --upgrade pip setuptools wheel
-            python -c "import configparser; c = configparser.ConfigParser(); c.read('../setup.cfg'); print(c['options.extras_require']['doc'])" | xargs pip install
+            pip install -U sphinx myst-parser sphinx-autoapi sphinx-rtd-theme
           build-command: sphinx-build -n -b html . ../build/html
       - uses: actions/upload-artifact@v1
         with:

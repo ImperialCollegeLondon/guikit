@@ -76,7 +76,7 @@ class WorkerThread(threading.Thread):
                 ThreadPool().post_event(ThreadResult(result, self._event_on_complete))
 
         except Exception as err:
-            ThreadPool().post_event(ThreadResult(err, self._event_on_error))
+            ThreadPool().post_event(ThreadResult(err.args[0], self._event_on_error))
 
     def on_abort(self, event: ThreadResult):
         """To execute when the thread execution is aborted.
@@ -121,7 +121,7 @@ class ThreadPool:
             cls._instance._workers = {}
         return cls._instance
 
-    def __init__(self):
+    def __init__(self, window: Optional[wx.Frame] = None):
         self._window: wx.Frame
         self._workers: Dict[int, WorkerThread]
 

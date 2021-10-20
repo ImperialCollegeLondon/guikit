@@ -15,7 +15,7 @@ logger.app_name = APP_NAME
 
 
 def _run_app():
-    """Runs pyguitemp as am application, loadig all the plugins available."""
+    """Runs pyguitemp as an application, loading all the plugins available."""
     app = MainApp(
         title=APP_LONG_NAME,
         plugins_list=PLUGINS + AUTO_PLUGINS,
@@ -28,7 +28,7 @@ def _run_app():
 def _init_repo(path: Path, name: str):
     """Initialises repository with the files/folders required to use pyguitemp.
 
-    This is done by copyiung the skeleton repository structure within pyguitemp to the
+    This is done by copying the skeleton repository structure within pyguitemp to the
     desired location.
 
     Args:

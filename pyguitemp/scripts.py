@@ -14,6 +14,32 @@ from .logging import logger
 logger.app_name = APP_NAME
 
 
+def _run_app():
+    """Runs pyguitemp as am application, loadig all the plugins available."""
+    app = MainApp(
+        title=APP_LONG_NAME,
+        plugins_list=PLUGINS + AUTO_PLUGINS,
+        notebook_layout=NOTEBOOK_LAYOUT,
+        tab_style=TAB_STYLE,
+    )
+    app.MainLoop()
+
+
+def _init_repo(path: Path, name: str):
+    """Initialises repository with the files/folders required to use pyguitemp.
+
+    This is done by copyiung the skeleton repository structure within pyguitemp to the
+    desired location.
+
+    Args:
+        path: Where the repository should be initialized. Default: current.
+        name: Name of the application.
+    """
+    full_dir = path / name
+    logger.info(f"Initialising '{name}' in `{full_dir}`...")
+    copytree(Path(__file__).parent / "skeleton", full_dir)
+
+
 class SubCommand(ABC):
     def __init__(self, name, description):
         self.name = name
@@ -36,13 +62,7 @@ class RunSubCommand(SubCommand):
         pass
 
     def run(self, args: argparse.Namespace):
-        app = MainApp(
-            title=APP_LONG_NAME,
-            plugins_list=PLUGINS + AUTO_PLUGINS,
-            notebook_layout=NOTEBOOK_LAYOUT,
-            tab_style=TAB_STYLE,
-        )
-        app.MainLoop()
+        _run_app()
 
 
 class InitSubCommand(SubCommand):
@@ -66,32 +86,45 @@ class InitSubCommand(SubCommand):
         )
 
     def run(self, args: argparse.Namespace):
-        full_dir = Path(args.target).absolute() / args.name
-        logger.info(f"Initialising '{args.name}' in `{full_dir}`...")
-        copytree(Path(__file__).parent / "skeleton", full_dir)
+        _init_repo(Path(args.target).absolute(), args.name)
 
 
-SUB_COMMANDS: List[SubCommand] = [RunSubCommand(), InitSubCommand()]
+_SUB_COMMANDS: List[SubCommand] = [RunSubCommand(), InitSubCommand()]
 
-SUB_COMMAND_BY_NAME: Dict[str, SubCommand] = {
-    sub_command.name: sub_command for sub_command in SUB_COMMANDS
+_SUB_COMMAND_BY_NAME: Dict[str, SubCommand] = {
+    sub_command.name: sub_command for sub_command in _SUB_COMMANDS
 }
 
 
-def parse_args(argv: List[str] = None) -> argparse.Namespace:
+def _parse_args(argv: List[str] = None) -> argparse.Namespace:
+    """Parse the input arguments list populating the relevant subcommands
+
+    Args:
+        argv: List of arguments
+
+    Returns:
+        The namespace containing the relevant sub command information and arguments.
+    """
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(dest="command")
     subparsers.required = True
-    for sub_command in SUB_COMMANDS:
+    for sub_command in _SUB_COMMANDS:
         sub_parser = subparsers.add_parser(
             sub_command.name, help=sub_command.description
         )
         sub_command.add_arguments(sub_parser)
 
-    args = parser.parse_args(argv)
-    return args
+    return parser.parse_args(argv)
 
 
 def main(argv: List[str] = None):
-    args = parse_args(argv)
-    SUB_COMMAND_BY_NAME[args.command].run(args)
+    """Main entry point for pyguitemp, calling the relevant subcommands.
+
+    Args:
+        argv: List of input arguments, including subcommand.
+
+    Returns:
+
+    """
+    args = _parse_args(argv)
+    _SUB_COMMAND_BY_NAME[args.command].run(args)

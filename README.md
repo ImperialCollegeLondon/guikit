@@ -1,4 +1,4 @@
-# Python GUI Template
+# Python GUI Template <!-- omit in toc -->
 
 This little tool serves to facilitate getting started building a GUI for your software.
 It takes care of most of the boilerplate code that you need to build a GUI - making some
@@ -8,13 +8,10 @@ adding the business logic and views specific for your problem.
 `pyguitemp` uses `wXPython` as the GUI framework, meaning that the resulitng application
 will have a native look and feel regadless of running it on Windows, Linux or MacOS.
 
-- [Python GUI Template](#python-gui-template)
-  - [What `pyguitemp` is and what is not](#what-pyguitemp-is-and-what-is-not)
-  - [Why `wxPython` as GUI framework](#why-wxpython-as-gui-framework)
-  - [Installation instructions](#installation-instructions)
-    - [What about linux](#what-about-linux)
-    - [What about MacOS](#what-about-macos)
-  - [Using `pyguitemp`](#using-pyguitemp)
+- [What `pyguitemp` is and what is not](#what-pyguitemp-is-and-what-is-not)
+- [Why `wxPython` as GUI framework](#why-wxpython-as-gui-framework)
+- [Installation instructions](#installation-instructions)
+- [Using `pyguitemp`](#using-pyguitemp)
 
 ## What `pyguitemp` is and what is not
 
@@ -55,7 +52,7 @@ help improving its maturity as fast as posisble!
 pip install pyguitemp
 ```
 
-### What about linux
+### What about linux <!-- omit in toc -->
 
 `pyguitemp` can be installed in Linux with `pip`, but `wxPython` will likely need to be
 built from source as there are not *manylinux* wheels for it, yet.
@@ -69,7 +66,7 @@ install `wxPython` from source.
 Alternatively, if you use `conda`, you can install `wxPython` from `conda-forge` and
 then install `pyguitemp` as above.
 
-### What about MacOS
+### What about MacOS <!-- omit in toc -->
 
 `wxPython` causes some issue on MacOS when installed with a "Non Framework" version of
 python. It typically complains with this error message:

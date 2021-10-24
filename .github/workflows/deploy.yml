@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Get history and tags for SCM versioning to work
-      if: not startsWith(github.ref, 'refs/tags')
+      if: startsWith(github.ref, 'refs/tags') != true
       run: |
         git fetch --prune --unshallow
         git fetch --all --tags

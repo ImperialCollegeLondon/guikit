@@ -1,5 +1,5 @@
-import wx
 import pytest
+import wx
 
 
 @pytest.fixture()
@@ -24,9 +24,11 @@ def main_window():
 
 @pytest.fixture()
 def plugin():
-    import wx
     from typing import List
-    from pyguitemp.plugins import PluginBase, MenuTool
+
+    import wx
+
+    from pyguitemp.plugins import MenuTool, PluginBase
 
     class ExamplePlugin(PluginBase):
         def central(self, parent=None) -> wx.Window:

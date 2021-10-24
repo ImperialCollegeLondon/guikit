@@ -1,4 +1,4 @@
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
 
 
 class TestPluginBase:
@@ -26,6 +26,7 @@ class TestPluginBase:
 
 def test_collect_plugins():
     from pathlib import Path
+
     from pyguitemp.plugins import collect_plugins
 
     this_file = Path(__file__)
@@ -50,6 +51,7 @@ def test_collect_builtin_extensions():
 def test_load_plugins(caplog):
     with patch("importlib.import_module", MagicMock()):
         from importlib import import_module
+
         from pyguitemp.plugins import collect_builtin_extensions, load_plugins
 
         plugins = collect_builtin_extensions()

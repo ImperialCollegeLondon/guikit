@@ -10,10 +10,11 @@ instance can be access directly from the class anywhere else where you import th
 from __future__ import annotations
 
 import itertools
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 import wx
 
+from .logging import logger
 from .plugins import KNOWN_PLUGINS, MenuTool, PluginBase, load_plugins
 
 
@@ -86,6 +87,7 @@ class MainWindow(wx.Frame):
             self._make_central_widget()
         self._make_toolbar()
         self._make_menubar()
+        self.SetInitialSize(wx.Size(800, 600))
 
     def _make_menubar(self) -> None:
         """Create the menu bar from the entries provided by the widgets."""
@@ -153,8 +155,8 @@ class MainWindow(wx.Frame):
         )
 
         # Add tabs to notebook
-        for tab in tabs:
-            self.notebook.AddPage(*tab)
+        for tab in sorted(tabs, key=lambda x: x.order):
+            self.notebook.AddPage(tab.page, tab.text, tab.select, tab.imageId)
 
         if self.notebook.PageCount > 0:
             self.notebook.SetSelection(0)
@@ -192,6 +194,14 @@ class BuiltInActions(PluginBase):
         ]
 
 
+_tab_location: Dict[str, int] = {
+    "top": wx.NB_TOP,
+    "bottom": wx.NB_BOTTOM,
+    "left": wx.NB_LEFT,
+    "right": wx.NB_RIGHT,
+}
+
+
 class MainApp(wx.App):
     def __init__(
         self,
@@ -199,13 +209,21 @@ class MainApp(wx.App):
         title: str,
         plugins_list: Optional[List[str]] = None,
         notebook_layout: bool = True,
-        tab_style: int = wx.NB_TOP,
+        tab_style: str = "top",
         **kwargs,
     ):
         self.title = title
         self.plugins_list = plugins_list if plugins_list is not None else []
         self.notebook_layout = notebook_layout
-        self.tab_style = tab_style
+        try:
+            self.tab_style = _tab_location[tab_style]
+        except KeyError:
+            logger.warning(
+                f"Invalid tab_style '{tab_style}'. Valid values are "
+                f"{list(_tab_location.keys())}. Defaulting to 'top'"
+            )
+            self.tab_style = _tab_location["top"]
+
         super(MainApp, self).__init__(*args, **kwargs)
 
     def OnInit(self) -> bool:

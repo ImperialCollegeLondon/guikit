@@ -6,15 +6,13 @@ import logging
 import os
 import sys
 from datetime import datetime
-from functools import lru_cache
 from pathlib import Path
 from typing import Optional
 
 from . import APP_NAME
 
 
-@lru_cache()
-def app_dir() -> Path:
+def app_dir(app_name: str = APP_NAME) -> Path:
     """Finds the application data directory for the current platform.
 
     If it does not exists, it creates the required directory tree.
@@ -23,11 +21,11 @@ def app_dir() -> Path:
         The path to the root app directory.
     """
     if sys.platform == "win32":
-        path = Path.home() / "AppData" / "Local" / APP_NAME
+        path = Path.home() / "AppData" / "Local" / app_name
     elif sys.platform == "darwin":
-        path = Path.home() / "Library" / "Application Support" / APP_NAME
+        path = Path.home() / "Library" / "Application Support" / app_name
     else:
-        path = Path.home() / f".{APP_NAME}"
+        path = Path.home() / f".{app_name}"
 
     _create_tree(path)
     return path
@@ -44,8 +42,9 @@ def _create_tree(path: Path) -> None:
 
 
 class Logger:
-    def __init__(self):
+    def __init__(self, app_name: str = APP_NAME):
         self._logger: Optional[logging.Logger] = None
+        self.app_name = app_name
 
     @property
     def logger(self) -> logging.Logger:
@@ -87,7 +86,9 @@ class Logger:
     def set_file_handler(self):
         """Sets a handler to print the log to a file in the app directory."""
         filename = (
-            app_dir() / "logs" / f"{datetime.now().strftime('%Y%m%d_%H-%M-%S')}.log"
+            app_dir(self.app_name)
+            / "logs"
+            / f"{datetime.now().strftime('%Y%m%d_%H-%M-%S')}.log"
         )
         ch = logging.FileHandler(str(filename))
         ch.setLevel(logging.INFO)

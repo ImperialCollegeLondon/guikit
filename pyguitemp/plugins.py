@@ -40,6 +40,7 @@ class Tab:
     text: str
     select: bool = False
     imageId: int = wx.NO_IMAGE
+    order: int = 0
 
 
 class PluginBase(ABC):

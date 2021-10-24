@@ -41,8 +41,8 @@ that could suit most users most of the time.
 
 ## Installation instructions
 
-:warning: `pyguitemp` is in an early stage of development and the API might change
-without notice. **Use it in production with caution**. And please, contribute to it to
+**WARNING**: `pyguitemp` is in an early stage of development and the API might change
+without notice. Use it in production with caution. And please, contribute to it to
 help improving its maturity as fast as posisble!
 
 `pyguitemp` and its dependencies can be installed with `pip` in Widnows,

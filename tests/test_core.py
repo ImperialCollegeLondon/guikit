@@ -1,4 +1,4 @@
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -89,9 +89,13 @@ class TestMainApp:
     def test_on_init(self, caplog):
         import wx
 
-        from pyguitemp.core import MainApp, MainWindow
+        with patch("pyguitemp.core.MainWindow.Show", MagicMock()):
+            from pyguitemp.core import MainApp, MainWindow
 
-        app = MainApp(title="Some App", tab_style="a corner")
-        assert "Invalid tab_style" in caplog.messages[-1]
-        assert app.tab_style == wx.NB_TOP
-        assert isinstance(app.GetTopWindow(), MainWindow)
+            app = MainApp(title="Some App", tab_style="a corner")
+            assert "Invalid tab_style" in caplog.messages[-1]
+            assert app.tab_style == wx.NB_TOP
+            assert isinstance(app.GetTopWindow(), MainWindow)
+
+            wx.CallAfter(app.GetTopWindow().Close)
+            app.MainLoop()

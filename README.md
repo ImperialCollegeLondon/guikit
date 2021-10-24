@@ -81,8 +81,7 @@ To work around this:
 
 1. Install a python.org version of python.
 1. Find executable under `/Library/Frameworks/Python.framework/...`.
-1. Use that executable to create a virtual environment:
-   `/Library/Frameworks/Python.framework/Versions/<version>/bin/python3 -m venv .venv`.
+1. Use that executable to create a virtual environment: `/Library/Frameworks/Python.framework/Versions/<version>/bin/python3 -m venv .venv`.
 1. Install `pyguitemp` inside virtual environment, and all should work!
 
 Alternatively, if you use `conda` to install `wxPython`, you will need to use `pythonw`

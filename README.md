@@ -8,11 +8,6 @@ adding the business logic and views specific to your problem.
 `pyguitemp` uses `wXPython` as the GUI framework, meaning that the resulting application
 will have a native look and feel regadless of running it on Windows, Linux or MacOS.
 
-- [What `pyguitemp` is and what is not](#what-pyguitemp-is-and-what-is-not)
-- [Why `wxPython` as GUI framework](#why-wxpython-as-gui-framework)
-- [Installation instructions](#installation-instructions)
-- [Using `pyguitemp`](#using-pyguitemp)
-
 ## What `pyguitemp` is and what is not
 
 `pyguitemp` takes care of the boilerplate code and enables you to have a minimal
@@ -91,7 +86,9 @@ webpage](https://wxpython.org/pages/downloads/index.html) for more information o
 ## Using `pyguitemp`
 
 There are several ways you can benefit from `pyguitemp`, depending on what you want to
-achieve. Check the [documentation](#none) for full details.
+achieve. Check the
+[documentation](https://imperialcollegelondon.github.io/python-gui-template/) for full
+details.
 
 - Initialise your current directory with a skeleton for your GUI application using
   `pyguitemp` with `python -m pyguitemp init my_app`.

@@ -1,0 +1,130 @@
+:py:mod:`pyguitemp.threads`
+===========================
+
+.. py:module:: pyguitemp.threads
+
+.. autoapi-nested-parse::
+
+   Contains all the machinery for dealing with threads.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   pyguitemp.threads.ThreadResult
+   pyguitemp.threads.WorkerThread
+   pyguitemp.threads.ThreadPool
+
+
+
+
+.. py:class:: ThreadResult(data, event_type)
+
+   Bases: :py:obj:`wx.PyEvent`
+
+   Simple event to carry arbitrary result data.
+
+
+.. py:class:: WorkerThread(target, on_abort = None, on_complete = None, on_error = None, daemon = None)
+
+   Bases: :py:obj:`threading.Thread`
+
+   Worker Thread Class.
+
+   .. py:method:: connect_events(self, window)
+
+      Connect the complete, abort and error events to the functions to execute.
+
+      :param window: The main window of the program.
+
+
+   .. py:method:: run(self)
+
+      Run worker thread and deals with the wrapping up accordingly.
+
+
+   .. py:method:: on_abort(self, event)
+
+      To execute when the thread execution is aborted.
+
+      :param event: The event object with the relevant output data
+
+
+   .. py:method:: on_complete(self, event)
+
+      To execute when the thread execution is completed normally.
+
+      :param event: The event object with the relevant output data
+
+
+   .. py:method:: on_error(self, event)
+
+      To execute when the thread ends with an error.
+
+      :param event: The exception raised
+
+
+
+.. py:class:: ThreadPool(window = None)
+
+   .. py:attribute:: _instance
+      :annotation: :Optional[ThreadPool]
+
+      
+
+   .. py:method:: run_thread(self, target, on_abort = None, on_complete = None, on_error = None, daemon = None)
+
+      Runs a new thread executing the target callable on it.
+
+      The thread will run until:
+          - The 'target' function returns
+          - An exception is raised
+
+      The target function might finish because it has completed what it was doing. In
+      that case, 'on_complete' is executed after returning from `target`.
+
+      It might also finish because it is monitoring the value of
+      `ThreadPool().query_abort()` and this is `True`. In that case, target should
+      return with an appropriate value and `on_abort` is then executed.
+
+      Finally, an exception might occur in the thread. In this case, the exception
+      is caught and `on_error` is executed.
+
+      `on_complete`, `on_abort` and `on_error` are all executed in the main thread.
+
+      :param target: The function to be executed in a separate thread.
+      :param on_abort: The function to be executed when the target function is aborted.
+                       Takes as input the value returned by target.
+      :param on_complete: The function to be executed when the target function is
+                          completed normally. Takes as input the value returned by target.
+      :param on_error: The function to be executed when an exception is raised in the
+                       target. Takes as input the exception raised.
+      :param daemon: If the function is a daemonic function.
+
+      :returns: The id number for the thread, needed if it is to be aborted externally.
+
+
+   .. py:method:: query_abort(self)
+
+      Checks if the current thread is to be aborted.
+
+
+   .. py:method:: abort_thread(self, ident)
+
+      Flags the thread with `ident` to be aborted.
+
+      :param ident: The id of the thread
+
+
+   .. py:method:: post_event(self, event)
+
+      Adds an event to the event loop of the main thread.
+
+
+

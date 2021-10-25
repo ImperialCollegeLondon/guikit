@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyguitemp.threads &mdash; Python GUI Template 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="prev" title="pyguitemp.scripts" href="../scripts/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> Python GUI Template
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../howtos/howtos_index.html">How to use PyGUItemp</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp</span></code></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../__main__/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.__main__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.core</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../logging/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.logging</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugins/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.plugins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../scripts/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.scripts</span></code></a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.threads</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Python GUI Template</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">API Reference</a> &raquo;</li>
+          <li><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp</span></code></a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.threads</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/technical/api/pyguitemp/threads/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-pyguitemp.threads">
+<span id="pyguitemp-threads"></span><h1><a class="reference internal" href="#module-pyguitemp.threads" title="pyguitemp.threads"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.threads</span></code></a><a class="headerlink" href="#module-pyguitemp.threads" title="Permalink to this headline"></a></h1>
+<p>Contains all the machinery for dealing with threads.</p>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline"></a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline"></a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyguitemp.threads.ThreadResult" title="pyguitemp.threads.ThreadResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ThreadResult</span></code></a></p></td>
+<td><p>Simple event to carry arbitrary result data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyguitemp.threads.WorkerThread" title="pyguitemp.threads.WorkerThread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WorkerThread</span></code></a></p></td>
+<td><p>Worker Thread Class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyguitemp.threads.ThreadPool" title="pyguitemp.threads.ThreadPool"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ThreadPool</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyguitemp.threads.ThreadResult">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyguitemp.threads.</span></span><span class="sig-name descname"><span class="pre">ThreadResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.threads.ThreadResult" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.PyEvent</span></code></p>
+<p>Simple event to carry arbitrary result data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>Any</em>) – </p></li>
+<li><p><strong>event_type</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyguitemp.threads.WorkerThread">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyguitemp.threads.</span></span><span class="sig-name descname"><span class="pre">WorkerThread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_abort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_complete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">daemon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.threads.WorkerThread" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
+<p>Worker Thread Class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<em>Callable</em>) – </p></li>
+<li><p><strong>on_abort</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>]</em>) – </p></li>
+<li><p><strong>on_complete</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>]</em>) – </p></li>
+<li><p><strong>on_error</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>]</em>) – </p></li>
+<li><p><strong>daemon</strong> (<em>Optional</em><em>[</em><em>bool</em><em>]</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.threads.WorkerThread.connect_events">
+<span class="sig-name descname"><span class="pre">connect_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.threads.WorkerThread.connect_events" title="Permalink to this definition"></a></dt>
+<dd><p>Connect the complete, abort and error events to the functions to execute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<em>wx.Frame</em>) – The main window of the program.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.threads.WorkerThread.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.threads.WorkerThread.run" title="Permalink to this definition"></a></dt>
+<dd><p>Run worker thread and deals with the wrapping up accordingly.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.threads.WorkerThread.on_abort">
+<span class="sig-name descname"><span class="pre">on_abort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.threads.WorkerThread.on_abort" title="Permalink to this definition"></a></dt>
+<dd><p>To execute when the thread execution is aborted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="#pyguitemp.threads.ThreadResult" title="pyguitemp.threads.ThreadResult"><em>ThreadResult</em></a>) – The event object with the relevant output data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.threads.WorkerThread.on_complete">
+<span class="sig-name descname"><span class="pre">on_complete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.threads.WorkerThread.on_complete" title="Permalink to this definition"></a></dt>
+<dd><p>To execute when the thread execution is completed normally.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="#pyguitemp.threads.ThreadResult" title="pyguitemp.threads.ThreadResult"><em>ThreadResult</em></a>) – The event object with the relevant output data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.threads.WorkerThread.on_error">
+<span class="sig-name descname"><span class="pre">on_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.threads.WorkerThread.on_error" title="Permalink to this definition"></a></dt>
+<dd><p>To execute when the thread ends with an error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="#pyguitemp.threads.ThreadResult" title="pyguitemp.threads.ThreadResult"><em>ThreadResult</em></a>) – The exception raised</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyguitemp.threads.ThreadPool">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyguitemp.threads.</span></span><span class="sig-name descname"><span class="pre">ThreadPool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.threads.ThreadPool" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>window</strong> (<em>Optional</em><em>[</em><em>wx.Frame</em><em>]</em>) – </p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyguitemp.threads.ThreadPool._instance">
+<span class="sig-name descname"><span class="pre">_instance</span></span><em class="property"> <span class="pre">:Optional[ThreadPool]</span></em><a class="headerlink" href="#pyguitemp.threads.ThreadPool._instance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.threads.ThreadPool.run_thread">
+<span class="sig-name descname"><span class="pre">run_thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_abort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_complete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">daemon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.threads.ThreadPool.run_thread" title="Permalink to this definition"></a></dt>
+<dd><p>Runs a new thread executing the target callable on it.</p>
+<dl class="simple">
+<dt>The thread will run until:</dt><dd><ul class="simple">
+<li><p>The ‘target’ function returns</p></li>
+<li><p>An exception is raised</p></li>
+</ul>
+</dd>
+</dl>
+<p>The target function might finish because it has completed what it was doing. In
+that case, ‘on_complete’ is executed after returning from <cite>target</cite>.</p>
+<p>It might also finish because it is monitoring the value of
+<cite>ThreadPool().query_abort()</cite> and this is <cite>True</cite>. In that case, target should
+return with an appropriate value and <cite>on_abort</cite> is then executed.</p>
+<p>Finally, an exception might occur in the thread. In this case, the exception
+is caught and <cite>on_error</cite> is executed.</p>
+<p><cite>on_complete</cite>, <cite>on_abort</cite> and <cite>on_error</cite> are all executed in the main thread.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<em>Callable</em>) – The function to be executed in a separate thread.</p></li>
+<li><p><strong>on_abort</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>]</em>) – The function to be executed when the target function is aborted.
+Takes as input the value returned by target.</p></li>
+<li><p><strong>on_complete</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>]</em>) – The function to be executed when the target function is
+completed normally. Takes as input the value returned by target.</p></li>
+<li><p><strong>on_error</strong> (<em>Optional</em><em>[</em><em>Callable</em><em>]</em>) – The function to be executed when an exception is raised in the
+target. Takes as input the exception raised.</p></li>
+<li><p><strong>daemon</strong> (<em>Optional</em><em>[</em><em>bool</em><em>]</em>) – If the function is a daemonic function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The id number for the thread, needed if it is to be aborted externally.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.threads.ThreadPool.query_abort">
+<span class="sig-name descname"><span class="pre">query_abort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.threads.ThreadPool.query_abort" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if the current thread is to be aborted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.threads.ThreadPool.abort_thread">
+<span class="sig-name descname"><span class="pre">abort_thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ident</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.threads.ThreadPool.abort_thread" title="Permalink to this definition"></a></dt>
+<dd><p>Flags the thread with <cite>ident</cite> to be aborted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ident</strong> (<em>int</em>) – The id of the thread</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.threads.ThreadPool.post_event">
+<span class="sig-name descname"><span class="pre">post_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.threads.ThreadPool.post_event" title="Permalink to this definition"></a></dt>
+<dd><p>Adds an event to the event loop of the main thread.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="#pyguitemp.threads.ThreadResult" title="pyguitemp.threads.ThreadResult"><em>ThreadResult</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../scripts/index.html" class="btn btn-neutral float-left" title="pyguitemp.scripts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Research Computing Service, Imperial College London.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

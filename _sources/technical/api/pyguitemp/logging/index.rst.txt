@@ -1,0 +1,89 @@
+:py:mod:`pyguitemp.logging`
+===========================
+
+.. py:module:: pyguitemp.logging
+
+.. autoapi-nested-parse::
+
+   Contains all the custom machinery for dealing with logging in the program. It should
+   allow for new handlers to be added if any plugin requires it.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   pyguitemp.logging.Logger
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   pyguitemp.logging.app_dir
+   pyguitemp.logging._create_tree
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   pyguitemp.logging.logger
+
+
+.. py:function:: app_dir(app_name = APP_NAME)
+
+   Finds the application data directory for the current platform.
+
+   If it does not exists, it creates the required directory tree.
+
+   :returns: The path to the root app directory.
+
+
+.. py:function:: _create_tree(path)
+
+   Creates the app directory tree.
+
+   :param path: Where the directory tree must be created
+
+
+.. py:class:: Logger(app_name = APP_NAME)
+
+   .. py:method:: logger(self)
+      :property:
+
+      Interface to the underlying logger.
+
+      The logger is created automatically the first time it is used.
+
+      :returns: A Logger object.
+
+
+   .. py:method:: __getattr__(self, item)
+
+
+   .. py:method:: set_console_handler(self)
+
+      Sets a handler to print the log to the terminal.
+
+
+   .. py:method:: set_file_handler(self)
+
+      Sets a handler to print the log to a file in the app directory.
+
+
+
+.. py:data:: logger
+   
+
+   Global logger for the application
+

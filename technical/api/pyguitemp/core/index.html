@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyguitemp.core &mdash; Python GUI Template 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="pyguitemp.logging" href="../logging/index.html" />
+    <link rel="prev" title="pyguitemp.config" href="../config/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> Python GUI Template
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../howtos/howtos_index.html">How to use PyGUItemp</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp</span></code></a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../index.html#subpackages">Subpackages</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../__main__/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.__main__</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../config/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.config</span></code></a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.core</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../logging/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.logging</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plugins/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.plugins</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../scripts/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.scripts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../threads/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.threads</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Python GUI Template</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">API Reference</a> &raquo;</li>
+          <li><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp</span></code></a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.core</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/technical/api/pyguitemp/core/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-pyguitemp.core">
+<span id="pyguitemp-core"></span><h1><a class="reference internal" href="#module-pyguitemp.core" title="pyguitemp.core"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyguitemp.core</span></code></a><a class="headerlink" href="#module-pyguitemp.core" title="Permalink to this headline"></a></h1>
+<p>Contains the definition of the top window of the program, including the menu bar, the
+toolbar (if any), the central widget, bottom progress bar and status area.</p>
+<p>In particular, the progress bar and the status area are the kind of things that the
+plugins will be importing - or at least wanting to update - regularly. They are defined
+as global aobject singletons such that even though an instance is created once, such an
+instance can be access directly from the class anywhere else where you import the class.</p>
+<div class="section" id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline"></a></h2>
+<div class="section" id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline"></a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyguitemp.core.StatusBar" title="pyguitemp.core.StatusBar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StatusBar</span></code></a></p></td>
+<td><p>Singleton class to manage the top level status and progress bar.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyguitemp.core.MainWindow" title="pyguitemp.core.MainWindow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MainWindow</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyguitemp.core.BuiltInActions" title="pyguitemp.core.BuiltInActions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BuiltInActions</span></code></a></p></td>
+<td><p>Actions and features builtin with the core window.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyguitemp.core.MainApp" title="pyguitemp.core.MainApp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MainApp</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline"></a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyguitemp.core._tab_location" title="pyguitemp.core._tab_location"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_tab_location</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyguitemp.core.StatusBar">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyguitemp.core.</span></span><span class="sig-name descname"><span class="pre">StatusBar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">150</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.core.StatusBar" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.StatusBar</span></code></p>
+<p>Singleton class to manage the top level status and progress bar.</p>
+<dl class="simple">
+<dt>It provides two fields:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>field 0: Automatic display of menu and tools descriptions as well as custom</dt><dd><p>status messages</p>
+</dd>
+</dl>
+</li>
+<li><p>field 1: Holds the progress bar. Do not use it for displaying text.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Use ‘StatusBar().SomeMethod` to manage the status bar messages and properties. See
+‘wx.StatusBar’ for more information about the options available.</p>
+<p>Use <cite>StatusBar().progress_bar.SomeMethod</cite> to manage the progress bar properties.
+See ‘wx.Gauge’ for more information about the options available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>progress_bar_width</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyguitemp.core.StatusBar._instance">
+<span class="sig-name descname"><span class="pre">_instance</span></span><em class="property"> <span class="pre">:Optional[StatusBar]</span></em><a class="headerlink" href="#pyguitemp.core.StatusBar._instance" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.core.StatusBar.SetStatusWidths">
+<span class="sig-name descname"><span class="pre">SetStatusWidths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.core.StatusBar.SetStatusWidths" title="Permalink to this definition"></a></dt>
+<dd><p>Ensures that progress bar is resized if fields are resized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>width</strong> (<em>int</em>) – Width of the progress bar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyguitemp.core.MainWindow">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyguitemp.core.</span></span><span class="sig-name descname"><span class="pre">MainWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notebook_layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tab_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">wx.NB_TOP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.core.MainWindow" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Frame</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em>) – </p></li>
+<li><p><strong>notebook_layout</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>tab_style</strong> (<em>int</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.core.MainWindow.populate_window">
+<span class="sig-name descname"><span class="pre">populate_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.core.MainWindow.populate_window" title="Permalink to this definition"></a></dt>
+<dd><p>Adds menu items, tools and other widgets in plugins to the main window.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.core.MainWindow._make_menubar">
+<span class="sig-name descname"><span class="pre">_make_menubar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.core.MainWindow._make_menubar" title="Permalink to this definition"></a></dt>
+<dd><p>Create the menu bar from the entries provided by the widgets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.core.MainWindow._make_toolbar">
+<span class="sig-name descname"><span class="pre">_make_toolbar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.core.MainWindow._make_toolbar" title="Permalink to this definition"></a></dt>
+<dd><p>Create the tool bar from the entries provided by the widgets.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.core.MainWindow._make_notebook">
+<span class="sig-name descname"><span class="pre">_make_notebook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tab_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">wx.NB_TOP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.core.MainWindow._make_notebook" title="Permalink to this definition"></a></dt>
+<dd><p>Create the central widget of the window as a notebook.</p>
+<p>A notebook is created as the central widget and any other view provided by the
+plugins is added as new page. Finally, the first page is selected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tab_style</strong> (<em>int</em>) – integer indicating the position of the tabs. Valid values (OS
+dependent) are wx.NB_TOP, wx.NB_LEFT, wx.NB_RIGHT, wx.NB_BOTTOM,
+wx.NB_FIXEDWIDTH, wx.NB_MULTILINE and wx.NB_NOPAGETHEME.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.core.MainWindow._make_central_widget">
+<span class="sig-name descname"><span class="pre">_make_central_widget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.core.MainWindow._make_central_widget" title="Permalink to this definition"></a></dt>
+<dd><p>Create the central widget of the window.</p>
+<p>Such a central widget is taken from the plugins. Exactly one central widget
+needs to be provided between all plugins.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the number of central widgets found is not 1.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyguitemp.core.BuiltInActions">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyguitemp.core.</span></span><span class="sig-name descname"><span class="pre">BuiltInActions</span></span><a class="headerlink" href="#pyguitemp.core.BuiltInActions" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="../plugins/index.html#pyguitemp.plugins.PluginBase" title="pyguitemp.plugins.PluginBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pyguitemp.plugins.PluginBase</span></code></a></p>
+<p>Actions and features builtin with the core window.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.core.BuiltInActions.menu_entries">
+<span class="sig-name descname"><span class="pre">menu_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.core.BuiltInActions.menu_entries" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="../plugins/index.html#pyguitemp.plugins.MenuTool" title="pyguitemp.plugins.MenuTool">pyguitemp.plugins.MenuTool</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pyguitemp.core._tab_location">
+<span class="sig-prename descclassname"><span class="pre">pyguitemp.core.</span></span><span class="sig-name descname"><span class="pre">_tab_location</span></span><em class="property"> <span class="pre">:Dict[str,</span> <span class="pre">int]</span></em><a class="headerlink" href="#pyguitemp.core._tab_location" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyguitemp.core.MainApp">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyguitemp.core.</span></span><span class="sig-name descname"><span class="pre">MainApp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plugins_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notebook_layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tab_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'top'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.core.MainApp" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.App</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em>) – </p></li>
+<li><p><strong>plugins_list</strong> (<em>Optional</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>) – </p></li>
+<li><p><strong>notebook_layout</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>tab_style</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.core.MainApp.OnInit">
+<span class="sig-name descname"><span class="pre">OnInit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.core.MainApp.OnInit" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../config/index.html" class="btn btn-neutral float-left" title="pyguitemp.config" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../logging/index.html" class="btn btn-neutral float-right" title="pyguitemp.logging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Research Computing Service, Imperial College London.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

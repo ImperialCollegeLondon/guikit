@@ -1,0 +1,48 @@
+:py:mod:`pyguitemp.skeleton`
+============================
+
+.. py:module:: pyguitemp.skeleton
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   extensions/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   __main__/index.rst
+   config/index.rst
+
+
+Package Contents
+----------------
+
+.. py:data:: logger
+   
+
+   Global logger for the application
+
+.. py:data:: VERSION
+   :annotation: = 0.0.1
+
+   
+
+.. py:data:: APP_NAME
+   
+
+   
+
+.. py:data:: app_name
+   
+
+   
+

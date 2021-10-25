@@ -1,0 +1,49 @@
+:py:mod:`pyguitemp.extensions.about_dialog`
+===========================================
+
+.. py:module:: pyguitemp.extensions.about_dialog
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   about_dialog/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   pyguitemp.extensions.about_dialog.AboutDialogPlugin
+
+
+
+
+.. py:class:: AboutDialogPlugin
+
+   Bases: :py:obj:`pyguitemp.plugins.PluginBase`
+
+   Base class that defines the required API that all the views of the different plugins
+   will need to provide.
+
+   .. py:method:: menu_entries(self)
+
+      Return a list of menu entries provided by this plugin.
+
+      The items of the list must be MenuTool objects.
+
+      :returns: A list of MenuTool objects provided by this plugin to be added to the
+                application menu bar.
+
+
+   .. py:method:: OnAboutBox(self, e)
+
+
+

@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from pyguitemp.logging import logger
+from pyguitemp.logging import Logger
 
 VERSION = "0.0.1"
 APP_NAME = Path(__file__).parent.stem
-logger.app_name = APP_NAME
+logger = Logger(APP_NAME)

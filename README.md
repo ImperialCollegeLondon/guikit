@@ -1,9 +1,9 @@
 # Python GUI Template <!-- omit in toc -->
 
-This little tool serves to facilitate getting started building a GUI for your software.
-It takes care of most of the boilerplate code that you need to build a GUI - making some
-opinionated decisions about the general layout of the application - so you can focus on
-adding the business logic and views specific to your problem.
+This little tool's purpose is to facilitate getting started building a GUI for your
+software. It takes care of most of the boilerplate code that you need to build a GUI -
+making some opinionated decisions about the general layout of the application - so you
+can focus on adding the business logic and views specific to your problem.
 
 `pyguitemp` uses `wXPython` as the GUI framework, meaning that the resulting application
 will have a native look and feel regadless of running it on Windows, Linux or MacOS.

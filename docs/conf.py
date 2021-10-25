@@ -23,7 +23,7 @@ copyright = "2021, Research Computing Service, Imperial College London"
 author = "Research Computing Service, Imperial College London"
 
 # The full version, including alpha/beta/rc tags
-release = "0.1.9"
+release = "0.1.10"
 
 # -- General configuration ---------------------------------------------------
 

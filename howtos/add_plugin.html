@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Plugin System &mdash; Python GUI Template 0.1.10 documentation</title>
+  <title>The Plugin System &mdash; Python GUI Template 0.1.12 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -19,7 +19,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="API Reference" href="../technical/api/index.html" />
-    <link rel="prev" title="How to use PyGUItemp" href="howtos_index.html" /> 
+    <link rel="prev" title="Using pyguitemp" href="using_pyguitemp.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -39,7 +39,9 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="howtos_index.html">How to use PyGUItemp</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="howtos_index.html">How to work with PyGUItemp</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_pyguitemp.html">Using pyguitemp</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">The Plugin System</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-add-a-plugin">How to add a plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-plugin-class">The plugin class</a><ul>
@@ -70,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="howtos_index.html">How to use PyGUItemp</a> &raquo;</li>
+          <li><a href="howtos_index.html">How to work with PyGUItemp</a> &raquo;</li>
       <li>The Plugin System</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/howtos/add_plugin.md.txt" rel="nofollow"> View page source</a>
@@ -178,10 +180,11 @@ another one for saving it, in both cases within a <code class="docutils literal 
 </div>
 <div class="section" id="adding-tools">
 <h3>Adding tools<a class="headerlink" href="#adding-tools" title="Permalink to this headline"></a></h3>
-<p>This is done with the <code class="docutils literal notranslate"><span class="pre">toolbar_entries</span></code> method. This method id very similar to the <code class="docutils literal notranslate"><span class="pre">mennu_entries</span></code> one, but provides content to the
-toobar just under the menu bar. The output must also be a list of
-<code class="docutils literal notranslate"><span class="pre">pyguitemp.plugin.MenuTool</span></code> objects, but it has some extra entries, a <code class="docutils literal notranslate"><span class="pre">short_help</span></code> for
-the tooltip and <code class="docutils literal notranslate"><span class="pre">bitmap</span></code>, which is mandatory as it is the icon to display.</p>
+<p>This is done with the <code class="docutils literal notranslate"><span class="pre">toolbar_items</span></code> method. This method id very similar to the
+<code class="docutils literal notranslate"><span class="pre">menu_entries</span></code> one, but provides content to the toobar just under the menu bar. The
+output must also be a list of <code class="docutils literal notranslate"><span class="pre">pyguitemp.plugin.MenuTool</span></code> objects, but it has some extra
+entries, a <code class="docutils literal notranslate"><span class="pre">short_help</span></code> for the tooltip and <code class="docutils literal notranslate"><span class="pre">bitmap</span></code>, which is mandatory as it is the
+icon to display.</p>
 <p>For example, the following bit of code will add the same two entries for loading and
 savinng data, but now to the toolbar. We use some standard icons provided by wxPythonn,
 but you can use your own bitmaps, too. See
@@ -192,7 +195,7 @@ information about this.</p>
 
 <span class="k">class</span> <span class="nc">NewPlugin</span><span class="p">(</span><span class="n">PluginBase</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">toolbar_entries</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">toolbar_items</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">save</span> <span class="o">=</span> <span class="n">MenuTool</span><span class="p">(</span>
             <span class="n">menu</span><span class="o">=</span><span class="s2">&quot;File&quot;</span><span class="p">,</span>
             <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Save data&quot;</span><span class="p">,</span>
@@ -241,10 +244,11 @@ ZetCode</a> for some detailed examples.</p>
 the entire tab.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># new_plugin.view.py</span>
 <span class="kn">from</span> <span class="nn">pyguitemp.plugins</span> <span class="kn">import</span> <span class="n">PluginBase</span><span class="p">,</span> <span class="n">Tab</span>
+<span class="kn">import</span> <span class="nn">wx</span>
 
 <span class="k">class</span> <span class="nc">NewPlugin</span><span class="p">(</span><span class="n">PluginBase</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">tab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">tabs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
         <span class="n">text1</span> <span class="o">=</span> <span class="n">Tab</span><span class="p">(</span>
             <span class="n">page</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TextCtrl</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">wx</span><span class="o">.</span><span class="n">TE_MULTILINE</span><span class="p">),</span>
             <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Text area&quot;</span><span class="p">,</span>
@@ -284,6 +288,7 @@ will be raised.</p>
 <p>TIn the following example, a single text area is used as central widget.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># new_plugin.view.py</span>
 <span class="kn">from</span> <span class="nn">pyguitemp.plugins</span> <span class="kn">import</span> <span class="n">PluginBase</span>
+<span class="kn">import</span> <span class="nn">wx</span>
 
 <span class="k">class</span> <span class="nc">NewPlugin</span><span class="p">(</span><span class="n">PluginBase</span><span class="p">):</span>
 
@@ -299,7 +304,7 @@ will be raised.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="howtos_index.html" class="btn btn-neutral float-left" title="How to use PyGUItemp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="using_pyguitemp.html" class="btn btn-neutral float-left" title="Using pyguitemp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../technical/api/index.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

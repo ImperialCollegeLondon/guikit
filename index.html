@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to PyGUItemp documentation! &mdash; Python GUI Template 0.1.10 documentation</title>
+  <title>Welcome to PyGUItemp documentation! &mdash; Python GUI Template 0.1.12 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="How to use PyGUItemp" href="howtos/howtos_index.html" /> 
+    <link rel="next" title="How to work with PyGUItemp" href="howtos/howtos_index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,7 +38,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="howtos/howtos_index.html">How to use PyGUItemp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howtos/howtos_index.html">How to work with PyGUItemp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="technical/api/index.html">API Reference</a></li>
 </ul>
 
@@ -68,14 +68,46 @@
              
   <div class="section" id="welcome-to-pyguitemp-documentation">
 <h1>Welcome to PyGUItemp documentation!<a class="headerlink" href="#welcome-to-pyguitemp-documentation" title="Permalink to this headline"></a></h1>
-<p>This little tool serves to facilitate getting started building a GUI for your software.
-It takes care of most of the boilerplate code that you need to build a GUI - making some
-opinionated decisions about the general layout of the application - so you can focus on
-adding the business logic and views specific to your problem.</p>
+<p>This little tool serves to facilitate getting started building a GUI for
+your software. It takes care of most of the boilerplate code that you
+need to build a GUI - making some opinionated decisions about the
+general layout of the application - so you can focus on adding the
+business logic and views specific to your problem.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> uses <code class="docutils literal notranslate"><span class="pre">wXPython</span></code> as the GUI framework, meaning that the
+resulting application will have a native look and feel regadless of
+running it on Windows, Linux or MacOS.</p>
+<div class="section" id="what-pyguitemp-is-and-what-is-not">
+<h2>What <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> is and what is not<a class="headerlink" href="#what-pyguitemp-is-and-what-is-not" title="Permalink to this headline"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> takes care of the boilerplate code and enables you to have
+a minimal application running in no time, but you still need to code the
+rest of your GUI mannually yourself. That means you will need to learn
+how to use <code class="docutils literal notranslate"><span class="pre">wxPython</span></code>, the widgets it offers and their options.</p>
+<p>This is not a graphical designer for GUIs, as it could be <a class="reference external" href="https://realpython.com/qt-designer-python/">QT
+Designer</a>,
+<a class="reference external" href="https://glade.gnome.org">Glade</a> or <a class="reference external" href="https://www.mathworks.com/products/matlab/app-designer.html">Matlab’s App
+Designer</a>.
+All of those are excellent tools… just a different kind of tools.
+<code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> will save you some valuable time when creating a GUI, but
+it is still a low level library.</p>
+</div>
+<div class="section" id="why-wxpython-as-gui-framework">
+<h2>Why <code class="docutils literal notranslate"><span class="pre">wxPython</span></code> as GUI framework<a class="headerlink" href="#why-wxpython-as-gui-framework" title="Permalink to this headline"></a></h2>
+<p>While there are several excellent frameworks available, mature, well
+supported and with many options for customization - in particular
+<a class="reference external" href="https://wiki.qt.io/Qt_for_Python">PySide2</a> and
+<a class="reference external" href="https://riverbankcomputing.com/software/pyqt/intro">PyQt</a>, both
+based in QT - <code class="docutils literal notranslate"><span class="pre">wxPython</span></code> offers a licensing scheme a little bit more
+flexible that makes it suitable for both open and close source projects.</p>
+<p>We strongly support open source software and open research, but we
+understand that it is not always possible or advisable, at least at
+beginning, and we want to offer a tool that could suit most users most
+of the time.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="howtos/howtos_index.html">How to use PyGUItemp</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="howtos/howtos_index.html">How to work with PyGUItemp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howtos/installation.html">Installation instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howtos/using_pyguitemp.html">Using pyguitemp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="howtos/add_plugin.html">The Plugin System</a></li>
 </ul>
 </li>
@@ -84,6 +116,7 @@ adding the business logic and views specific to your problem.</p>
 </ul>
 </li>
 </ul>
+</div>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -99,7 +132,7 @@ adding the business logic and views specific to your problem.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="howtos/howtos_index.html" class="btn btn-neutral float-right" title="How to use PyGUItemp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="howtos/howtos_index.html" class="btn btn-neutral float-right" title="How to work with PyGUItemp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

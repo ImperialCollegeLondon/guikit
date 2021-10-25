@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation instructions &mdash; Python GUI Template 0.1.12 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using pyguitemp" href="using_pyguitemp.html" />
+    <link rel="prev" title="How to work with PyGUItemp" href="howtos_index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Python GUI Template
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="howtos_index.html">How to work with PyGUItemp</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installation instructions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-about-linux">What about linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-about-macos">What about MacOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="using_pyguitemp.html">Using pyguitemp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="add_plugin.html">The Plugin System</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../technical/api/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python GUI Template</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="howtos_index.html">How to work with PyGUItemp</a> &raquo;</li>
+      <li>Installation instructions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/howtos/installation.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="tex2jax_ignore mathjax_ignore section" id="installation-instructions">
+<h1>Installation instructions<a class="headerlink" href="#installation-instructions" title="Permalink to this headline"></a></h1>
+<p><strong>WARNING</strong>: <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> is in an early stage of development and the API might change
+without notice. Use it in production with caution. And please, contribute to it to
+help improving its maturity as fast as posisble!</p>
+<p><code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> and its dependencies can be installed with <code class="docutils literal notranslate"><span class="pre">pip</span></code> in Widnows,
+<a class="reference external" href="#what-about-linux">Linux</a> and <a class="reference external" href="#what-about-macos">MacOS</a> (see notes below):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install pyguitemp
+</pre></div>
+</div>
+<div class="section" id="what-about-linux">
+<h2>What about linux<a class="headerlink" href="#what-about-linux" title="Permalink to this headline"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> can be installed in Linux with <code class="docutils literal notranslate"><span class="pre">pip</span></code>, but <code class="docutils literal notranslate"><span class="pre">wxPython</span></code> will likely need to be
+built from source as there are not <em>manylinux</em> wheels for it, yet.</p>
+<p>The best option is for you to check if there is a wheel available for your specific
+linux distirbution and python version in the <a class="reference external" href="https://wxpython.org/pages/downloads/index.html">wxPython downloads
+webpage</a> and install that one before
+installing <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code>. Otherwise, in the same webpage you have instructions on how to
+install <code class="docutils literal notranslate"><span class="pre">wxPython</span></code> from source.</p>
+<p>Alternatively, if you use <code class="docutils literal notranslate"><span class="pre">conda</span></code>, you can install <code class="docutils literal notranslate"><span class="pre">wxPython</span></code> from <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> and
+then install <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> as above.</p>
+</div>
+<div class="section" id="what-about-macos">
+<h2>What about MacOS<a class="headerlink" href="#what-about-macos" title="Permalink to this headline"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">wxPython</span></code> causes some issue on MacOS when installed with a “Non Framework” version of
+python. It typically complains with this error message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">program</span> <span class="n">needs</span> <span class="n">access</span> <span class="n">to</span> <span class="n">the</span> <span class="n">screen</span><span class="o">.</span> <span class="n">Please</span> <span class="n">run</span> <span class="k">with</span> <span class="n">a</span>
+<span class="n">Framework</span> <span class="n">build</span> <span class="n">of</span> <span class="n">python</span><span class="p">,</span> <span class="ow">and</span> <span class="n">only</span> <span class="n">when</span> <span class="n">you</span> <span class="n">are</span> <span class="n">logged</span> <span class="ow">in</span>
+<span class="n">on</span> <span class="n">the</span> <span class="n">main</span> <span class="n">display</span> <span class="n">of</span> <span class="n">your</span> <span class="n">Mac</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>To work around this:</p>
+<ol class="simple">
+<li><p>Install a python.org version of python.</p></li>
+<li><p>Find executable under <code class="docutils literal notranslate"><span class="pre">/Library/Frameworks/Python.framework/...</span></code>.</p></li>
+<li><p>Use that executable to create a virtual environment: <code class="docutils literal notranslate"><span class="pre">/Library/Frameworks/Python.framework/Versions/&lt;version&gt;/bin/python3</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">.venv</span></code>.</p></li>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> inside virtual environment, and all should work!</p></li>
+</ol>
+<p>Alternatively, if you use <code class="docutils literal notranslate"><span class="pre">conda</span></code> to install <code class="docutils literal notranslate"><span class="pre">wxPython</span></code>, you will need to use <code class="docutils literal notranslate"><span class="pre">pythonw</span></code>
+to execute your applications. See <a class="reference external" href="https://wxpython.org/pages/downloads/index.html">wxPython downloads
+webpage</a> for more information on this.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="howtos_index.html" class="btn btn-neutral float-left" title="How to work with PyGUItemp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="using_pyguitemp.html" class="btn btn-neutral float-right" title="Using pyguitemp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Research Computing Service, Imperial College London.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

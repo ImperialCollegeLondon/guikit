@@ -26,10 +26,51 @@ Submodules
 Package Contents
 ----------------
 
-.. py:data:: logger
-   
+Classes
+~~~~~~~
 
-   Global logger for the application
+.. autoapisummary::
+
+   pyguitemp.skeleton.Logger
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   pyguitemp.skeleton.VERSION
+   pyguitemp.skeleton.APP_NAME
+   pyguitemp.skeleton.logger
+
+
+.. py:class:: Logger(app_name = APP_NAME)
+
+   .. py:method:: logger(self)
+      :property:
+
+      Interface to the underlying logger.
+
+      The logger is created automatically the first time it is used.
+
+      :returns: A Logger object.
+
+
+   .. py:method:: __getattr__(self, item)
+
+
+   .. py:method:: set_console_handler(self)
+
+      Sets a handler to print the log to the terminal.
+
+
+   .. py:method:: set_file_handler(self)
+
+      Sets a handler to print the log to a file in the app directory.
+
+
 
 .. py:data:: VERSION
    :annotation: = 0.0.1
@@ -41,7 +82,7 @@ Package Contents
 
    
 
-.. py:data:: app_name
+.. py:data:: logger
    
 
    

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using pyguitemp &mdash; Python GUI Template 0.1.12 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The Plugin System" href="add_plugin.html" />
+    <link rel="prev" title="Installation instructions" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Python GUI Template
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="howtos_index.html">How to work with PyGUItemp</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation instructions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using pyguitemp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-indended-way">The indended way</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-advanced-way">The advanced way</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-intermediate-way">The intermediate way</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="add_plugin.html">The Plugin System</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../technical/api/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python GUI Template</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="howtos_index.html">How to work with PyGUItemp</a> &raquo;</li>
+      <li>Using pyguitemp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/howtos/using_pyguitemp.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="tex2jax_ignore mathjax_ignore section" id="using-pyguitemp">
+<h1>Using pyguitemp<a class="headerlink" href="#using-pyguitemp" title="Permalink to this headline"></a></h1>
+<p>The purpose of <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> is to save you time to start creating your GUI. Therefore, no
+matter how you use it: if it saves you time, it is well used. There are, however, some
+general approaches that you could follow:</p>
+<div class="section" id="the-indended-way">
+<h2>The indended way<a class="headerlink" href="#the-indended-way" title="Permalink to this headline"></a></h2>
+<p>The intention when creating <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> is to remove from sight everything that is not
+the code you need to implement the business logic and the views specific for your
+application. For that reason, the simplest way of using <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> is as a dependency
+for your project from where you import all the relevant components that you need.</p>
+<p>To get you started, just create a virtual environment to host your project, install
+<code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> in there with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pyguitemp</span></code> (see the <a class="reference internal" href="installation.html"><span class="doc std std-doc">installation
+instructions</span></a> for extra information on this) and then run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pyguitemp init my_app --target .
+</pre></div>
+</div>
+<p>This command will create in the target directory a package called <code class="docutils literal notranslate"><span class="pre">my_app</span></code> with several
+modules inside and a subpackage called <code class="docutils literal notranslate"><span class="pre">extensions</span></code> in where to put your plugins (see
+the secction about <a class="reference internal" href="add_plugin.html"><span class="doc std std-doc">creating plugins</span></a>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>- my_app
+ <span class="p">|</span>- __init__.py
+ <span class="p">|</span>- __main__.py
+ <span class="p">|</span>- config.py
+ <span class="p">|</span>- extensions
+    <span class="p">|</span>- __init__.py
+</pre></div>
+</div>
+<p>These files in reality contain very little code: they just import <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> to create
+the main window, the logger and give some default values to the few configuration
+options. All you need to do now is to populate the extensions subpackage with the
+plugins you need.</p>
+<p>If you add the following <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code> and <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> files at the same level that
+<code class="docutils literal notranslate"><span class="pre">my_app</span></code> (you can read more about these two files in the <a class="reference external" href="https://setuptools.pypa.io/en/latest/index.html"><code class="docutils literal notranslate"><span class="pre">setuptools</span></code>
+documentation</a>):</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># pyproject.toml</span>
+<span class="k">[build-system]</span>
+<span class="n">requires</span> <span class="o">=</span> <span class="k">[&quot;setuptools&quot;, &quot;wheel&quot;]</span>
+<span class="n">build-backend</span> <span class="o">=</span> <span class="s">&quot;setuptools.build_meta&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup.cfg</span>
+<span class="k">[metadata]</span>
+<span class="na">name</span> <span class="o">=</span> <span class="s">my_app</span>
+<span class="na">version</span> <span class="o">=</span> <span class="s">attr: my_app.VERSION</span>
+
+<span class="k">[options]</span>
+<span class="na">packages</span> <span class="o">=</span> <span class="s">find:</span>
+<span class="na">include_package_data</span> <span class="o">=</span> <span class="s">True</span>
+<span class="na">install_requires</span> <span class="o">=</span><span class="s"></span>
+<span class="s">    pyguitemp</span>
+<span class="s">    wxPython</span>
+</pre></div>
+</div>
+<p>Then you can install your new package in edit mode and see the magic happens:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -e .
+python -m my_app
+</pre></div>
+</div>
+<p>The last line will launch your new application, opening its main window - altough with
+nothing inside.</p>
+</div>
+<div class="section" id="the-advanced-way">
+<h2>The advanced way<a class="headerlink" href="#the-advanced-way" title="Permalink to this headline"></a></h2>
+<p>The above option is the simplest and fastest one, but you will need to acept the design
+choices we have made in terms of layout of components and how to structure the code and
+extensions.</p>
+<p>If you want to have the freedom of changing any of this and adapt it to your needs, just
+download the <a class="reference external" href="https://github.com/ImperialCollegeLondon/python-gui-template">lastest version of the code from
+GitHub</a> and use
+<code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> source code itself as a template to create your own application. You
+will  want to remove some information from there, like the documentation, the <code class="docutils literal notranslate"><span class="pre">skeleton</span></code>
+or some of the script options for initialising a repo, as above. And you
+will need to adapt the metadata from <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>, and the secrets used in GitHub
+Actions. But otherwise it should be a fully functional tool that, again, will save you
+time.</p>
+</div>
+<div class="section" id="the-intermediate-way">
+<h2>The intermediate way<a class="headerlink" href="#the-intermediate-way" title="Permalink to this headline"></a></h2>
+<p>An intermediate option would be for you to initialise the project structure <a class="reference external" href="#the-indended-way">as
+above</a>, but then copy specific extensions that are included in
+<code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> and that might be useful for you to use as templates.</p>
+<p>The more extensions are added to <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> - hopefully by an engaging community - the
+more out of the box plugins will be available for you to use in your own application,
+further reducing the time it takes to have a working GUI adapted to your needs.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation instructions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="add_plugin.html" class="btn btn-neutral float-right" title="The Plugin System" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Research Computing Service, Imperial College London.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

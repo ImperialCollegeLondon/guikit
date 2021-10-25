@@ -3,20 +3,6 @@
 
 .. py:module:: pyguitemp.extensions.about_dialog.about_dialog
 
-.. autoapi-nested-parse::
-
-   Adapted from ZetCode wxPython tutorial
-
-   https://zetcode.com/wxpython/dialogs/
-
-   In this example, we create an
-   about dialog box.
-
-   author: Jan Bodnar
-   website: www.zetcode.com
-   last modified: July 2020
-
-
 
 Module Contents
 ---------------

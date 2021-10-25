@@ -105,10 +105,11 @@ def load_data(_):
 
 ### Adding tools
 
-This is done with the `toolbar_entries` method. This method id very similar to the `mennu_entries` one, but provides content to the
-toobar just under the menu bar. The output must also be a list of
-`pyguitemp.plugin.MenuTool` objects, but it has some extra entries, a `short_help` for
-the tooltip and `bitmap`, which is mandatory as it is the icon to display.
+This is done with the `toolbar_items` method. This method id very similar to the
+`menu_entries` one, but provides content to the toobar just under the menu bar. The
+output must also be a list of `pyguitemp.plugin.MenuTool` objects, but it has some extra
+entries, a `short_help` for the tooltip and `bitmap`, which is mandatory as it is the
+icon to display.
 
 For example, the following bit of code will add the same two entries for loading and
 savinng data, but now to the toolbar. We use some standard icons provided by wxPythonn,
@@ -122,7 +123,7 @@ from pyguitemp.plugins import PluginBase, MenuTool
 
 class NewPlugin(PluginBase):
 
-    def toolbar_entries(self):
+    def toolbar_items(self):
         save = MenuTool(
             menu="File",
             text="Save data",
@@ -174,10 +175,11 @@ the entire tab.
 ```python
 # new_plugin.view.py
 from pyguitemp.plugins import PluginBase, Tab
+import wx
 
 class NewPlugin(PluginBase):
 
-    def tab(self, parent):
+    def tabs(self, parent):
         text1 = Tab(
             page=wx.TextCtrl(parent, style=wx.TE_MULTILINE),
             text="Text area",
@@ -224,6 +226,7 @@ TIn the following example, a single text area is used as central widget.
 ```python
 # new_plugin.view.py
 from pyguitemp.plugins import PluginBase
+import wx
 
 class NewPlugin(PluginBase):
 

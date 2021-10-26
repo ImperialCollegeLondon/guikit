@@ -1,26 +1,49 @@
 from __future__ import annotations
 
 import argparse
+import importlib
+import inspect
 from abc import ABC, abstractmethod
 from pathlib import Path
 from shutil import copytree
 from typing import Dict, List
 
 from . import APP_NAME
-from .config import APP_LONG_NAME, AUTO_PLUGINS, NOTEBOOK_LAYOUT, PLUGINS, TAB_STYLE
+from . import config as dconfig
 from .core import MainApp
 from .logging import logger
 
 logger.app_name = APP_NAME
 
 
-def _run_app():
+def run():
     """Runs pyguitemp as an application, loading all the plugins available."""
+    frame = inspect.stack()[1]
+    caller_file = Path(frame[0].f_code.co_filename)
+    config_file = caller_file.parent / "config.py"
+
+    if not config_file.exists():
+        raise RuntimeError(f"Configuration file '{config_file}' not found!")
+
+    config = importlib.import_module(f"{caller_file.parent.stem}.config")
+
+    title = config.APP_LONG_NAME if "APP_LONG_NAME" in dir(config) else "My App"
+    plugins = config.PLUGINS if "PLUGINS" in dir(config) else []
+    autoplugins = (
+        config.AUTO_PLUGINS if "AUTO_PLUGINS" in dir(config) else dconfig.AUTO_PLUGINS
+    )
+    nb_layout = (
+        config.NOTEBOOK_LAYOUT
+        if "NOTEBOOK_LAYOUT" in dir(config)
+        else dconfig.NOTEBOOK_LAYOUT
+    )
+    tab_style = config.TAB_STYLE if "TAB_STYLE" in dir(config) else dconfig.TAB_STYLE
+
     app = MainApp(
-        title=APP_LONG_NAME,
-        plugins_list=PLUGINS + AUTO_PLUGINS,
-        notebook_layout=NOTEBOOK_LAYOUT,
-        tab_style=TAB_STYLE,
+        title=title,
+        plugins_list=plugins + autoplugins,
+        notebook_layout=nb_layout,
+        tab_style=tab_style,
     )
     app.MainLoop()
 
@@ -62,7 +85,7 @@ class RunSubCommand(SubCommand):
         pass
 
     def run(self, args: argparse.Namespace):
-        _run_app()
+        run()
 
 
 class InitSubCommand(SubCommand):

@@ -52,9 +52,9 @@ def test_load_plugins(caplog):
     with patch("importlib.import_module", MagicMock()):
         from importlib import import_module
 
-        from pyguitemp.plugins import collect_builtin_extensions, load_plugins
+        from pyguitemp.plugins import load_plugins
 
-        plugins = collect_builtin_extensions()
+        plugins = ["pyguitemp.extensions.about_dialog"]
         load_plugins(plugins)
         import_module.assert_called()
 

@@ -8,3 +8,5 @@ How to work with PyGUItemp
    installation
    using_pyguitemp
    add_plugin
+   threads
+   status

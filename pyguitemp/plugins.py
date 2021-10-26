@@ -4,6 +4,7 @@ Contains all the machinery to register and load plugins.
 from __future__ import annotations
 
 import importlib
+import inspect
 import sys
 from abc import ABC
 from dataclasses import dataclass
@@ -162,7 +163,9 @@ def collect_builtin_extensions():
     Returns:
         A list of plugins names to be loaded.
     """
-    extensions = Path(__file__).parent / "extensions"
+    frame = inspect.stack()[1]
+    caller_file = Path(frame[0].f_code.co_filename)
+    extensions = caller_file.parent / "extensions"
     return collect_plugins(extensions, Path(__file__).parent.stem)
 
 

@@ -10,11 +10,3 @@
 
 
 
-Module Contents
----------------
-
-.. py:data:: app
-   
-
-   
-

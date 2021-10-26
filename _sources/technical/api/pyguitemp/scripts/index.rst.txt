@@ -23,7 +23,7 @@ Functions
 
 .. autoapisummary::
 
-   pyguitemp.scripts._run_app
+   pyguitemp.scripts.run
    pyguitemp.scripts._init_repo
    pyguitemp.scripts._parse_args
    pyguitemp.scripts.main
@@ -45,7 +45,7 @@ Attributes
 
    
 
-.. py:function:: _run_app()
+.. py:function:: run()
 
    Runs pyguitemp as an application, loading all the plugins available.
 

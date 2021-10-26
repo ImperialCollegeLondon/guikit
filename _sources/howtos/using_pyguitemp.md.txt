@@ -16,7 +16,7 @@ To get you started, just create a virtual environment to host your project, inst
 instructions](installation) for extra information on this) and then run:
 
 ```bash
-python -m pyguitemp init my_app --target .
+python -m pyguitemp init my_app -t .
 ```
 
 This command will create in the target directory a package called `my_app` with several
@@ -87,13 +87,3 @@ or some of the script options for initialising a repo, as above. And you
 will need to adapt the metadata from `setup.cfg`, and the secrets used in GitHub
 Actions. But otherwise it should be a fully functional tool that, again, will save you
 time.
-
-## The intermediate way
-
-An intermediate option would be for you to initialise the project structure [as
-above](#the-indended-way), but then copy specific extensions that are included in
-`pyguitemp` and that might be useful for you to use as templates.
-
-The more extensions are added to `pyguitemp` - hopefully by an engaging community - the
-more out of the box plugins will be available for you to use in your own application,
-further reducing the time it takes to have a working GUI adapted to your needs.

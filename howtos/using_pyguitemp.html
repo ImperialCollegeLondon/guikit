@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using pyguitemp &mdash; Python GUI Template 0.1.14 documentation</title>
+  <title>Using pyguitemp &mdash; Python GUI Template 0.1.15 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -44,7 +44,6 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Using pyguitemp</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#the-indended-way">The indended way</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-advanced-way">The advanced way</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-intermediate-way">The intermediate way</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="add_plugin.html">The Plugin System</a></li>
@@ -94,7 +93,7 @@ for your project from where you import all the relevant components that you need
 <p>To get you started, just create a virtual environment to host your project, install
 <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> in there with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pyguitemp</span></code> (see the <a class="reference internal" href="installation.html"><span class="doc std std-doc">installation
 instructions</span></a> for extra information on this) and then run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pyguitemp init my_app --target .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pyguitemp init my_app -t .
 </pre></div>
 </div>
 <p>This command will create in the target directory a package called <code class="docutils literal notranslate"><span class="pre">my_app</span></code> with several
@@ -156,15 +155,6 @@ or some of the script options for initialising a repo, as above. And you
 will need to adapt the metadata from <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>, and the secrets used in GitHub
 Actions. But otherwise it should be a fully functional tool that, again, will save you
 time.</p>
-</div>
-<div class="section" id="the-intermediate-way">
-<h2>The intermediate way<a class="headerlink" href="#the-intermediate-way" title="Permalink to this headline"></a></h2>
-<p>An intermediate option would be for you to initialise the project structure <a class="reference external" href="#the-indended-way">as
-above</a>, but then copy specific extensions that are included in
-<code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> and that might be useful for you to use as templates.</p>
-<p>The more extensions are added to <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> - hopefully by an engaging community - the
-more out of the box plugins will be available for you to use in your own application,
-further reducing the time it takes to have a working GUI adapted to your needs.</p>
 </div>
 </div>
 

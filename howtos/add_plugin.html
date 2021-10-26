@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Plugin System &mdash; Python GUI Template 0.1.14 documentation</title>
+  <title>The Plugin System &mdash; Python GUI Template 0.1.15 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -43,7 +43,8 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation instructions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="using_pyguitemp.html">Using pyguitemp</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">The Plugin System</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#how-to-add-a-plugin">How to add a plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-add-a-pyguitemp-plugin">How to add a <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-add-a-custom-plugin">How to add a custom plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-plugin-class">The plugin class</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#adding-menu-entries">Adding menu entries</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adding-tools">Adding tools</a></li>
@@ -93,16 +94,45 @@ what elements it should have and where they should be located.</p>
 <p>These plugins can bring to the application not just new components for the interface,
 but also other business functionality via, e.g. <a class="reference external" href="https://pandas.pydata.org/docs/development/extending.html#extending-pandas">accessors for pandas DataFrames</a> or
 <a class="reference external" href="https://pypubsub.readthedocs.io">listeners for a messaging system</a>.</p>
-<div class="section" id="how-to-add-a-plugin">
-<h2>How to add a plugin<a class="headerlink" href="#how-to-add-a-plugin" title="Permalink to this headline"></a></h2>
-<p>To add a plugin, follow these steps:</p>
+<div class="section" id="how-to-add-a-pyguitemp-plugin">
+<h2>How to add a <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> plugin<a class="headerlink" href="#how-to-add-a-pyguitemp-plugin" title="Permalink to this headline"></a></h2>
+<p>If there is a plugin in <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> that does what you need - or somethig close to it
+that you can customize - the shortest approach to bring that plugin to your project is
+with the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pyguitemp plugin -n PLUGIN_NAME -t my_app/extensions
+</pre></div>
+</div>
+<p>This assumes you are in the root directory of your application and that there is a
+subfolder called <code class="docutils literal notranslate"><span class="pre">extensions</span></code>, which is the structure you should get when you follow the
+steps described in the <a class="reference internal" href="using_pyguitemp.html"><span class="doc std std-doc">using pyguitemp section</span></a>. The command above
+will take the code for the chosen plugin from <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code>’s source code and will copy it
+to the chosen location. You can check the plugins available in the documentation on the
+web or with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pyguitemp plugin -l
+</pre></div>
+</div>
+<p>After copying the plugin, just add it to the <code class="docutils literal notranslate"><span class="pre">config.py</span></code> file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># config.py</span>
+<span class="c1">#...</span>
+<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;my_app.extensions.PLUGIN_NAME&quot;</span><span class="p">]</span>
+<span class="c1">#...</span>
+</pre></div>
+</div>
+<p>Multiple plugins can be added at once separating them with a comma (<code class="docutils literal notranslate"><span class="pre">,</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pyguitemp plugin -n PLUGIN_1,PLUGIN_2,PLUGIN_3 -t my_app/extensions
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-add-a-custom-plugin">
+<h2>How to add a custom plugin<a class="headerlink" href="#how-to-add-a-custom-plugin" title="Permalink to this headline"></a></h2>
+<p>To add a custom plugin, follow these steps:</p>
 <ol class="simple">
-<li><p>Create a subpackage (i.e. a folder with ain <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> within) somewhere in the
+<li><p>Create a subpackage (i.e. a folder with an <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> within) somewhere in the
 code structure to hold your plugin. Typically, this will be within the <code class="docutils literal notranslate"><span class="pre">extensions</span></code>
 package, for exmaple in <code class="docutils literal notranslate"><span class="pre">my_app/extensions/new_plugin</span></code>.</p></li>
 <li><p>Add that location, replacig slashes by periods <code class="docutils literal notranslate"><span class="pre">.</span></code>, to the <code class="docutils literal notranslate"><span class="pre">config.PLUGINS</span></code> list.</p></li>
 <li><p>Subclass <code class="docutils literal notranslate"><span class="pre">pyguitemp.plugins.PluginBase</span></code> class somewhere within your plugin. This is
-the class that will provide the spoecific components of the GUI that this plugin
+the class that will provide the specific components of the GUI that this plugin
 contributes with. More on this below.</p></li>
 <li><p>Import that subclass in the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file of your plugin.</p></li>
 </ol>

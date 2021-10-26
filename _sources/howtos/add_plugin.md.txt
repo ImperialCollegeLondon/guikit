@@ -8,16 +8,52 @@ These plugins can bring to the application not just new components for the inter
 but also other business functionality via, e.g. [accessors for pandas DataFrames](https://pandas.pydata.org/docs/development/extending.html#extending-pandas) or
 [listeners for a messaging system](https://pypubsub.readthedocs.io).
 
-## How to add a plugin
+## How to add a `pyguitemp` plugin
 
-To add a plugin, follow these steps:
+If there is a plugin in `pyguitemp` that does what you need - or somethig close to it
+that you can customize - the shortest approach to bring that plugin to your project is
+with the command:
 
-1. Create a subpackage (i.e. a folder with ain `__init__.py` within) somewhere in the
+```bash
+python -m pyguitemp plugin -n PLUGIN_NAME -t my_app/extensions
+```
+
+This assumes you are in the root directory of your application and that there is a
+subfolder called `extensions`, which is the structure you should get when you follow the
+steps described in the [using pyguitemp section](using_pyguitemp). The command above
+will take the code for the chosen plugin from `pyguitemp`'s source code and will copy it
+to the chosen location. You can check the plugins available in the documentation on the
+web or with:
+
+```bash
+python -m pyguitemp plugin -l
+```
+
+After copying the plugin, just add it to the `config.py` file:
+
+```python
+# config.py
+#...
+PLUGINS = ["my_app.extensions.PLUGIN_NAME"]
+#...
+```
+
+Multiple plugins can be added at once separating them with a comma (`,`):
+
+```bash
+python -m pyguitemp plugin -n PLUGIN_1,PLUGIN_2,PLUGIN_3 -t my_app/extensions
+```
+
+## How to add a custom plugin
+
+To add a custom plugin, follow these steps:
+
+1. Create a subpackage (i.e. a folder with an `__init__.py` within) somewhere in the
    code structure to hold your plugin. Typically, this will be within the `extensions`
    package, for exmaple in `my_app/extensions/new_plugin`.
 1. Add that location, replacig slashes by periods `.`, to the `config.PLUGINS` list.
 1. Subclass `pyguitemp.plugins.PluginBase` class somewhere within your plugin. This is
-   the class that will provide the spoecific components of the GUI that this plugin
+   the class that will provide the specific components of the GUI that this plugin
    contributes with. More on this below.
 1. Import that subclass in the `__init__.py` file of your plugin.
 

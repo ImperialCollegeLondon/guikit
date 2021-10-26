@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyguitemp.scripts &mdash; Python GUI Template 0.1.14 documentation</title>
+  <title>pyguitemp.scripts &mdash; Python GUI Template 0.1.15 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
@@ -107,6 +107,9 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#pyguitemp.scripts.InitSubCommand" title="pyguitemp.scripts.InitSubCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InitSubCommand</span></code></a></p></td>
 <td><p>Helper class that provides a standard way to create an ABC using</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyguitemp.scripts.PluginSubCommand" title="pyguitemp.scripts.PluginSubCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PluginSubCommand</span></code></a></p></td>
+<td><p>Helper class that provides a standard way to create an ABC using</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -123,6 +126,12 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#pyguitemp.scripts._init_repo" title="pyguitemp.scripts._init_repo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_init_repo</span></code></a>(path, name)</p></td>
 <td><p>Initialises repository with the files/folders required to use pyguitemp.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#pyguitemp.scripts._list_plugins" title="pyguitemp.scripts._list_plugins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_list_plugins</span></code></a>()</p></td>
+<td><p>Lists all plugins available in pyguitemp that the user can copy.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#pyguitemp.scripts._copy_plugin" title="pyguitemp.scripts._copy_plugin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_copy_plugin</span></code></a>(name, target)</p></td>
+<td><p>Lists all plugins available in pyguitemp that the user can copy.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#pyguitemp.scripts._parse_args" title="pyguitemp.scripts._parse_args"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_parse_args</span></code></a>(argv = None)</p></td>
 <td><p>Parse the input arguments list populating the relevant subcommands</p></td>
@@ -175,6 +184,34 @@ desired location.</p>
 <li><p><strong>path</strong> (<em>pathlib.Path</em>) – Where the repository should be initialized. Default: current.</p></li>
 <li><p><strong>name</strong> (<em>str</em>) – Name of the application.</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyguitemp.scripts._list_plugins">
+<span class="sig-prename descclassname"><span class="pre">pyguitemp.scripts.</span></span><span class="sig-name descname"><span class="pre">_list_plugins</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.scripts._list_plugins" title="Permalink to this definition"></a></dt>
+<dd><p>Lists all plugins available in pyguitemp that the user can copy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyguitemp.scripts._copy_plugin">
+<span class="sig-prename descclassname"><span class="pre">pyguitemp.scripts.</span></span><span class="sig-name descname"><span class="pre">_copy_plugin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.scripts._copy_plugin" title="Permalink to this definition"></a></dt>
+<dd><p>Lists all plugins available in pyguitemp that the user can copy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of plugins to copy.</p></li>
+<li><p><strong>target</strong> (<em>pathlib.Path</em>) – Root destination for the plugins.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -254,6 +291,34 @@ inheritance.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pyguitemp.scripts.InitSubCommand.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.scripts.InitSubCommand.run" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyguitemp.scripts.PluginSubCommand">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pyguitemp.scripts.</span></span><span class="sig-name descname"><span class="pre">PluginSubCommand</span></span><a class="headerlink" href="#pyguitemp.scripts.PluginSubCommand" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyguitemp.scripts.SubCommand" title="pyguitemp.scripts.SubCommand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubCommand</span></code></a></p>
+<p>Helper class that provides a standard way to create an ABC using
+inheritance.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.scripts.PluginSubCommand.add_arguments">
+<span class="sig-name descname"><span class="pre">add_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.scripts.PluginSubCommand.add_arguments" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parser</strong> (<em>argparse.ArgumentParser</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyguitemp.scripts.PluginSubCommand.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyguitemp.scripts.PluginSubCommand.run" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p>

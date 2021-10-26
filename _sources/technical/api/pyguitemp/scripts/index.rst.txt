@@ -15,6 +15,7 @@ Classes
    pyguitemp.scripts.SubCommand
    pyguitemp.scripts.RunSubCommand
    pyguitemp.scripts.InitSubCommand
+   pyguitemp.scripts.PluginSubCommand
 
 
 
@@ -25,6 +26,8 @@ Functions
 
    pyguitemp.scripts.run
    pyguitemp.scripts._init_repo
+   pyguitemp.scripts._list_plugins
+   pyguitemp.scripts._copy_plugin
    pyguitemp.scripts._parse_args
    pyguitemp.scripts.main
 
@@ -61,6 +64,19 @@ Attributes
    :param name: Name of the application.
 
 
+.. py:function:: _list_plugins()
+
+   Lists all plugins available in pyguitemp that the user can copy.
+
+
+.. py:function:: _copy_plugin(name, target)
+
+   Lists all plugins available in pyguitemp that the user can copy.
+
+   :param name: List of plugins to copy.
+   :param target: Root destination for the plugins.
+
+
 .. py:class:: SubCommand(name, description)
 
    Bases: :py:obj:`abc.ABC`
@@ -92,6 +108,20 @@ Attributes
 
 
 .. py:class:: InitSubCommand
+
+   Bases: :py:obj:`SubCommand`
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+   .. py:method:: add_arguments(self, parser)
+
+
+   .. py:method:: run(self, args)
+
+
+
+.. py:class:: PluginSubCommand
 
    Bases: :py:obj:`SubCommand`
 

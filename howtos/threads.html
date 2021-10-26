@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to work with PyGUItemp &mdash; Python GUI Template 0.1.14 documentation</title>
+  <title>Launching and managing threads &mdash; Python GUI Template 0.1.14 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -18,8 +18,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Installation instructions" href="installation.html" />
-    <link rel="prev" title="Welcome to PyGUItemp documentation!" href="../index.html" /> 
+    <link rel="next" title="Set status and run the progress bar" href="status.html" />
+    <link rel="prev" title="The Plugin System" href="add_plugin.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -39,11 +39,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How to work with PyGUItemp</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="howtos_index.html">How to work with PyGUItemp</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation instructions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="using_pyguitemp.html">Using pyguitemp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="add_plugin.html">The Plugin System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="threads.html">Launching and managing threads</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Launching and managing threads</a></li>
 <li class="toctree-l2"><a class="reference internal" href="status.html">Set status and run the progress bar</a></li>
 </ul>
 </li>
@@ -64,9 +64,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>How to work with PyGUItemp</li>
+          <li><a href="howtos_index.html">How to work with PyGUItemp</a> &raquo;</li>
+      <li>Launching and managing threads</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/howtos/howtos_index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/howtos/threads.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -74,45 +75,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="how-to-work-with-pyguitemp">
-<h1>How to work with PyGUItemp<a class="headerlink" href="#how-to-work-with-pyguitemp" title="Permalink to this headline"></a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation instructions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#what-about-linux">What about linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#what-about-macos">What about MacOS</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="using_pyguitemp.html">Using pyguitemp</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="using_pyguitemp.html#the-indended-way">The indended way</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_pyguitemp.html#the-advanced-way">The advanced way</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_pyguitemp.html#the-intermediate-way">The intermediate way</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="add_plugin.html">The Plugin System</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="add_plugin.html#how-to-add-a-plugin">How to add a plugin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="add_plugin.html#the-plugin-class">The plugin class</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="add_plugin.html#adding-menu-entries">Adding menu entries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="add_plugin.html#adding-tools">Adding tools</a></li>
-<li class="toctree-l3"><a class="reference internal" href="add_plugin.html#adding-tabs">Adding tabs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="add_plugin.html#adding-a-central-widget">Adding a central widget</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="threads.html">Launching and managing threads</a></li>
-<li class="toctree-l1"><a class="reference internal" href="status.html">Set status and run the progress bar</a></li>
-</ul>
-</div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="launching-and-managing-threads">
+<h1>Launching and managing threads<a class="headerlink" href="#launching-and-managing-threads" title="Permalink to this headline"></a></h1>
+<p>Work in progress…</p>
 </div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to PyGUItemp documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="installation.html" class="btn btn-neutral float-right" title="Installation instructions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="add_plugin.html" class="btn btn-neutral float-left" title="The Plugin System" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="status.html" class="btn btn-neutral float-right" title="Set status and run the progress bar" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

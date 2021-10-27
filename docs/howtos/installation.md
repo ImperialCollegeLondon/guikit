@@ -59,7 +59,7 @@ conda activate pyguitemp-env
 ```
 
 And then, use `pyguitemp` with `pythonw` rather than `python` (see [this
-section](using_pyguitemp) for all the options). For example:
+section](using_pyguitemp.md) for all the options). For example:
 
 ```bash
 (pyguitemp-env)  $ pythonw -m pyguitemp run

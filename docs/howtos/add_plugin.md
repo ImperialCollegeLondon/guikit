@@ -20,7 +20,7 @@ python -m pyguitemp plugin -n PLUGIN_NAME -t my_app/extensions
 
 This assumes you are in the root directory of your application and that there is a
 subfolder called `extensions`, which is the structure you should get when you follow the
-steps described in the [using pyguitemp section](using_pyguitemp). The command above
+steps described in the [using pyguitemp section](using_pyguitemp.md). The command above
 will take the code for the chosen plugin from `pyguitemp`'s source code and will copy it
 to the chosen location. You can check the plugins available in the documentation on the
 web or with:

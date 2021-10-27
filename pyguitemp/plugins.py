@@ -166,7 +166,7 @@ def collect_builtin_extensions():
     frame = inspect.stack()[1]
     caller_file = Path(frame[0].f_code.co_filename)
     extensions = caller_file.parent / "extensions"
-    return collect_plugins(extensions, Path(__file__).parent.stem)
+    return collect_plugins(extensions, caller_file.parent.stem)
 
 
 def load_plugins(plugin_list: List[str]):

@@ -4,8 +4,9 @@ from typing import List
 import wx
 import wx.adv
 
+from pyguitemp.plugins import MenuTool, PluginBase
+
 from ... import VERSION
-from ...plugins import MenuTool, PluginBase
 
 
 class AboutDialogPlugin(PluginBase):

@@ -30,9 +30,7 @@ def run():
 
     title = config.APP_LONG_NAME if "APP_LONG_NAME" in dir(config) else "My App"
     plug = config.PLUGINS if "PLUGINS" in dir(config) else []
-    autoplugins = (
-        config.AUTO_PLUGINS if "AUTO_PLUGINS" in dir(config) else dconfig.AUTO_PLUGINS
-    )
+    autoplugins = config.AUTO_PLUGINS if "AUTO_PLUGINS" in dir(config) else []
     nb_layout = (
         config.NOTEBOOK_LAYOUT
         if "NOTEBOOK_LAYOUT" in dir(config)
@@ -40,9 +38,11 @@ def run():
     )
     tab_style = config.TAB_STYLE if "TAB_STYLE" in dir(config) else dconfig.TAB_STYLE
 
+    all_plugins = plug + [p for p in autoplugins if p not in plug]
+
     app = MainApp(
         title=title,
-        plugins_list=plug + autoplugins,
+        plugins_list=all_plugins,
         notebook_layout=nb_layout,
         tab_style=tab_style,
     )

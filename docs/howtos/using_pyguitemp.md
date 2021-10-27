@@ -37,7 +37,7 @@ the main window, the logger and give some default values to the few configuratio
 options. All you need to do now is to populate the extensions subpackage with the
 plugins you need.
 
-If you add the following `setup.cfg` and `pyproject.toml` files at the same level that
+If you add the following `setup.cfg`, `setup.py` and `pyproject.toml` files at the same level that
 `my_app` (you can read more about these two files in the [`setuptools`
 documentation](https://setuptools.pypa.io/en/latest/index.html)):
 
@@ -60,6 +60,14 @@ include_package_data = True
 install_requires =
     pyguitemp
     wxPython
+```
+
+```python
+# setup.py
+# Only needed to install the tool in 'edit' mode
+from setuptools import setup
+
+setup()
 ```
 
 Then you can install your new package in edit mode and see the magic happens:

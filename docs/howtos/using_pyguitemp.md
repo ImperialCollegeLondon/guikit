@@ -78,7 +78,11 @@ python -m my_app
 ```
 
 The last line will launch your new application, opening its main window - altough with
-nothing inside.
+nothing inside. If you are using `conda` on MacOS, the last command should be:
+
+```bash
+pythonw -m my_app
+```
 
 ## The advanced way
 

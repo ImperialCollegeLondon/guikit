@@ -26,10 +26,8 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        python-version: [3.6, 3.7, 3.8, 3.9]
+        python-version: [3.7, 3.8, 3.9]
         exclude:
-          - os: ubuntu-latest
-            python-version: 3.6
           - os: ubuntu-latest
             python-version: 3.7
           - os: ubuntu-latest
@@ -37,28 +35,43 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+    
+    - uses: conda-incubator/setup-miniconda@v2
       with:
+        auto-update-conda: true
         python-version: ${{ matrix.python-version }}
+    
+    # - name: Install Linux dependencies
+    #   if: matrix.os == 'ubuntu-latest'
+    #   run: |
+    #     sudo apt update
+    #     sudo apt -y install libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-2.0-0
+    #     pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04 wxPython
+    
     - name: Install Linux dependencies
-      if: matrix.os == 'ubuntu-latest'
-      run: |
-        sudo apt update
-        sudo apt -y install libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-2.0-0
-        pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04 wxPython
+      if: matrix.os == 'macos-latest'
+      run: conda install python.app
+        
     - name: Install dependencies
       run: |
+        conda install wxPython -c conda-forge
         python -m pip install --upgrade pip setuptools wheel
-        pip install -e .[dev]
+        python -m pip install -e .[dev]
+    
     - name: Test with pytest (Windows)
-      if: matrix.os != 'ubuntu-latest'
+      if: matrix.os == 'windows-latest'
       run: |
         python -m pytest
+    
     - name: Test with pytest (Linux)
       if: matrix.os == 'ubuntu-latest'
       run: |
         xvfb-run -a python -m pytest
+    
+    - name: Test with pytest (MacOS)
+      if: matrix.os == 'macos-latest'
+      run: |
+        pythonw -m pytest
 
   docs:
     needs: test

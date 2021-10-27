@@ -13,7 +13,7 @@ for your project from where you import all the relevant components that you need
 
 To get you started, just create a virtual environment to host your project, install
 `pyguitemp` in there with `pip install pyguitemp` (see the [installation
-instructions](installation) for extra information on this) and then run:
+instructions](installation.md) for extra information on this) and then run:
 
 ```bash
 python -m pyguitemp init my_app -t .

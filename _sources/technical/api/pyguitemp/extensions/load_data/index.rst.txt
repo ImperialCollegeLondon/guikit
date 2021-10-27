@@ -39,18 +39,13 @@ Classes
 
 
 
-.. py:class:: DataLoaderTab(parent, on_open)
+.. py:class:: DataLoaderTab(parent, on_open, on_delete)
 
    Bases: :py:obj:`wx.Window`
 
    .. py:method:: _init_gui(self)
 
       Initialises the GUI elements in the frame.
-
-
-   .. py:method:: on_clear(self, _)
-
-      Clears the data loaded.
 
 
    .. py:method:: display_data(self, filename, data = None)

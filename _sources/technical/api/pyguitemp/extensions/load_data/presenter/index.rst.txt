@@ -21,7 +21,8 @@ Functions
 
 .. autoapisummary::
 
-   pyguitemp.extensions.load_data.presenter.select_file
+   pyguitemp.extensions.load_data.presenter.load_data
+   pyguitemp.extensions.load_data.presenter.delete_data
 
 
 
@@ -46,8 +47,13 @@ Functions
 
 
 
-.. py:function:: select_file()
+.. py:function:: load_data()
 
    Loads a text file from disk.
+
+
+.. py:function:: delete_data()
+
+   Deletes loaded data.
 
 

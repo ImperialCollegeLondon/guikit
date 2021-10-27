@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using pyguitemp &mdash; Python GUI Template 0.1.18 documentation</title>
+  <title>Using pyguitemp &mdash; Python GUI Template 0.1.19 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -111,7 +111,7 @@ the secction about <a class="reference internal" href="add_plugin.html"><span cl
 the main window, the logger and give some default values to the few configuration
 options. All you need to do now is to populate the extensions subpackage with the
 plugins you need.</p>
-<p>If you add the following <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code> and <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> files at the same level that
+<p>If you add the following <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>, <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> and <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> files at the same level that
 <code class="docutils literal notranslate"><span class="pre">my_app</span></code> (you can read more about these two files in the <a class="reference external" href="https://setuptools.pypa.io/en/latest/index.html"><code class="docutils literal notranslate"><span class="pre">setuptools</span></code>
 documentation</a>):</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># pyproject.toml</span>
@@ -133,13 +133,23 @@ documentation</a>):</p>
 <span class="s">    wxPython</span>
 </pre></div>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup.py</span>
+<span class="c1"># Only needed to install the tool in &#39;edit&#39; mode</span>
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+
+<span class="n">setup</span><span class="p">()</span>
+</pre></div>
+</div>
 <p>Then you can install your new package in edit mode and see the magic happens:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -e .
 python -m my_app
 </pre></div>
 </div>
 <p>The last line will launch your new application, opening its main window - altough with
-nothing inside.</p>
+nothing inside. If you are using <code class="docutils literal notranslate"><span class="pre">conda</span></code> on MacOS, the last command should be:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pythonw -m my_app
+</pre></div>
+</div>
 </div>
 <div class="section" id="the-advanced-way">
 <h2>The advanced way<a class="headerlink" href="#the-advanced-way" title="Permalink to this headline"></a></h2>

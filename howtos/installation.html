@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation instructions &mdash; Python GUI Template 0.1.18 documentation</title>
+  <title>Installation instructions &mdash; Python GUI Template 0.1.19 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -119,7 +119,22 @@ python. It typically complains with this error message:</p>
 </ol>
 <p>Alternatively, if you use <code class="docutils literal notranslate"><span class="pre">conda</span></code> to install <code class="docutils literal notranslate"><span class="pre">wxPython</span></code>, you will need to use <code class="docutils literal notranslate"><span class="pre">pythonw</span></code>
 to execute your applications. See <a class="reference external" href="https://wxpython.org/pages/downloads/index.html">wxPython downloads
-webpage</a> for more information on this.</p>
+webpage</a> for more information on this.
+In short, the steps you should follow in this case consist on creating a conda
+environment and then install <code class="docutils literal notranslate"><span class="pre">wxPython</span></code> and <code class="docutils literal notranslate"><span class="pre">python.app</span></code> on it before installing
+<code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n pyguitemp-env <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.8
+conda activate pyguitemp-env
+<span class="o">(</span>pyguitemp-env<span class="o">)</span>  $ conda install wxPython -c conda-forge
+<span class="o">(</span>pyguitemp-env<span class="o">)</span>  $ conda install python.app
+<span class="o">(</span>pyguitemp-env<span class="o">)</span>  $ pip install pyguitemp
+</pre></div>
+</div>
+<p>And then, use <code class="docutils literal notranslate"><span class="pre">pyguitemp</span></code> with <code class="docutils literal notranslate"><span class="pre">pythonw</span></code> rather than <code class="docutils literal notranslate"><span class="pre">python</span></code> (see <a class="reference internal" href="using_pyguitemp.html"><span class="doc std std-doc">this
+section</span></a> for all the options). For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>pyguitemp-env<span class="o">)</span>  $ pythonw -m pyguitemp run
+</pre></div>
+</div>
 </div>
 </div>
 

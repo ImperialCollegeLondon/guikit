@@ -13,7 +13,7 @@ for your project from where you import all the relevant components that you need
 
 To get you started, just create a virtual environment to host your project, install
 `pyguitemp` in there with `pip install pyguitemp` (see the [installation
-instructions](installation) for extra information on this) and then run:
+instructions](installation.md) for extra information on this) and then run:
 
 ```bash
 python -m pyguitemp init my_app -t .
@@ -37,7 +37,7 @@ the main window, the logger and give some default values to the few configuratio
 options. All you need to do now is to populate the extensions subpackage with the
 plugins you need.
 
-If you add the following `setup.cfg` and `pyproject.toml` files at the same level that
+If you add the following `setup.cfg`, `setup.py` and `pyproject.toml` files at the same level that
 `my_app` (you can read more about these two files in the [`setuptools`
 documentation](https://setuptools.pypa.io/en/latest/index.html)):
 
@@ -62,6 +62,14 @@ install_requires =
     wxPython
 ```
 
+```python
+# setup.py
+# Only needed to install the tool in 'edit' mode
+from setuptools import setup
+
+setup()
+```
+
 Then you can install your new package in edit mode and see the magic happens:
 
 ```bash
@@ -70,7 +78,11 @@ python -m my_app
 ```
 
 The last line will launch your new application, opening its main window - altough with
-nothing inside.
+nothing inside. If you are using `conda` on MacOS, the last command should be:
+
+```bash
+pythonw -m my_app
+```
 
 ## The advanced way
 

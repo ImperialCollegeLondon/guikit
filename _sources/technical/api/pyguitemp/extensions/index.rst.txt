@@ -19,5 +19,6 @@ Subpackages
 
    about_dialog/index.rst
    example_plugin/index.rst
+   load_data/index.rst
 
 

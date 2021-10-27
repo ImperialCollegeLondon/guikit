@@ -1,0 +1,26 @@
+:py:mod:`pyguitemp.extensions.load_data.model`
+==============================================
+
+.. py:module:: pyguitemp.extensions.load_data.model
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   pyguitemp.extensions.load_data.model.load_data
+
+
+
+.. py:function:: load_data(filename)
+
+   Loads data from disk.
+
+   :param filename: Name of the file to load. Must contain data in CSV format.
+
+

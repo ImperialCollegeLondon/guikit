@@ -27,11 +27,6 @@ jobs:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
         python-version: [3.7, 3.8, 3.9]
-        exclude:
-          - os: ubuntu-latest
-            python-version: 3.7
-          - os: ubuntu-latest
-            python-version: 3.9
 
     steps:
     - uses: actions/checkout@v2
@@ -41,12 +36,11 @@ jobs:
         auto-update-conda: true
         python-version: ${{ matrix.python-version }}
     
-    # - name: Install Linux dependencies
-    #   if: matrix.os == 'ubuntu-latest'
-    #   run: |
-    #     sudo apt update
-    #     sudo apt -y install libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-2.0-0
-    #     pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-20.04 wxPython
+    - name: Install Linux dependencies
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt update
+        sudo apt -y install libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-2.0-0
     
     - name: Install Linux dependencies
       if: matrix.os == 'macos-latest'
@@ -54,6 +48,7 @@ jobs:
         
     - name: Install dependencies
       run: |
+        conda install pip
         conda install wxPython -c conda-forge
         python -m pip install --upgrade pip setuptools wheel
         python -m pip install -e .[dev]

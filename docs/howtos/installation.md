@@ -46,3 +46,21 @@ To work around this:
 Alternatively, if you use `conda` to install `wxPython`, you will need to use `pythonw`
 to execute your applications. See [wxPython downloads
 webpage](https://wxpython.org/pages/downloads/index.html) for more information on this.
+In short, the steps you should follow in this case consist on creating a conda
+environment and then install `wxPython` and `python.app` on it before installing
+`pyguitemp`:
+
+```bash
+conda create -n pyguitemp-env python=3.8
+conda activate pyguitemp-env
+(pyguitemp-env)  $ conda install wxPython -c conda-forge
+(pyguitemp-env)  $ conda install python.app
+(pyguitemp-env)  $ pip install pyguitemp
+```
+
+And then, use `pyguitemp` with `pythonw` rather than `python` (see [this
+section](using_pyguitemp) for all the options). For example:
+
+```bash
+(pyguitemp-env)  $ pythonw -m pyguitemp run
+```

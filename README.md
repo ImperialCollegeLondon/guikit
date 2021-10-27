@@ -1,3 +1,17 @@
+[![Test and build](https://github.com/ImperialCollegeLondon/python-gui-template/actions/workflows/ci.yml/badge.svg)](https://github.com/ImperialCollegeLondon/python-gui-template/actions/workflows/ci.yml)
+[![PyPI version
+shields.io](https://img.shields.io/pypi/v/pyguitemp.svg)](https://pypi.python.org/pypi/pyguitemp/)
+[![PyPI
+status](https://img.shields.io/pypi/status/pyguitemp.svg)](https://pypi.python.org/pypi/pyguitemp/)
+[![PyPI
+pyversions](https://img.shields.io/pypi/pyversions/pyguitemp.svg)](https://pypi.python.org/pypi/pyguitemp/)
+[![PyPI
+license](https://img.shields.io/pypi/l/pyguitemp.svg)](https://pypi.python.org/pypi/pyguitemp/)
+[![Website pyguitemp](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://imperialcollegelondon.github.io/python-gui-template/)
+[![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
+[![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)
+[![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
+
 # Python GUI Template <!-- omit in toc -->
 
 This little tool's purpose is to facilitate getting started building a GUI for your

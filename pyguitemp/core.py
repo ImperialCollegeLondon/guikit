@@ -174,9 +174,9 @@ class MainWindow(wx.Frame):
             v for v in [view().central(self) for view in KNOWN_PLUGINS] if v is not None
         ]
 
-        if (n := len(widget)) != 1:
+        if len(widget) != 1:
             raise ValueError(
-                f"Exactly 1 central widget needs to be provided. {n} given."
+                f"Exactly 1 central widget needs to be provided. {len(widget)} given."
             )
 
 

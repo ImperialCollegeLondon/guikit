@@ -15,3 +15,8 @@ def load_data(filename: str) -> None:
         filename = f"No data could be loaded. {err.args}"
 
     pub.sendMessage("data.load", filename=filename, data=data)
+
+
+def delete_data() -> None:
+    """Deletes data from memory."""
+    pub.sendMessage("data.load", filename="No data loaded", data=None)

@@ -11,13 +11,14 @@ GRID_LINE_COLOUR = "#ccc"
 
 
 class DataLoaderTab(wx.Window):
-    def __init__(self, parent, on_open: Callable):
+    def __init__(self, parent, on_open: Callable, on_delete: Callable):
         super(DataLoaderTab, self).__init__(parent)
 
         self.clear_btn: wx.Button
         self.filename_lbl: wx.StaticText
         self.grid: wx.grid.Grid
         self.on_open = on_open
+        self.on_delete = on_delete
 
         pub.subscribe(self.display_data, "data.load")
 
@@ -38,7 +39,7 @@ class DataLoaderTab(wx.Window):
         self.update_table()
 
         self.Bind(wx.EVT_BUTTON, lambda _: self.on_open(), source=open_btn)
-        self.Bind(wx.EVT_BUTTON, self.on_clear, source=self.clear_btn)
+        self.Bind(wx.EVT_BUTTON, lambda _: self.on_delete(), source=self.clear_btn)
         self.clear_btn.Disable()
 
         main_sizer = wx.BoxSizer(wx.VERTICAL)
@@ -46,10 +47,6 @@ class DataLoaderTab(wx.Window):
         main_sizer.Add(self.grid, 0, flag=wx.EXPAND | wx.ALL, border=10)
 
         self.SetSizer(main_sizer)
-
-    def on_clear(self, _):
-        """Clears the data loaded."""
-        pub.sendMessage("data.load", filename="No data loaded", data=None)
 
     def display_data(self, filename: str, data: Optional[pd.DataFrame] = None):
         """Displays the data on a table and sets the filename

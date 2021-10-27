@@ -1,3 +1,6 @@
+|Test and build| |PyPI version shields.io| |PyPI status| |PyPI
+pyversions| |PyPI license| |Website pyguitemp| |Windows| |macOS| |Linux|
+
 Welcome to PyGUItemp documentation!
 ===================================
 
@@ -55,3 +58,22 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+.. |Test and build| image:: https://github.com/ImperialCollegeLondon/python-gui-template/actions/workflows/ci.yml/badge.svg
+   :target: https://github.com/ImperialCollegeLondon/python-gui-template/actions/workflows/ci.yml
+.. |PyPI version shields.io| image:: https://img.shields.io/pypi/v/pyguitemp.svg
+   :target: https://pypi.python.org/pypi/pyguitemp/
+.. |PyPI status| image:: https://img.shields.io/pypi/status/pyguitemp.svg
+   :target: https://pypi.python.org/pypi/pyguitemp/
+.. |PyPI pyversions| image:: https://img.shields.io/pypi/pyversions/pyguitemp.svg
+   :target: https://pypi.python.org/pypi/pyguitemp/
+.. |PyPI license| image:: https://img.shields.io/pypi/l/pyguitemp.svg
+   :target: https://pypi.python.org/pypi/pyguitemp/
+.. |Website pyguitemp| image:: https://img.shields.io/website-up-down-green-red/http/shields.io.svg
+   :target: https://imperialcollegelondon.github.io/python-gui-template/
+.. |Windows| image:: https://svgshare.com/i/ZhY.svg
+   :target: https://svgshare.com/i/ZhY.svg
+.. |macOS| image:: https://svgshare.com/i/ZjP.svg
+   :target: https://svgshare.com/i/ZjP.svg
+.. |Linux| image:: https://svgshare.com/i/Zhy.svg
+   :target: https://svgshare.com/i/Zhy.svg

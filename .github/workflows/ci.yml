@@ -35,7 +35,11 @@ jobs:
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python-version }}
+        activate-environment: pyguitemp
     
+    - name: Check conda
+      run: conda info
+
     - name: Install Linux dependencies
       if: matrix.os == 'ubuntu-latest'
       run: |

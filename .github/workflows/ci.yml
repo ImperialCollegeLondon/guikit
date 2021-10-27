@@ -47,7 +47,7 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt update
-        sudo apt -y install libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-2.0-0
+        sudo apt -y install libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-2.0-0 libgtk2.0-0
     
     - name: Install Linux dependencies
       if: matrix.os == 'macos-latest'

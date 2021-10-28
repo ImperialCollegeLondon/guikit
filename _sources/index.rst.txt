@@ -1,4 +1,4 @@
-|Test and build| |PyPI version shields.io| |PyPI status| |PyPI
+|GitHub| |Test and build| |PyPI version shields.io| |PyPI status| |PyPI
 pyversions| |PyPI license| |Website pyguitemp| |Windows| |macOS| |Linux|
 
 Welcome to PyGUItemp documentation!
@@ -59,6 +59,8 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
+.. |GitHub| image:: https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white
+   :target: https://github.com/ImperialCollegeLondon/python-gui-template
 .. |Test and build| image:: https://github.com/ImperialCollegeLondon/python-gui-template/actions/workflows/ci.yml/badge.svg
    :target: https://github.com/ImperialCollegeLondon/python-gui-template/actions/workflows/ci.yml
 .. |PyPI version shields.io| image:: https://img.shields.io/pypi/v/pyguitemp.svg

@@ -33,7 +33,7 @@ Package Contents
 ----------------
 
 .. py:data:: VERSION
-   :annotation: = 0.1.20
+   :annotation: = 0.1.21
 
    
 

@@ -5,7 +5,7 @@ repos:
       - id: check-merge-conflict
       - id: debug-statements
   - repo: https://github.com/timothycrosley/isort
-    rev: "5.10.0"
+    rev: "5.10.1"
     hooks:
       - id: isort
         additional_dependencies: [toml]

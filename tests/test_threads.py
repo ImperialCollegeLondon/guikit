@@ -71,13 +71,15 @@ class TestWorkerThread:
         event._data.assert_called_once()
 
 
+class Worker:
+    ident = 42
+    abort = False
+    connect_events = MagicMock()
+    start = MagicMock()
+
+
 class TestThreadPool:
     def test_run_thread(self, window):
-        class Worker:
-            ident = 42
-            abort = False
-            connect_events = MagicMock()
-            start = MagicMock()
 
         with patch("pyguitemp.threads.WorkerThread", MagicMock(return_value=Worker)):
             from pyguitemp.threads import ThreadPool
@@ -88,39 +90,45 @@ class TestThreadPool:
         assert Worker.ident in pool._workers
 
     def test_query_abort(self, window):
-        import threading
-
-        class Worker:
-            ident = threading.get_ident()
-            abort = False
-            connect_events = MagicMock()
-            start = MagicMock()
-
-        with patch("pyguitemp.threads.WorkerThread", MagicMock(return_value=Worker)):
-            from pyguitemp.threads import ThreadPool
+        with patch(
+            "pyguitemp.threads.WorkerThread", MagicMock(return_value=Worker)
+        ), patch("pyguitemp.threads.logger", MagicMock()), patch(
+            "pyguitemp.threads.threading.get_ident",
+            MagicMock(return_value=Worker.ident + 1),
+        ):
+            from pyguitemp.threads import ThreadPool, logger
 
             pool = ThreadPool(window)
-            pool.run_thread(lambda: None)
 
-        assert not pool.query_abort()
+            with raises(KeyError) as key_err:
+                pool.query_abort()
+
+            key_err_str = str(key_err.value)
+            assert (
+                f"Thread with index: {Worker.ident+1} is not in the ThreadPool."
+                in key_err_str
+            )
+            assert logger.exception.call_count == 1
 
     def test_abort_thread(self, window):
-        import threading
-
-        class Worker:
-            ident = threading.get_ident()
-            abort = False
-            connect_events = MagicMock()
-            start = MagicMock()
-
-        with patch("pyguitemp.threads.WorkerThread", MagicMock(return_value=Worker)):
-            from pyguitemp.threads import ThreadPool
+        with patch(
+            "pyguitemp.threads.WorkerThread", MagicMock(return_value=Worker)
+        ), patch("pyguitemp.threads.logger", MagicMock()):
+            from pyguitemp.threads import ThreadPool, logger
 
             pool = ThreadPool(window)
-            ident = pool.run_thread(lambda: None)
 
-        pool.abort_thread(ident)
-        assert pool._workers[ident].abort
+            with raises(KeyError) as key_err:
+                pool.abort_thread(Worker.ident + 1)
+            key_err_str = str(key_err.value)
+            assert (
+                f"Thread with index: {Worker.ident+1} is not in the ThreadPool."
+                in key_err_str
+            )
+            assert logger.exception.call_count == 1
+
+        pool.abort_thread(Worker.ident)
+        assert pool._workers[Worker.ident].abort
 
     def test_post_event(self, window):
         class WX:
@@ -155,33 +163,16 @@ def test_run_daemon():
 
 
 def test_abort_thread():
-    window = MagicMock()
+    with patch("pyguitemp.threads.ThreadPool", MagicMock()):
+        from pyguitemp.threads import ThreadPool, abort_thread
 
-    class Worker:
-        ident = 123
-        abort = False
-        connect_events = MagicMock()
-        start = MagicMock()
+        abort_thread(43)
+        ThreadPool().abort_thread.called_once_with(43)
 
-    with patch("pyguitemp.threads.WorkerThread", MagicMock(return_value=Worker)), patch(
-        "pyguitemp.threads.logger", MagicMock()
-    ):
 
-        from pyguitemp.threads import ThreadPool, abort_thread, logger, should_abort
+def test_should_abort():
+    with patch("pyguitemp.threads.ThreadPool", MagicMock()):
+        from pyguitemp.threads import ThreadPool, should_abort
 
-        pool = ThreadPool(window)
-        pool.run_thread(lambda: None)
-        abort_thread(123)
-        assert should_abort(123) is True
-
-        with raises(KeyError) as key_err:
-            abort_thread(124)
-        key_err_str = str(key_err.value)
-        assert "Thread with index: 124 is not in the ThreadPool." in key_err_str
-        assert logger.exception.call_count == 1
-
-        with raises(KeyError) as key_err:
-            should_abort(125)
-        key_err_str = str(key_err.value)
-        assert "Thread with index: 125 is not in the ThreadPool." in key_err_str
-        assert logger.exception.call_count == 2
+        should_abort()
+        ThreadPool().query_abort.called_once_with()

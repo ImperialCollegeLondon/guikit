@@ -173,16 +173,35 @@ class ThreadPool:
         return thread.ident
 
     def query_abort(self) -> bool:
-        """Checks if the current thread is to be aborted."""
-        return self._workers[threading.get_ident()].abort
+        """Check if the current thread is to be aborted.
+
+        Raises:
+            KeyError: If the thread identifier is not in the ThreadPool
+        """
+        ident: int = threading.get_ident()
+
+        try:
+            return self._workers[ident].abort
+        except KeyError as key_err:
+            key_err_ = KeyError(f"Thread with index: {ident} is not in the ThreadPool.")
+            logger.exception(key_err_)
+            raise key_err_ from key_err
 
     def abort_thread(self, ident: int) -> None:
-        """Flags the thread with `ident` to be aborted.
+        """Flag the thread with `ident` to be aborted.
 
         Args:
-            ident: The id of the thread
+            ident: Thread identifier
+
+        Raises:
+            KeyError: If the thread identifier is not in the ThreadPool
         """
-        self._workers[ident].abort = True
+        try:
+            self._workers[ident].abort = True
+        except KeyError as key_err:
+            key_err_ = KeyError(f"Thread with index: {ident} is not in the ThreadPool.")
+            logger.exception(key_err_)
+            raise key_err_ from key_err
 
     def post_event(self, event: ThreadResult):
         """Adds an event to the event loop of the main thread."""
@@ -215,30 +234,10 @@ def abort_thread(ident: int) -> None:
 
     Args:
         ident: Thread identifier
-
-    Raises:
-        KeyError: If the identifier is not in the ThreadPool
     """
-    if ident in ThreadPool()._workers:
-        ThreadPool().abort_thread(ident)
-    else:
-        key_err = f"Thread with index: {ident} is not in the ThreadPool."
-        logger.exception(key_err)
-        raise KeyError(key_err)
+    ThreadPool().abort_thread(ident)
 
 
-def should_abort(ident: int) -> bool:
-    """Return whether the thread with given identifier should abort or not.
-
-    Args:
-        ident: Thread identifier
-
-    Raises:
-        KeyError: If the identifier is not in the ThreadPool
-    """
-    if ident in ThreadPool()._workers:
-        return ThreadPool().query_abort()
-    else:
-        key_err = f"Thread with index: {ident} is not in the ThreadPool."
-        logger.exception(f"{key_err}")
-        raise KeyError(f"{key_err}")
+def should_abort() -> bool:
+    """Return whether the thread with given identifier should abort or not."""
+    return ThreadPool().query_abort()

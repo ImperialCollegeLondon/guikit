@@ -1,8 +1,8 @@
 |GitHub| |Test and build| |PyPI version shields.io| |PyPI status| |PyPI
 pyversions| |PyPI license| |Website guikit| |Windows| |macOS| |Linux|
 
-Welcome to `guikit` documentation!
-===================================
+Welcome to `GUIKIT` documentation!
+==================================
 
 This little tool serves to facilitate getting started building a GUI for
 your software. It takes care of most of the boilerplate code that you

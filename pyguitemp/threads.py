@@ -8,6 +8,8 @@ from typing import Any, Callable, Dict, Optional
 
 import wx
 
+from .logging import logger
+
 
 class ThreadResult(wx.PyEvent):
     """Simple event to carry arbitrary result data."""
@@ -171,17 +173,71 @@ class ThreadPool:
         return thread.ident
 
     def query_abort(self) -> bool:
-        """Checks if the current thread is to be aborted."""
-        return self._workers[threading.get_ident()].abort
+        """Check if the current thread is to be aborted.
+
+        Raises:
+            KeyError: If the thread identifier is not in the ThreadPool
+        """
+        ident: int = threading.get_ident()
+
+        try:
+            return self._workers[ident].abort
+        except KeyError as key_err:
+            key_err_ = KeyError(f"Thread with index: {ident} is not in the ThreadPool.")
+            logger.exception(key_err_)
+            raise key_err_ from key_err
 
     def abort_thread(self, ident: int) -> None:
-        """Flags the thread with `ident` to be aborted.
+        """Flag the thread with `ident` to be aborted.
 
         Args:
-            ident: The id of the thread
+            ident: Thread identifier
+
+        Raises:
+            KeyError: If the thread identifier is not in the ThreadPool
         """
-        self._workers[ident].abort = True
+        try:
+            self._workers[ident].abort = True
+        except KeyError as key_err:
+            key_err_ = KeyError(f"Thread with index: {ident} is not in the ThreadPool.")
+            logger.exception(key_err_)
+            raise key_err_ from key_err
 
     def post_event(self, event: ThreadResult):
         """Adds an event to the event loop of the main thread."""
         wx.PostEvent(self._window, event)
+
+
+def run_in_thread(
+    target: Callable,
+    on_abort: Optional[Callable] = None,
+    on_complete: Optional[Callable] = None,
+    on_error: Optional[Callable] = None,
+    daemon: Optional[bool] = None,
+) -> int:
+    """Is an alias for ThreadPool().run_thread(...)."""
+    return ThreadPool().run_thread(target, on_abort, on_complete, on_error, daemon)
+
+
+def run_daemon(
+    target: Callable,
+    on_abort: Optional[Callable] = None,
+    on_complete: Optional[Callable] = None,
+    on_error: Optional[Callable] = None,
+) -> int:
+    """Is an alias for ThreadPool().run_thread(..., daemon=True)."""
+    return ThreadPool().run_thread(target, on_abort, on_complete, on_error, daemon=True)
+
+
+def abort_thread(ident: int) -> None:
+    """Set thread with given identifier to abort.
+
+    Args:
+        ident: Thread identifier
+    """
+    ThreadPool().abort_thread(ident)
+
+
+def should_abort() -> bool:
+    """Return whether the thread with given identifier should abort or not."""
+    return ThreadPool().query_abort()

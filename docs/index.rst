@@ -1,7 +1,7 @@
 |GitHub| |Test and build| |PyPI version shields.io| |PyPI status| |PyPI
 pyversions| |PyPI license| |Website guikit| |Windows| |macOS| |Linux|
 
-Welcome to PyGUItemp documentation!
+Welcome to `guikit` documentation!
 ===================================
 
 This little tool serves to facilitate getting started building a GUI for

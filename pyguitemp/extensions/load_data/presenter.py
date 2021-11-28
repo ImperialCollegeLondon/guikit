@@ -1,6 +1,6 @@
 from typing import List
 
-from pyguitemp.plugins import PluginBase, Tab
+from guikit.plugins import PluginBase, Tab
 
 from .model import delete_data as delete_data_
 from .model import load_data as load_data_

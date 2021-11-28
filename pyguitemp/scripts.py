@@ -18,7 +18,7 @@ logger.app_name = APP_NAME
 
 
 def run():
-    """Runs pyguitemp as an application, loading all the plugins available."""
+    """Runs guikit as an application, loading all the plugins available."""
     frame = inspect.stack()[1]
     caller_file = Path(frame[0].f_code.co_filename)
     config_file = caller_file.parent / "config.py"
@@ -50,9 +50,9 @@ def run():
 
 
 def _init_repo(path: Path, name: str):
-    """Initialises repository with the files/folders required to use pyguitemp.
+    """Initialises repository with the files/folders required to use guikit.
 
-    This is done by copying the skeleton repository structure within pyguitemp to the
+    This is done by copying the skeleton repository structure within guikit to the
     desired location.
 
     Args:
@@ -65,14 +65,14 @@ def _init_repo(path: Path, name: str):
 
 
 def _list_plugins() -> None:
-    """Lists all plugins available in pyguitemp that the user can copy."""
+    """Lists all plugins available in guikit that the user can copy."""
     plug = [ext.split(".")[-1] for ext in collect_builtin_extensions()]
     for p in plug:
         print(p)
 
 
 def _copy_plugin(name: List[str], target: Path) -> None:
-    """Lists all plugins available in pyguitemp that the user can copy.
+    """Lists all plugins available in guikit that the user can copy.
 
     Args:
         name: List of plugins to copy.
@@ -143,7 +143,7 @@ class InitSubCommand(SubCommand):
 class PluginSubCommand(SubCommand):
     def __init__(self):
         super().__init__(
-            "plugin", "Brings exisitng plugins in pyguitemp to the application."
+            "plugin", "Brings exisitng plugins in guikit to the application."
         )
 
     def add_arguments(self, parser: argparse.ArgumentParser):
@@ -212,7 +212,7 @@ def _parse_args(argv: List[str] = None) -> argparse.Namespace:
 
 
 def main(argv: List[str] = None):
-    """Main entry point for pyguitemp, calling the relevant subcommands.
+    """Main entry point for guikit, calling the relevant subcommands.
 
     Args:
         argv: List of input arguments, including subcommand.

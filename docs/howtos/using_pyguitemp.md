@@ -1,22 +1,22 @@
-# Using pyguitemp
+# Using guikit
 
-The purpose of `pyguitemp` is to save you time to start creating your GUI. Therefore, no
+The purpose of `guikit` is to save you time to start creating your GUI. Therefore, no
 matter how you use it: if it saves you time, it is well used. There are, however, some
 general approaches that you could follow:
 
 ## The indended way
 
-The intention when creating `pyguitemp` is to remove from sight everything that is not
+The intention when creating `guikit` is to remove from sight everything that is not
 the code you need to implement the business logic and the views specific for your
-application. For that reason, the simplest way of using `pyguitemp` is as a dependency
+application. For that reason, the simplest way of using `guikit` is as a dependency
 for your project from where you import all the relevant components that you need.
 
 To get you started, just create a virtual environment to host your project, install
-`pyguitemp` in there with `pip install pyguitemp` (see the [installation
+`guikit` in there with `pip install guikit` (see the [installation
 instructions](installation.md) for extra information on this) and then run:
 
 ```bash
-python -m pyguitemp init my_app -t .
+python -m guikit init my_app -t .
 ```
 
 This command will create in the target directory a package called `my_app` with several
@@ -32,7 +32,7 @@ the secction about [creating plugins](add_plugin.md)).
     |- __init__.py
 ```
 
-These files in reality contain very little code: they just import `pyguitemp` to create
+These files in reality contain very little code: they just import `guikit` to create
 the main window, the logger and give some default values to the few configuration
 options. All you need to do now is to populate the extensions subpackage with the
 plugins you need.
@@ -58,7 +58,7 @@ version = attr: my_app.VERSION
 packages = find:
 include_package_data = True
 install_requires =
-    pyguitemp
+    guikit
     wxPython
 ```
 
@@ -93,7 +93,7 @@ extensions.
 If you want to have the freedom of changing any of this and adapt it to your needs, just
 download the [lastest version of the code from
 GitHub](https://github.com/ImperialCollegeLondon/python-gui-template) and use
-`pyguitemp` source code itself as a template to create your own application. You
+`guikit` source code itself as a template to create your own application. You
 will  want to remove some information from there, like the documentation, the `skeleton`
 or some of the script options for initialising a repo, as above. And you
 will need to adapt the metadata from `setup.cfg`, and the secrets used in GitHub

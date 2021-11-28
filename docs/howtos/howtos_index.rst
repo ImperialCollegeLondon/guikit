@@ -6,7 +6,7 @@ How to work with PyGUItemp
    :caption: Contents:
 
    installation
-   using_pyguitemp
+   using_guikit
    add_plugin
    threads
    status

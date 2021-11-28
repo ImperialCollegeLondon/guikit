@@ -38,7 +38,7 @@ jobs:
       with:
         auto-update-conda: true
         python-version: ${{ matrix.python-version }}
-        activate-environment: pyguitemp
+        activate-environment: guikit
     
     - name: Check conda
       run: conda info

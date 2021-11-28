@@ -37,7 +37,7 @@ extensions = [
     "sphinx.ext.autodoc",
 ]
 autodoc_typehints = "description"
-autoapi_dirs = ["../pyguitemp"]
+autoapi_dirs = ["../guikit"]
 autoapi_root = "technical/api"
 
 # Add any paths that contain templates here, relative to this directory.

@@ -13,7 +13,7 @@ def window():
 
 @pytest.fixture()
 def main_window():
-    from pyguitemp.core import MainWindow
+    from guikit.core import MainWindow
 
     app = wx.App()
     frame = MainWindow(None, "My App")
@@ -28,7 +28,7 @@ def plugin():
 
     import wx
 
-    from pyguitemp.plugins import MenuTool, PluginBase
+    from guikit.plugins import MenuTool, PluginBase
 
     class ExamplePlugin(PluginBase):
         def central(self, parent=None) -> wx.Window:
@@ -51,7 +51,7 @@ def plugin():
 
 @pytest.fixture()
 def empty_plugin():
-    from pyguitemp.plugins import PluginBase
+    from guikit.plugins import PluginBase
 
     class EmptyPlugin(PluginBase):
         pass

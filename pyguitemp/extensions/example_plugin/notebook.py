@@ -1,6 +1,6 @@
 import wx
 
-from pyguitemp.plugins import PluginBase, Tab
+from guikit.plugins import PluginBase, Tab
 
 
 class NotebookPlugin(PluginBase):

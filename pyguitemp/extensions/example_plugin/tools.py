@@ -1,6 +1,6 @@
 import wx
 
-from pyguitemp.plugins import MenuTool, PluginBase
+from guikit.plugins import MenuTool, PluginBase
 
 
 class ToolbarPlugin(PluginBase):

@@ -4,7 +4,7 @@ from typing import List
 import wx
 import wx.adv
 
-from pyguitemp.plugins import MenuTool, PluginBase
+from guikit.plugins import MenuTool, PluginBase
 
 from ... import VERSION
 

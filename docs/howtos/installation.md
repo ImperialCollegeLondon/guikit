@@ -1,29 +1,29 @@
 # Installation instructions
 
-**WARNING**: `pyguitemp` is in an early stage of development and the API might change
+**WARNING**: `guikit` is in an early stage of development and the API might change
 without notice. Use it in production with caution. And please, contribute to it to
 help improving its maturity as fast as posisble!
 
-`pyguitemp` and its dependencies can be installed with `pip` in Widnows,
+`guikit` and its dependencies can be installed with `pip` in Widnows,
 [Linux](#what-about-linux) and [MacOS](#what-about-macos) (see notes below):
 
 ```bash
-pip install pyguitemp
+pip install guikit
 ```
 
 ## What about linux
 
-`pyguitemp` can be installed in Linux with `pip`, but `wxPython` will likely need to be
+`guikit` can be installed in Linux with `pip`, but `wxPython` will likely need to be
 built from source as there are not *manylinux* wheels for it, yet.
 
 The best option is for you to check if there is a wheel available for your specific
 linux distirbution and python version in the [wxPython downloads
 webpage](https://wxpython.org/pages/downloads/index.html) and install that one before
-installing `pyguitemp`. Otherwise, in the same webpage you have instructions on how to
+installing `guikit`. Otherwise, in the same webpage you have instructions on how to
 install `wxPython` from source.
 
 Alternatively, if you use `conda`, you can install `wxPython` from `conda-forge` and
-then install `pyguitemp` as above.
+then install `guikit` as above.
 
 ## What about MacOS
 
@@ -41,26 +41,26 @@ To work around this:
 1. Install a python.org version of python.
 1. Find executable under `/Library/Frameworks/Python.framework/...`.
 1. Use that executable to create a virtual environment: `/Library/Frameworks/Python.framework/Versions/<version>/bin/python3 -m venv .venv`.
-1. Install `pyguitemp` inside virtual environment, and all should work!
+1. Install `guikit` inside virtual environment, and all should work!
 
 Alternatively, if you use `conda` to install `wxPython`, you will need to use `pythonw`
 to execute your applications. See [wxPython downloads
 webpage](https://wxpython.org/pages/downloads/index.html) for more information on this.
 In short, the steps you should follow in this case consist on creating a conda
 environment and then install `wxPython` and `python.app` on it before installing
-`pyguitemp`:
+`guikit`:
 
 ```bash
-conda create -n pyguitemp-env python=3.8
-conda activate pyguitemp-env
-(pyguitemp-env)  $ conda install wxPython -c conda-forge
-(pyguitemp-env)  $ conda install python.app
-(pyguitemp-env)  $ pip install pyguitemp
+conda create -n guikit-env python=3.8
+conda activate guikit-env
+(guikit-env)  $ conda install wxPython -c conda-forge
+(guikit-env)  $ conda install python.app
+(guikit-env)  $ pip install guikit
 ```
 
-And then, use `pyguitemp` with `pythonw` rather than `python` (see [this
-section](using_pyguitemp.md) for all the options). For example:
+And then, use `guikit` with `pythonw` rather than `python` (see [this
+section](using_guikit.md) for all the options). For example:
 
 ```bash
-(pyguitemp-env)  $ pythonw -m pyguitemp run
+(guikit-env)  $ pythonw -m guikit run
 ```

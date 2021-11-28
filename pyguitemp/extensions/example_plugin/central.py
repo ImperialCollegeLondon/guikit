@@ -1,6 +1,6 @@
 import wx
 
-from pyguitemp.plugins import PluginBase
+from guikit.plugins import PluginBase
 
 
 class CentralPlugin(PluginBase):

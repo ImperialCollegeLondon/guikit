@@ -4,7 +4,7 @@ from pytest import mark, raises
 
 
 def test_thread_result():
-    from pyguitemp.threads import ThreadResult
+    from guikit.threads import ThreadResult
 
     result = ThreadResult("some data", 1)
     assert result.data == "some data"
@@ -13,7 +13,7 @@ def test_thread_result():
 
 class TestWorkerThread:
     def test_connect_events(self, window):
-        from pyguitemp.threads import WorkerThread
+        from guikit.threads import WorkerThread
 
         window.Connect = MagicMock()
         worker = WorkerThread(lambda: None)
@@ -25,10 +25,10 @@ class TestWorkerThread:
         class Pool:
             post_event = MagicMock()
 
-        with patch("pyguitemp.threads.ThreadResult", MagicMock()), patch(
-            "pyguitemp.threads.ThreadPool", Pool
+        with patch("guikit.threads.ThreadResult", MagicMock()), patch(
+            "guikit.threads.ThreadPool", Pool
         ):
-            from pyguitemp.threads import ThreadResult, WorkerThread
+            from guikit.threads import ThreadResult, WorkerThread
 
             result = "some result"
             worker = WorkerThread(lambda: result)
@@ -51,7 +51,7 @@ class TestWorkerThread:
 
     @mark.parametrize("callback", ["on_abort", "on_complete", "on_error"])
     def test_callbacks(self, callback):
-        from pyguitemp.threads import WorkerThread
+        from guikit.threads import WorkerThread
 
         class Event:
 
@@ -81,8 +81,8 @@ class Worker:
 class TestThreadPool:
     def test_run_thread(self, window):
 
-        with patch("pyguitemp.threads.WorkerThread", MagicMock(return_value=Worker)):
-            from pyguitemp.threads import ThreadPool
+        with patch("guikit.threads.WorkerThread", MagicMock(return_value=Worker)):
+            from guikit.threads import ThreadPool
 
             pool = ThreadPool(window)
             pool.run_thread(lambda: None)
@@ -91,12 +91,12 @@ class TestThreadPool:
 
     def test_query_abort(self, window):
         with patch(
-            "pyguitemp.threads.WorkerThread", MagicMock(return_value=Worker)
-        ), patch("pyguitemp.threads.logger", MagicMock()), patch(
-            "pyguitemp.threads.threading.get_ident",
+            "guikit.threads.WorkerThread", MagicMock(return_value=Worker)
+        ), patch("guikit.threads.logger", MagicMock()), patch(
+            "guikit.threads.threading.get_ident",
             MagicMock(return_value=Worker.ident + 1),
         ):
-            from pyguitemp.threads import ThreadPool, logger
+            from guikit.threads import ThreadPool, logger
 
             pool = ThreadPool(window)
 
@@ -112,9 +112,9 @@ class TestThreadPool:
 
     def test_abort_thread(self, window):
         with patch(
-            "pyguitemp.threads.WorkerThread", MagicMock(return_value=Worker)
-        ), patch("pyguitemp.threads.logger", MagicMock()):
-            from pyguitemp.threads import ThreadPool, logger
+            "guikit.threads.WorkerThread", MagicMock(return_value=Worker)
+        ), patch("guikit.threads.logger", MagicMock()):
+            from guikit.threads import ThreadPool, logger
 
             pool = ThreadPool(window)
 
@@ -134,8 +134,8 @@ class TestThreadPool:
         class WX:
             PostEvent = MagicMock()
 
-        with patch("pyguitemp.threads.wx", WX):
-            from pyguitemp.threads import ThreadPool
+        with patch("guikit.threads.wx", WX):
+            from guikit.threads import ThreadPool
 
             pool = ThreadPool(window)
             pool.post_event(None)
@@ -143,8 +143,8 @@ class TestThreadPool:
 
 
 def test_run_in_thread():
-    with patch("pyguitemp.threads.ThreadPool", MagicMock()):
-        from pyguitemp.threads import ThreadPool, run_in_thread
+    with patch("guikit.threads.ThreadPool", MagicMock()):
+        from guikit.threads import ThreadPool, run_in_thread
 
         def target():
             pass
@@ -155,24 +155,24 @@ def test_run_in_thread():
 
 
 def test_run_daemon():
-    with patch("pyguitemp.threads.ThreadPool", MagicMock()):
-        from pyguitemp.threads import ThreadPool, run_daemon
+    with patch("guikit.threads.ThreadPool", MagicMock()):
+        from guikit.threads import ThreadPool, run_daemon
 
         run_daemon(lambda: None)
         ThreadPool().run_daemon_called_once_with(None, None, None, None, True)
 
 
 def test_abort_thread():
-    with patch("pyguitemp.threads.ThreadPool", MagicMock()):
-        from pyguitemp.threads import ThreadPool, abort_thread
+    with patch("guikit.threads.ThreadPool", MagicMock()):
+        from guikit.threads import ThreadPool, abort_thread
 
         abort_thread(43)
         ThreadPool().abort_thread.called_once_with(43)
 
 
 def test_should_abort():
-    with patch("pyguitemp.threads.ThreadPool", MagicMock()):
-        from pyguitemp.threads import ThreadPool, should_abort
+    with patch("guikit.threads.ThreadPool", MagicMock()):
+        from guikit.threads import ThreadPool, should_abort
 
         should_abort()
         ThreadPool().query_abort.called_once_with()

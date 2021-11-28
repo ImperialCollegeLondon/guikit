@@ -7,7 +7,7 @@ class TestStatusBar:
     def test_set_status_widths(self, window):
         import wx
 
-        from pyguitemp.core import StatusBar
+        from guikit.core import StatusBar
 
         bar = StatusBar(window)
         assert isinstance(bar.progress_bar, wx.Gauge)
@@ -58,7 +58,7 @@ class TestMainWindow:
     def test__make_central_widget(self, main_window):
         import wx
 
-        from pyguitemp.plugins import PluginBase
+        from guikit.plugins import PluginBase
 
         with pytest.raises(ValueError):
             main_window._make_central_widget()
@@ -79,8 +79,8 @@ class TestMainWindow:
 
 class TestBuiltInActions:
     def test_menu_entries(self):
-        from pyguitemp.core import BuiltInActions
-        from pyguitemp.plugins import MenuTool
+        from guikit.core import BuiltInActions
+        from guikit.plugins import MenuTool
 
         entries = BuiltInActions().menu_entries()
         assert len(entries) > 0
@@ -92,8 +92,8 @@ class TestMainApp:
     def test_on_init(self, caplog):
         import wx
 
-        with patch("pyguitemp.core.MainWindow.Show", MagicMock()):
-            from pyguitemp.core import MainApp, MainWindow
+        with patch("guikit.core.MainWindow.Show", MagicMock()):
+            from guikit.core import MainApp, MainWindow
 
             app = MainApp(title="Some App", tab_style="a corner")
             assert "Invalid tab_style" in caplog.messages[-1]

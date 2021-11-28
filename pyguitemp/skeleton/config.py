@@ -4,7 +4,7 @@ aspects of the tool.
 """
 from typing import List
 
-from pyguitemp.plugins import collect_builtin_extensions
+from guikit.plugins import collect_builtin_extensions
 
 APP_LONG_NAME: str = "Python GUI Template"
 """Long, human meaningful app name."""

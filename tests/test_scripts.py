@@ -8,8 +8,8 @@ def test_run_app():
     class App:
         MainLoop = MagicMock()
 
-    with patch("pyguitemp.scripts.MainApp", MagicMock(return_value=App)):
-        from pyguitemp.scripts import MainApp, run
+    with patch("guikit.scripts.MainApp", MagicMock(return_value=App)):
+        from guikit.scripts import MainApp, run
 
         run()
 
@@ -18,12 +18,12 @@ def test_run_app():
 
 
 def test_init_repo(tmpdir):
-    with patch("pyguitemp.scripts.copytree", MagicMock()):
+    with patch("guikit.scripts.copytree", MagicMock()):
         from pathlib import Path
 
-        from pyguitemp.scripts import _init_repo, copytree
+        from guikit.scripts import _init_repo, copytree
 
-        skeleton = Path(__file__).parent.parent / "pyguitemp" / "skeleton"
+        skeleton = Path(__file__).parent.parent / "guikit" / "skeleton"
         _init_repo(tmpdir, "my_app")
         copytree.assert_called_once_with(skeleton, tmpdir / "my_app")
 
@@ -32,7 +32,7 @@ class TestRunSubCommand:
     def test_add_arguments(self):
         import argparse
 
-        from pyguitemp.scripts import RunSubCommand
+        from guikit.scripts import RunSubCommand
 
         command = RunSubCommand()
         parser = argparse.ArgumentParser()
@@ -42,8 +42,8 @@ class TestRunSubCommand:
     def test_run(self):
         import argparse
 
-        with patch("pyguitemp.scripts.run", MagicMock()):
-            from pyguitemp.scripts import RunSubCommand, run
+        with patch("guikit.scripts.run", MagicMock()):
+            from guikit.scripts import RunSubCommand, run
 
             command = RunSubCommand()
             command.run(argparse.Namespace())
@@ -54,7 +54,7 @@ class TestInitSubCommand:
     def test_add_arguments(self):
         import argparse
 
-        from pyguitemp.scripts import InitSubCommand
+        from guikit.scripts import InitSubCommand
 
         command = InitSubCommand()
         parser = argparse.ArgumentParser()
@@ -64,8 +64,8 @@ class TestInitSubCommand:
     def test_run(self):
         import argparse
 
-        with patch("pyguitemp.scripts._init_repo", MagicMock()):
-            from pyguitemp.scripts import InitSubCommand, _init_repo
+        with patch("guikit.scripts._init_repo", MagicMock()):
+            from guikit.scripts import InitSubCommand, _init_repo
 
             command = InitSubCommand()
             args = argparse.Namespace(target="", name="")
@@ -76,7 +76,7 @@ class TestInitSubCommand:
 def test_parse_args():
 
     with patch("argparse.ArgumentParser.parse_args", MagicMock()):
-        from pyguitemp.scripts import _SUB_COMMANDS, _parse_args
+        from guikit.scripts import _SUB_COMMANDS, _parse_args
 
         for command in _SUB_COMMANDS:
             command.add_arguments = MagicMock()
@@ -91,8 +91,8 @@ def test_main():
     class Namespace:
         command = "run"
 
-    with patch("pyguitemp.scripts._parse_args", MagicMock(return_value=Namespace)):
-        from pyguitemp.scripts import _SUB_COMMAND_BY_NAME, _parse_args, main
+    with patch("guikit.scripts._parse_args", MagicMock(return_value=Namespace)):
+        from guikit.scripts import _SUB_COMMAND_BY_NAME, _parse_args, main
 
         _SUB_COMMAND_BY_NAME[Namespace.command].run = MagicMock()
 

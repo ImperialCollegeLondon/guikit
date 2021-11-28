@@ -12,7 +12,7 @@ license](https://img.shields.io/pypi/l/guikit.svg)](https://pypi.python.org/pypi
 [![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)
 [![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
 
-# Python GUI Template <!-- omit in toc -->
+# GUIKIT <!-- omit in toc -->
 
 This little tool's purpose is to facilitate getting started building a GUI for your
 software. It takes care of most of the boilerplate code that you need to build a GUI -

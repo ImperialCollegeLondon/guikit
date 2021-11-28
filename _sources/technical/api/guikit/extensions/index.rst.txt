@@ -1,0 +1,24 @@
+:py:mod:`guikit.extensions`
+===========================
+
+.. py:module:: guikit.extensions
+
+.. autoapi-nested-parse::
+
+   This is the directory that will contain the individual plugins, each on a separate
+   subdirectory. Plugins can import objects from the above files, but they should not
+   depend on each other.
+
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   about_dialog/index.rst
+   example_plugin/index.rst
+   load_data/index.rst
+
+

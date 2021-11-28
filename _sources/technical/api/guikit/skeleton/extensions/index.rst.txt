@@ -1,0 +1,6 @@
+:py:mod:`guikit.skeleton.extensions`
+====================================
+
+.. py:module:: guikit.skeleton.extensions
+
+

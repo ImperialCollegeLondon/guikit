@@ -1,0 +1,44 @@
+:py:mod:`guikit`
+================
+
+.. py:module:: guikit
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   extensions/index.rst
+   skeleton/index.rst
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   __main__/index.rst
+   config/index.rst
+   core/index.rst
+   logging/index.rst
+   plugins/index.rst
+   scripts/index.rst
+   threads/index.rst
+
+
+Package Contents
+----------------
+
+.. py:data:: VERSION
+   :annotation: = 0.2.0
+
+   
+
+.. py:data:: APP_NAME
+   
+
+   
+

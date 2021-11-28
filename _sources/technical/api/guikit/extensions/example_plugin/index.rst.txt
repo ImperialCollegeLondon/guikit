@@ -1,0 +1,110 @@
+:py:mod:`guikit.extensions.example_plugin`
+==========================================
+
+.. py:module:: guikit.extensions.example_plugin
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   central/index.rst
+   menu/index.rst
+   notebook/index.rst
+   tools/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   guikit.extensions.example_plugin.CentralPlugin
+   guikit.extensions.example_plugin.MenuEntryPlugin
+   guikit.extensions.example_plugin.NotebookPlugin
+   guikit.extensions.example_plugin.ToolbarPlugin
+
+
+
+
+.. py:class:: CentralPlugin
+
+   Bases: :py:obj:`guikit.plugins.PluginBase`
+
+   Base class that defines the required API that all the views of the different plugins
+   will need to provide.
+
+   .. py:method:: central(self, parent)
+
+      Central widget provided by this plugin.
+
+      :param parent: The main window, to be used as parent during the creation of the
+      :param widget.:
+
+      :returns: None (if no central widget provided) or any object derived from
+                wx.MainWindow (pretty much, any widget).
+
+
+
+.. py:class:: MenuEntryPlugin
+
+   Bases: :py:obj:`guikit.plugins.PluginBase`
+
+   Base class that defines the required API that all the views of the different plugins
+   will need to provide.
+
+   .. py:method:: menu_entries(self)
+
+      Return a list of menu entries provided by this plugin.
+
+      The items of the list must be MenuTool objects.
+
+      :returns: A list of MenuTool objects provided by this plugin to be added to the
+                application menu bar.
+
+
+
+.. py:class:: NotebookPlugin
+
+   Bases: :py:obj:`guikit.plugins.PluginBase`
+
+   Base class that defines the required API that all the views of the different plugins
+   will need to provide.
+
+   .. py:method:: tabs(self, parent)
+
+      Create and return the list of tabs provided by this plugin.
+
+      The elements of the list must be Tab objects.
+
+      :param parent: The application notebook, to be used as parent during the creation
+      :param of the tabs.:
+
+      :returns: A list of Tab objects provided by this plugin to be added to the application
+                notebook.
+
+
+
+.. py:class:: ToolbarPlugin
+
+   Bases: :py:obj:`guikit.plugins.PluginBase`
+
+   Base class that defines the required API that all the views of the different plugins
+   will need to provide.
+
+   .. py:method:: toolbar_items(self)
+
+      Return a list of toolbar items provided by this plugin.
+
+      The items of the list must be MenuTool objects.
+
+      :returns: A list of MenuTool objects provided by this plugin to be added to the
+                application toolbar.
+
+
+

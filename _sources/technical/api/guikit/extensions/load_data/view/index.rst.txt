@@ -1,0 +1,103 @@
+:py:mod:`guikit.extensions.load_data.view`
+==========================================
+
+.. py:module:: guikit.extensions.load_data.view
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   guikit.extensions.load_data.view.DataLoaderTab
+   guikit.extensions.load_data.view.FileDialogCustom
+   guikit.extensions.load_data.view.DataTable
+
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   guikit.extensions.load_data.view.EVEN_ROW_COLOUR
+   guikit.extensions.load_data.view.GRID_LINE_COLOUR
+
+
+.. py:data:: EVEN_ROW_COLOUR
+   :annotation: = #CCE6FF
+
+   
+
+.. py:data:: GRID_LINE_COLOUR
+   :annotation: = #ccc
+
+   
+
+.. py:class:: DataLoaderTab(parent, on_open, on_delete)
+
+   Bases: :py:obj:`wx.Window`
+
+   .. py:method:: _init_gui(self)
+
+      Initialises the GUI elements in the frame.
+
+
+   .. py:method:: display_data(self, filename, data = None)
+
+      Displays the data on a table and sets the filename
+
+      :param filename: Name of the file loaded
+      :param data: A dataframe with the data
+
+
+   .. py:method:: update_table(self, data = None)
+
+      updates the data on the table.
+
+      :param data: The data to update the table with. Can be None.
+
+
+
+.. py:class:: FileDialogCustom
+
+   Bases: :py:obj:`wx.FileDialog`
+
+   .. py:method:: open(self)
+
+
+
+.. py:class:: DataTable(data=None)
+
+   Bases: :py:obj:`wx.grid.GridTableBase`
+
+   Declare DataTable to hold the wx.grid data to be displayed
+
+   Example taken from: https://stackoverflow.com/a/65265739/3778792
+
+   .. py:method:: GetNumberRows(self)
+
+
+   .. py:method:: GetNumberCols(self)
+
+
+   .. py:method:: GetValue(self, row, col)
+
+
+   .. py:method:: SetValue(self, row, col, value)
+
+
+   .. py:method:: GetColLabelValue(self, col)
+
+
+   .. py:method:: GetTypeName(self, row, col)
+
+
+   .. py:method:: GetAttr(self, row, col, prop)
+
+
+

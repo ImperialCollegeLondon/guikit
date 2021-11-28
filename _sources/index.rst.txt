@@ -1,5 +1,5 @@
 |GitHub| |Test and build| |PyPI version shields.io| |PyPI status| |PyPI
-pyversions| |PyPI license| |Website pyguitemp| |Windows| |macOS| |Linux|
+pyversions| |PyPI license| |Website guikit| |Windows| |macOS| |Linux|
 
 Welcome to PyGUItemp documentation!
 ===================================
@@ -10,14 +10,14 @@ need to build a GUI - making some opinionated decisions about the
 general layout of the application - so you can focus on adding the
 business logic and views specific to your problem.
 
-``pyguitemp`` uses ``wXPython`` as the GUI framework, meaning that the
+``guikit`` uses ``wXPython`` as the GUI framework, meaning that the
 resulting application will have a native look and feel regadless of
 running it on Windows, Linux or MacOS.
 
-What ``pyguitemp`` is and what is not
+What ``guikit`` is and what is not
 -------------------------------------
 
-``pyguitemp`` takes care of the boilerplate code and enables you to have
+``guikit`` takes care of the boilerplate code and enables you to have
 a minimal application running in no time, but you still need to code the
 rest of your GUI mannually yourself. That means you will need to learn
 how to use ``wxPython``, the widgets it offers and their options.
@@ -27,7 +27,7 @@ Designer <https://realpython.com/qt-designer-python/>`__,
 `Glade <https://glade.gnome.org>`__ or `Matlab’s App
 Designer <https://www.mathworks.com/products/matlab/app-designer.html>`__.
 All of those are excellent tools… just a different kind of tools.
-``pyguitemp`` will save you some valuable time when creating a GUI, but
+``guikit`` will save you some valuable time when creating a GUI, but
 it is still a low level library.
 
 Why ``wxPython`` as GUI framework
@@ -63,15 +63,15 @@ Indices and tables
    :target: https://github.com/ImperialCollegeLondon/python-gui-template
 .. |Test and build| image:: https://github.com/ImperialCollegeLondon/python-gui-template/actions/workflows/ci.yml/badge.svg
    :target: https://github.com/ImperialCollegeLondon/python-gui-template/actions/workflows/ci.yml
-.. |PyPI version shields.io| image:: https://img.shields.io/pypi/v/pyguitemp.svg
-   :target: https://pypi.python.org/pypi/pyguitemp/
-.. |PyPI status| image:: https://img.shields.io/pypi/status/pyguitemp.svg
-   :target: https://pypi.python.org/pypi/pyguitemp/
-.. |PyPI pyversions| image:: https://img.shields.io/pypi/pyversions/pyguitemp.svg
-   :target: https://pypi.python.org/pypi/pyguitemp/
-.. |PyPI license| image:: https://img.shields.io/pypi/l/pyguitemp.svg
-   :target: https://pypi.python.org/pypi/pyguitemp/
-.. |Website pyguitemp| image:: https://img.shields.io/website-up-down-green-red/http/shields.io.svg
+.. |PyPI version shields.io| image:: https://img.shields.io/pypi/v/guikit.svg
+   :target: https://pypi.python.org/pypi/guikit/
+.. |PyPI status| image:: https://img.shields.io/pypi/status/guikit.svg
+   :target: https://pypi.python.org/pypi/guikit/
+.. |PyPI pyversions| image:: https://img.shields.io/pypi/pyversions/guikit.svg
+   :target: https://pypi.python.org/pypi/guikit/
+.. |PyPI license| image:: https://img.shields.io/pypi/l/guikit.svg
+   :target: https://pypi.python.org/pypi/guikit/
+.. |Website guikit| image:: https://img.shields.io/website-up-down-green-red/http/shields.io.svg
    :target: https://imperialcollegelondon.github.io/python-gui-template/
 .. |Windows| image:: https://svgshare.com/i/ZhY.svg
    :target: https://svgshare.com/i/ZhY.svg

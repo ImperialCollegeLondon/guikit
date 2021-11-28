@@ -1,6 +1,0 @@
-:py:mod:`pyguitemp.skeleton.extensions`
-=======================================
-
-.. py:module:: pyguitemp.skeleton.extensions
-
-

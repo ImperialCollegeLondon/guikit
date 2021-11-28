@@ -1,0 +1,32 @@
+:py:mod:`guikit.extensions.load_data.model`
+===========================================
+
+.. py:module:: guikit.extensions.load_data.model
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   guikit.extensions.load_data.model.load_data
+   guikit.extensions.load_data.model.delete_data
+
+
+
+.. py:function:: load_data(filename)
+
+   Loads data from disk.
+
+   :param filename: Name of the file to load. Must contain data in CSV format.
+
+
+.. py:function:: delete_data()
+
+   Deletes data from memory.
+
+

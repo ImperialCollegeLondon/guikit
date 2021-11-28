@@ -1,0 +1,66 @@
+:py:mod:`guikit.extensions.load_data`
+=====================================
+
+.. py:module:: guikit.extensions.load_data
+
+.. autoapi-nested-parse::
+
+   This extension loads some experimental data and displays it into a table.
+
+   Channels:
+       data.load: Triggered when new data is loaded or cleared.
+           - filename (str): Path of tha data loaded or an error message.
+           - data (Optional[pd.DataFrame]): Data as a pandas dataframe or None if there is
+               o data.
+
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   model/index.rst
+   presenter/index.rst
+   view/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   guikit.extensions.load_data.DataLoaderTab
+
+
+
+
+.. py:class:: DataLoaderTab(parent, on_open, on_delete)
+
+   Bases: :py:obj:`wx.Window`
+
+   .. py:method:: _init_gui(self)
+
+      Initialises the GUI elements in the frame.
+
+
+   .. py:method:: display_data(self, filename, data = None)
+
+      Displays the data on a table and sets the filename
+
+      :param filename: Name of the file loaded
+      :param data: A dataframe with the data
+
+
+   .. py:method:: update_table(self, data = None)
+
+      updates the data on the table.
+
+      :param data: The data to update the table with. Can be None.
+
+
+

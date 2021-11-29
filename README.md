@@ -1,4 +1,4 @@
-[![Test and build](https://github.com/ImperialCollegeLondon/python-gui-template/actions/workflows/ci.yml/badge.svg)](https://github.com/ImperialCollegeLondon/python-gui-template/actions/workflows/ci.yml)
+[![Test and build](https://github.com/ImperialCollegeLondon/guikit/actions/workflows/ci.yml/badge.svg)](https://github.com/ImperialCollegeLondon/guikit/actions/workflows/ci.yml)
 [![PyPI version
 shields.io](https://img.shields.io/pypi/v/guikit.svg)](https://pypi.python.org/pypi/guikit/)
 [![PyPI
@@ -7,7 +7,7 @@ status](https://img.shields.io/pypi/status/guikit.svg)](https://pypi.python.org/
 pyversions](https://img.shields.io/pypi/pyversions/guikit.svg)](https://pypi.python.org/pypi/guikit/)
 [![PyPI
 license](https://img.shields.io/pypi/l/guikit.svg)](https://pypi.python.org/pypi/guikit/)
-[![Website guikit](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://imperialcollegelondon.github.io/python-gui-template/)
+[![Website guikit](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://imperialcollegelondon.github.io/guikit/)
 [![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
 [![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)
 [![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
@@ -101,7 +101,7 @@ webpage](https://wxpython.org/pages/downloads/index.html) for more information o
 
 There are several ways you can benefit from `guikit`, depending on what you want to
 achieve. Check the
-[documentation](https://imperialcollegelondon.github.io/python-gui-template/) for full
+[documentation](https://imperialcollegelondon.github.io/guikit/) for full
 details.
 
 - Initialise your current directory with a skeleton for your GUI application using

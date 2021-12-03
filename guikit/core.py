@@ -10,7 +10,7 @@ instance can be access directly from the class anywhere else where you import th
 from __future__ import annotations
 
 import itertools
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 import wx
 
@@ -71,10 +71,12 @@ class MainWindow(wx.Frame):
         self,
         parent,
         title: str,
+        size: Tuple[int, int],
         notebook_layout: bool = True,
         tab_style: int = wx.NB_TOP,
     ):
         super(MainWindow, self).__init__(parent, title=title)
+        self.size = size
         self.notebook_layout = notebook_layout
         self.tab_style = tab_style
         self.SetStatusBar(StatusBar(self))
@@ -87,7 +89,7 @@ class MainWindow(wx.Frame):
             self._make_central_widget()
         self._make_toolbar()
         self._make_menubar()
-        self.SetInitialSize(wx.Size(800, 600))
+        self.SetInitialSize(wx.Size(self.size))
 
     def _make_menubar(self) -> None:
         """Create the menu bar from the entries provided by the widgets."""
@@ -207,12 +209,14 @@ class MainApp(wx.App):
         self,
         *args,
         title: str,
+        size_mainwindow: Tuple[int, int],
         plugins_list: Optional[List[str]] = None,
         notebook_layout: bool = True,
         tab_style: str = "top",
         **kwargs,
     ):
         self.title = title
+        self.size_mainwindow = size_mainwindow
         self.plugins_list = plugins_list if plugins_list is not None else []
         self.notebook_layout = notebook_layout
         try:
@@ -228,7 +232,9 @@ class MainApp(wx.App):
 
     def OnInit(self) -> bool:
         self.SetAppName(self.title)
-        window = MainWindow(None, self.title, self.notebook_layout, self.tab_style)
+        window = MainWindow(
+            None, self.title, self.size_mainwindow, self.notebook_layout, self.tab_style
+        )
         self.SetTopWindow(window)
 
         load_plugins(self.plugins_list)

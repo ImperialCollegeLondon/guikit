@@ -16,7 +16,7 @@ def main_window():
     from guikit.core import MainWindow
 
     app = wx.App()
-    frame = MainWindow(None, "My App")
+    frame = MainWindow(None, title="My App", size=(0, 0))
     yield frame
     wx.CallAfter(frame.Close)
     app.MainLoop()

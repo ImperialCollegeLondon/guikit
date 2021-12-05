@@ -43,7 +43,7 @@ def plugin():
                     bitmap=wx.ArtProvider.GetBitmap(
                         wx.ART_QUIT, wx.ART_TOOLBAR, wx.Size(50, 50)
                     ),
-                ),
+                )
             ]
 
     return ExamplePlugin

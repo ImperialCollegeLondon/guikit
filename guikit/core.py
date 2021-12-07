@@ -21,26 +21,22 @@ from .threads import ThreadPool
 
 class StatusBar(wx.StatusBar):
     """
-    Singleton class to manage the top level status and progress bar.
+    Class to manage the top level status and progress bar.
+
+    This class should not be used directly, but rather the `status_bar` instance within
+    the `guikit.core` module shall be used.
 
     It provides two fields:
         - field 0: Automatic display of menu and tools descriptions as well as custom
             status messages
         - field 1: Holds the progress bar. Do not use it for displaying text.
 
-    Use 'StatusBar().SomeMethod` to manage the status bar messages and properties. See
+    Use 'status_bar.SomeMethod` to manage the status bar messages and properties. See
     'wx.StatusBar' for more information about the options available.
 
-    Use `StatusBar().progress_bar.SomeMethod` to manage the progress bar properties.
+    Use `status_bar.progress_bar.SomeMethod` to manage the progress bar properties.
     See 'wx.Gauge' for more information about the options available.
     """
-
-    _instance: Optional[StatusBar] = None
-
-    def __new__(cls, *args, **kwargs):
-        if cls._instance is None:
-            cls._instance = wx.StatusBar.__new__(cls)
-        return cls._instance
 
     def __init__(self, *args, progress_bar_width: int = 150, **kwargs):
         super(StatusBar, self).__init__(*args, **kwargs)
@@ -67,6 +63,10 @@ class StatusBar(wx.StatusBar):
         self.progress_bar.SetSize(self.GetStatusWidth(1), 10)
 
 
+status_bar: Optional[StatusBar] = None
+"""Main status bar of the program"""
+
+
 class MainWindow(wx.Frame):
     def __init__(
         self,
@@ -80,7 +80,10 @@ class MainWindow(wx.Frame):
         self.size = size
         self.notebook_layout = notebook_layout
         self.tab_style = tab_style
-        self.SetStatusBar(StatusBar(self))
+
+        global status_bar
+        status_bar = StatusBar(self)
+        self.SetStatusBar(status_bar)
 
     def populate_window(self):
         """Adds menu items, tools and other widgets in plugins to the main window."""

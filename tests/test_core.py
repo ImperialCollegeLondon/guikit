@@ -95,7 +95,9 @@ class TestMainApp:
         with patch("guikit.core.MainWindow.Show", MagicMock()):
             from guikit.core import MainApp, MainWindow
 
-            app = MainApp(title="Some App", tab_style="a corner")
+            app = MainApp(
+                title="Some App", size_mainwindow=(0, 0), tab_style="a corner"
+            )
             assert "Invalid tab_style" in caplog.messages[-1]
             assert app.tab_style == wx.NB_TOP
             assert isinstance(app.GetTopWindow(), MainWindow)

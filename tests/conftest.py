@@ -16,7 +16,7 @@ def main_window():
     from guikit.core import MainWindow
 
     app = wx.App()
-    frame = MainWindow(None, "My App")
+    frame = MainWindow(None, title="My App", size=(0, 0))
     yield frame
     wx.CallAfter(frame.Close)
     app.MainLoop()
@@ -43,7 +43,7 @@ def plugin():
                     bitmap=wx.ArtProvider.GetBitmap(
                         wx.ART_QUIT, wx.ART_TOOLBAR, wx.Size(50, 50)
                     ),
-                ),
+                )
             ]
 
     return ExamplePlugin

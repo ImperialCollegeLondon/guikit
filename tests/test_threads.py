@@ -144,12 +144,12 @@ class TestThreadPool:
 
 def test_run_in_thread():
     with patch("guikit.threads.ThreadPool", MagicMock()):
-        from guikit.threads import ThreadPool, run_in_thread
+        from guikit.threads import ThreadPool, run_thread
 
         def target():
             pass
 
-        run_in_thread(target)
+        run_thread(target)
         assert ThreadPool().run_thread.call_count == 1
         ThreadPool().run_thread.assert_called_once_with(target, None, None, None, None)
 

@@ -208,7 +208,7 @@ class ThreadPool:
         wx.PostEvent(self._window, event)
 
 
-def run_in_thread(
+def run_thread(
     target: Callable,
     on_abort: Optional[Callable] = None,
     on_complete: Optional[Callable] = None,

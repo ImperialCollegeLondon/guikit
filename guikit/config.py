@@ -2,7 +2,7 @@
 Settings for configuring the application general behavior, plugging collection and other
 aspects of the tool.
 """
-from typing import List
+from typing import List, Tuple
 
 from .plugins import collect_builtin_extensions
 
@@ -20,3 +20,6 @@ NOTEBOOK_LAYOUT: bool = True
 
 TAB_STYLE: str = "top"
 """Location of the tabs. Valid values are `top`, `bottom`, `left` and `right`."""
+
+SIZE_MAINWINDOW: Tuple[int, int] = (800, 600)
+"""Input for main window size."""

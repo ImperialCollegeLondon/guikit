@@ -6,7 +6,7 @@ import inspect
 from abc import ABC, abstractmethod
 from pathlib import Path
 from shutil import copytree
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 from . import APP_NAME
 from . import config as dconfig
@@ -37,11 +37,15 @@ def run():
         else dconfig.NOTEBOOK_LAYOUT
     )
     tab_style = config.TAB_STYLE if "TAB_STYLE" in dir(config) else dconfig.TAB_STYLE
+    size_mainwindow: Tuple[int, int] = (
+        config.SIZE_MAINWINDOW if "SIZE_MAINWINDOW" in dir(config) else (800, 600)
+    )
 
     all_plugins = plug + [p for p in autoplugins if p not in plug]
 
     app = MainApp(
         title=title,
+        size_mainwindow=size_mainwindow,
         plugins_list=all_plugins,
         notebook_layout=nb_layout,
         tab_style=tab_style,

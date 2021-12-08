@@ -50,7 +50,7 @@ class TestWorkerThread:
             ThreadResult.assert_called_once_with("Error msg", worker._event_on_error)
 
     @mark.parametrize("callback", ["on_abort", "on_complete", "on_error"])
-    def test_callbacks(self, callback):
+    def test_callbacks(self, callback, caplog):
         from guikit.threads import WorkerThread
 
         class Event:
@@ -64,11 +64,15 @@ class TestWorkerThread:
         event = Event()
         worker = WorkerThread(lambda: None)
         getattr(worker, callback)(event)
-        event._data.assert_not_called()
+        if callback == "on_error":
+            caplog.records[-1].levelname == "ERROR"
+            event._data.assert_called_once()
+        else:
+            event._data.assert_not_called()
 
         worker = WorkerThread(lambda: None, **{callback: MagicMock()})
         getattr(worker, callback)(event)
-        event._data.assert_called_once()
+        event._data.assert_called()
 
 
 class Worker:
@@ -144,12 +148,12 @@ class TestThreadPool:
 
 def test_run_in_thread():
     with patch("guikit.threads.ThreadPool", MagicMock()):
-        from guikit.threads import ThreadPool, run_in_thread
+        from guikit.threads import ThreadPool, run_thread
 
         def target():
             pass
 
-        run_in_thread(target)
+        run_thread(target)
         assert ThreadPool().run_thread.call_count == 1
         ThreadPool().run_thread.assert_called_once_with(target, None, None, None, None)
 

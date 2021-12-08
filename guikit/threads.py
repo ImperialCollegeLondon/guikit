@@ -51,7 +51,7 @@ class WorkerThread(threading.Thread):
         super(WorkerThread, self).__init__(target=target, daemon=daemon)
         self._on_abort = on_abort
         self._on_complete = on_complete
-        self._on_error = on_error
+        self._on_error = on_error if on_error is not None else logger.error
         self._event_on_abort = wx.NewEventType()
         self._event_on_complete = wx.NewEventType()
         self._event_on_error = wx.NewEventType()
@@ -208,7 +208,7 @@ class ThreadPool:
         wx.PostEvent(self._window, event)
 
 
-def run_in_thread(
+def run_thread(
     target: Callable,
     on_abort: Optional[Callable] = None,
     on_complete: Optional[Callable] = None,

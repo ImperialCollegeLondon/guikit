@@ -16,6 +16,7 @@ import wx
 
 from .logging import logger
 from .plugins import KNOWN_PLUGINS, MenuTool, PluginBase, load_plugins
+from .threads import ThreadPool
 
 
 class StatusBar(wx.StatusBar):
@@ -236,6 +237,7 @@ class MainApp(wx.App):
             None, self.title, self.size_mainwindow, self.notebook_layout, self.tab_style
         )
         self.SetTopWindow(window)
+        ThreadPool(window)
 
         load_plugins(self.plugins_list)
         window.populate_window()

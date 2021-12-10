@@ -38,3 +38,8 @@ Module Contents
 
    Location of the tabs. Valid values are `top`, `bottom`, `left` and `right`.
 
+.. py:data:: SIZE_MAINWINDOW
+   :annotation: :Tuple[int, int] = [800, 600]
+
+   Input for main window size.
+

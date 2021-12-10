@@ -36,6 +36,7 @@ Attributes
 
 .. autoapisummary::
 
+   guikit.core.status_bar
    guikit.core._tab_location
 
 
@@ -43,23 +44,21 @@ Attributes
 
    Bases: :py:obj:`wx.StatusBar`
 
-   Singleton class to manage the top level status and progress bar.
+   Class to manage the top level status and progress bar.
+
+   This class should not be used directly, but rather the `status_bar` instance within
+   the `guikit.core` module shall be used.
 
    It provides two fields:
        - field 0: Automatic display of menu and tools descriptions as well as custom
            status messages
        - field 1: Holds the progress bar. Do not use it for displaying text.
 
-   Use 'StatusBar().SomeMethod` to manage the status bar messages and properties. See
+   Use 'status_bar.SomeMethod` to manage the status bar messages and properties. See
    'wx.StatusBar' for more information about the options available.
 
-   Use `StatusBar().progress_bar.SomeMethod` to manage the progress bar properties.
+   Use `status_bar.progress_bar.SomeMethod` to manage the progress bar properties.
    See 'wx.Gauge' for more information about the options available.
-
-   .. py:attribute:: _instance
-      :annotation: :Optional[StatusBar]
-
-      
 
    .. py:method:: SetStatusWidths(self, width)
 
@@ -69,7 +68,12 @@ Attributes
 
 
 
-.. py:class:: MainWindow(parent, title, notebook_layout = True, tab_style = wx.NB_TOP)
+.. py:data:: status_bar
+   :annotation: :Optional[StatusBar]
+
+   Main status bar of the program
+
+.. py:class:: MainWindow(parent, title, size, notebook_layout = True, tab_style = wx.NB_TOP)
 
    Bases: :py:obj:`wx.Frame`
 
@@ -126,7 +130,7 @@ Attributes
 
    
 
-.. py:class:: MainApp(*args, title, plugins_list = None, notebook_layout = True, tab_style = 'top', **kwargs)
+.. py:class:: MainApp(*args, title, size_mainwindow, plugins_list = None, notebook_layout = True, tab_style = 'top', **kwargs)
 
    Bases: :py:obj:`wx.App`
 

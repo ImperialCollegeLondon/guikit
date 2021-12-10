@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>guikit.core &mdash; Python GUI Template 0.2.0 documentation</title>
+  <title>guikit.core &mdash; Python GUI Template 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
@@ -39,7 +39,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../../howtos/howtos_index.html">How to work with PyGUItemp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../howtos/howtos_index.html">How to work with GUIKIT</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guikit</span></code></a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../index.html#subpackages">Subpackages</a></li>
@@ -105,7 +105,7 @@ instance can be access directly from the class anywhere else where you import th
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#guikit.core.StatusBar" title="guikit.core.StatusBar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StatusBar</span></code></a></p></td>
-<td><p>Singleton class to manage the top level status and progress bar.</p></td>
+<td><p>Class to manage the top level status and progress bar.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#guikit.core.MainWindow" title="guikit.core.MainWindow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MainWindow</span></code></a></p></td>
 <td><p></p></td>
@@ -127,7 +127,10 @@ instance can be access directly from the class anywhere else where you import th
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#guikit.core._tab_location" title="guikit.core._tab_location"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_tab_location</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guikit.core.status_bar" title="guikit.core.status_bar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">status_bar</span></code></a></p></td>
+<td><p>Main status bar of the program</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#guikit.core._tab_location" title="guikit.core._tab_location"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_tab_location</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -136,7 +139,9 @@ instance can be access directly from the class anywhere else where you import th
 <dt class="sig sig-object py" id="guikit.core.StatusBar">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">guikit.core.</span></span><span class="sig-name descname"><span class="pre">StatusBar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">150</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.StatusBar" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.StatusBar</span></code></p>
-<p>Singleton class to manage the top level status and progress bar.</p>
+<p>Class to manage the top level status and progress bar.</p>
+<p>This class should not be used directly, but rather the <cite>status_bar</cite> instance within
+the <cite>guikit.core</cite> module shall be used.</p>
 <dl class="simple">
 <dt>It provides two fields:</dt><dd><ul class="simple">
 <li><dl class="simple">
@@ -148,20 +153,15 @@ instance can be access directly from the class anywhere else where you import th
 </ul>
 </dd>
 </dl>
-<p>Use ‘StatusBar().SomeMethod` to manage the status bar messages and properties. See
+<p>Use ‘status_bar.SomeMethod` to manage the status bar messages and properties. See
 ‘wx.StatusBar’ for more information about the options available.</p>
-<p>Use <cite>StatusBar().progress_bar.SomeMethod</cite> to manage the progress bar properties.
+<p>Use <cite>status_bar.progress_bar.SomeMethod</cite> to manage the progress bar properties.
 See ‘wx.Gauge’ for more information about the options available.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>progress_bar_width</strong> (<em>int</em>) – </p>
 </dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="guikit.core.StatusBar._instance">
-<span class="sig-name descname"><span class="pre">_instance</span></span><em class="property"><span class="w"> </span><span class="pre">:Optional[StatusBar]</span></em><a class="headerlink" href="#guikit.core.StatusBar._instance" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.core.StatusBar.SetStatusWidths">
 <span class="sig-name descname"><span class="pre">SetStatusWidths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.StatusBar.SetStatusWidths" title="Permalink to this definition"></a></dt>
@@ -175,14 +175,21 @@ See ‘wx.Gauge’ for more information about the options available.</p>
 
 </dd></dl>
 
+<dl class="py data">
+<dt class="sig sig-object py" id="guikit.core.status_bar">
+<span class="sig-prename descclassname"><span class="pre">guikit.core.</span></span><span class="sig-name descname"><span class="pre">status_bar</span></span><em class="property"><span class="w"> </span><span class="pre">:Optional[StatusBar]</span></em><a class="headerlink" href="#guikit.core.status_bar" title="Permalink to this definition"></a></dt>
+<dd><p>Main status bar of the program</p>
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="guikit.core.MainWindow">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">guikit.core.</span></span><span class="sig-name descname"><span class="pre">MainWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notebook_layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tab_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">wx.NB_TOP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">guikit.core.</span></span><span class="sig-name descname"><span class="pre">MainWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notebook_layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tab_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">wx.NB_TOP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.Frame</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>title</strong> (<em>str</em>) – </p></li>
+<li><p><strong>size</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – </p></li>
 <li><p><strong>notebook_layout</strong> (<em>bool</em>) – </p></li>
 <li><p><strong>tab_style</strong> (<em>int</em>) – </p></li>
 </ul>
@@ -271,12 +278,13 @@ needs to be provided between all plugins.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="guikit.core.MainApp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">guikit.core.</span></span><span class="sig-name descname"><span class="pre">MainApp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plugins_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notebook_layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tab_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'top'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainApp" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">guikit.core.</span></span><span class="sig-name descname"><span class="pre">MainApp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_mainwindow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plugins_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notebook_layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tab_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'top'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainApp" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.App</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>title</strong> (<em>str</em>) – </p></li>
+<li><p><strong>size_mainwindow</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – </p></li>
 <li><p><strong>plugins_list</strong> (<em>Optional</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>) – </p></li>
 <li><p><strong>notebook_layout</strong> (<em>bool</em>) – </p></li>
 <li><p><strong>tab_style</strong> (<em>str</em>) – </p></li>

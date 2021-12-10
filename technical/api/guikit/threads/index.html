@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>guikit.threads &mdash; Python GUI Template 0.2.0 documentation</title>
+  <title>guikit.threads &mdash; Python GUI Template 0.2.1 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
@@ -38,7 +38,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../../howtos/howtos_index.html">How to work with PyGUItemp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../howtos/howtos_index.html">How to work with GUIKIT</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guikit</span></code></a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../index.html#subpackages">Subpackages</a></li>
@@ -118,7 +118,7 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#guikit.threads.run_in_thread" title="guikit.threads.run_in_thread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_in_thread</span></code></a>(target, on_abort = None, on_complete = None, on_error = None, daemon = None)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guikit.threads.run_thread" title="guikit.threads.run_thread"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_thread</span></code></a>(target, on_abort = None, on_complete = None, on_error = None, daemon = None)</p></td>
 <td><p>Is an alias for ThreadPool().run_thread(...).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#guikit.threads.run_daemon" title="guikit.threads.run_daemon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_daemon</span></code></a>(target, on_abort = None, on_complete = None, on_error = None)</p></td>
@@ -317,8 +317,8 @@ target. Takes as input the exception raised.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="guikit.threads.run_in_thread">
-<span class="sig-prename descclassname"><span class="pre">guikit.threads.</span></span><span class="sig-name descname"><span class="pre">run_in_thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_abort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_complete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">daemon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.threads.run_in_thread" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="guikit.threads.run_thread">
+<span class="sig-prename descclassname"><span class="pre">guikit.threads.</span></span><span class="sig-name descname"><span class="pre">run_thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_abort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_complete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">daemon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.threads.run_thread" title="Permalink to this definition"></a></dt>
 <dd><p>Is an alias for ThreadPool().run_thread(…).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

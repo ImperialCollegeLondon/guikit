@@ -28,7 +28,7 @@ Functions
 
 .. autoapisummary::
 
-   guikit.threads.run_in_thread
+   guikit.threads.run_thread
    guikit.threads.run_daemon
    guikit.threads.abort_thread
    guikit.threads.should_abort
@@ -143,7 +143,7 @@ Functions
 
 
 
-.. py:function:: run_in_thread(target, on_abort = None, on_complete = None, on_error = None, daemon = None)
+.. py:function:: run_thread(target, on_abort = None, on_complete = None, on_error = None, daemon = None)
 
    Is an alias for ThreadPool().run_thread(...).
 

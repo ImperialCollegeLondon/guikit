@@ -1,5 +1,5 @@
-How to work with PyGUItemp
-==========================
+How to work with GUIKIT
+=======================
 
 .. toctree::
    :maxdepth: 3

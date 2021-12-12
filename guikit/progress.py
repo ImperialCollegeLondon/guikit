@@ -25,9 +25,37 @@ class Dialog(wx.ProgressDialog):
 
     This dialog also gives a finer control on when it shoould be updated - either the
     number of times it should be updated over the whole process in total or the number
-    of steps that shoould happen after updating it. This is important because updating
+    of steps that should happen after updating it. This is important because updating
     the progress dialog adds some overhead to the process, which might be important if
     it is updated too often.
+
+    Example of use:
+
+    If the loop the dialog is informing about is inmediately accessible, then a direct
+    call to Update can be used. For example:
+
+    ```python
+    with Dialog() as dlg:
+        for i in range(dlg.Range + 1):
+            dlg.Update(i)
+            # do something
+    ```
+
+    If that is not the case and the loop or recursive function is defined somewhere
+    else, possibly in another module, then the messaging system can be used to
+    communicate with the dialog:
+
+    ```python
+    def some_function():
+        maximum=300
+        pub.sendMessage("my_process.update_progress_dialog", value=0, maximum=maximum)
+        for i in range(maximum + 1):
+            pub.sendMessage("my_process.update_progress_dialog", value=i)
+            # do something
+
+    with Dialog(channel="my_process") as dlg:
+        some_function()
+    ```
 
     Args:
         - title: Title of the dialog window.
@@ -54,6 +82,7 @@ class Dialog(wx.ProgressDialog):
             title,
             message,
             style=wx.PD_APP_MODAL
+            | wx.PD_AUTO_HIDE
             | wx.PD_CAN_ABORT
             | wx.PD_ELAPSED_TIME
             | wx.PD_REMAINING_TIME,
@@ -90,12 +119,14 @@ class Dialog(wx.ProgressDialog):
             - maxium: An optional new number of maximum steps.
 
         Raises:
-            - ValueError if 'value' is not an integer of larger than maximum.
+            - ValueError if 'value' is not an integer or is larger than maximum.
 
         Returns:
             A tuple with two bool values indicating if the process has NOT been
-            cancelled and has NOT been skiped. In otherwords, (True, True) indicates
-            that the process should continue normally.
+            cancelled and if next step has been skiped. In otherwords:
+            - (True, False) indicates that the process should continue normally.
+            - (<bool>, True) indicates that the next step should be skipped.
+            - (False, <bool>) indicates that the process should be halted.
         """
         if maximum is not None:
             self.SetRange(maximum)
@@ -107,8 +138,11 @@ class Dialog(wx.ProgressDialog):
                 f"Current step larger than the maximum: {value}>{self.Range}"
             )
 
+        if not self.Shown:
+            self.Show()
+
         if (value % self.every) != 0:
-            return (True, True)
+            return (True, False)
 
         msg = f"{value}/{self.Range}" if msg == "" else f"{msg} - {value}/{self.Range}"
         continue_progress, skip = super(Dialog, self).Update(value, msg)

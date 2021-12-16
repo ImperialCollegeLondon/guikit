@@ -62,12 +62,12 @@ class TestDialog:
             # When getting to the last value, hide the dialog
             assert dlg.Update(value=100) is True
             assert dlg.GetValue() == 100
-            assert not dlg.Shown
+            assert not dlg.IsShown()
 
             # If it is hidden and a new value is given, show it again
             assert dlg.Update(value=0) is True
             assert dlg.GetValue() == 0
-            assert dlg.Shown
+            assert dlg.IsShown()
 
     def test_subscribe_for_updates(self, mocker, window):
         from pubsub import pub

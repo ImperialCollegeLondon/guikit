@@ -1,4 +1,4 @@
-from typing import Optional, Tuple
+from typing import Optional
 
 import wx
 from pubsub import pub
@@ -7,14 +7,14 @@ from pubsub import pub
 class Dialog(wx.ProgressDialog):
     """Opens a modal progress dialog.
 
-    This pogress dialog is pretty much identical to the wx.ProgressDialog it derives
-    except that it predefines the style of the dialog (making it modal, include an abort
-    button, the elapsed and remaining time), and enables updating the progress - as well
-    as informing of the abort condition - via the pubsub messaging system.
+    This pogress dialog is pretty much identical to the wx.ProgressDialog it inherits
+    except that it predefines the style of the dialog (making it modal, including an
+    abort button, the elapsed and remaining time), and enables updating the progress -
+    as well as informing of the abort condition - via the pubsub messaging system.
 
     For the pubsub messaging system, the dialog will be:
 
-    - Subscribed to '<channel>.update_progress_dialog', with the same inputs that the
+    - Subscribed to '<channel>.update_progress_dialog', with the same inputs as the
       progres dialog method 'Update': current step and, optionally, a new value for
       maximum and a message.
     - Broadcast the abort condition via '<channel>.abort_process' if the abort button is
@@ -23,15 +23,15 @@ class Dialog(wx.ProgressDialog):
     If the 'channel' input argument is None, then the pubsub messaging system is not
     used.
 
-    This dialog also gives a finer control on when it shoould be updated - either the
+    This dialog also gives finer control on when it should be updated - either the
     number of times it should be updated over the whole process in total or the number
     of steps that should happen after updating it. This is important because updating
-    the progress dialog adds some overhead to the process, which might be important if
+    the progress dialog adds some overhead to the process, which might be significant if
     it is updated too often.
 
     Example of use:
 
-    If the loop the dialog is informing about is inmediately accessible, then a direct
+    If the loop the dialog is informing about is immediately accessible, then a direct
     call to Update can be used. For example:
 
     ```python
@@ -59,14 +59,14 @@ class Dialog(wx.ProgressDialog):
 
     Args:
         - title: Title of the dialog window.
-        - message: Brief messgae describing the process to be carried.
+        - message: Brief message describing the process to be carried.
         - channel: Root channel in which to broadcast/listen for event using the pubsub
         package.
         - maximum: The maximum number of steps.
         - every: The number of steps required to update the dialog.
-        - steps: The total number of times the dialog will be updated in total. If
-        provided, 'every' is overwritten by the calculated new value based on the
-        'maximum' and the 'steps'.
+        - steps: The number of times the dialog will be updated in total. If provided,
+        'every' is overwritten by the calculated new value based on the 'maximum' and
+        the 'steps'.
     """
 
     def __init__(
@@ -107,14 +107,14 @@ class Dialog(wx.ProgressDialog):
         value: int,
         msg: str = "",
         maximum: Optional[int] = None,
-    ) -> Tuple[bool, bool]:
+    ) -> bool:
         """Updates the progress dialog.
 
         A meesage is broadcast via the <channel>.abort_process if the abort button is
         clicked and 'channel' was set.
 
         Args:
-            - current: Current step in the process.
+            - value: Current step in the process.
             - msg: Message to send to the dialog.
             - maxium: An optional new number of maximum steps.
 
@@ -122,11 +122,9 @@ class Dialog(wx.ProgressDialog):
             - ValueError if 'value' is not an integer or is larger than maximum.
 
         Returns:
-            A tuple with two bool values indicating if the process has NOT been
-            cancelled and if next step has been skiped. In otherwords:
-            - (True, False) indicates that the process should continue normally.
-            - (<bool>, True) indicates that the next step should be skipped.
-            - (False, <bool>) indicates that the process should be halted.
+            A bool value indicating if the process should NOT be cancelled.
+            - True indicates that the process should continue normally.
+            - False indicates that the process should be halted.
         """
         if maximum is not None:
             self.SetRange(maximum)
@@ -142,15 +140,15 @@ class Dialog(wx.ProgressDialog):
             self.Show()
 
         if (value % self.every) != 0:
-            return (True, False)
+            return True
 
         msg = f"{value}/{self.Range}" if msg == "" else f"{msg} - {value}/{self.Range}"
-        continue_progress, skip = super(Dialog, self).Update(value, msg)
+        continue_progress, _ = super(Dialog, self).Update(value, msg)
 
         if not continue_progress:
             self.broadcast_abort()
 
-        return continue_progress, skip
+        return continue_progress
 
     def subscribe_for_updates(self) -> None:
         """Subscribe the Update method to the relevant pubsub channel."""
@@ -160,7 +158,7 @@ class Dialog(wx.ProgressDialog):
         pub.subscribe(self.Update, f"{self.channel}.update_progress_dialog")
 
     def broadcast_abort(self) -> None:
-        """Braodcast the message that the process should be aborted."""
+        """Broadcast the message that the process should be aborted."""
         if self.channel is None:
             return
 

@@ -1,3 +1,5 @@
+import sys
+
 import pytest
 
 
@@ -60,15 +62,18 @@ class TestDialog:
             assert dlg.GetValue() == 2
 
             # When getting to the last value, hide the dialog
-            assert dlg.IsShownOnScreen()
+            if sys.platform != "win32":
+                assert dlg.IsShownOnScreen()
             assert dlg.Update(value=100)
             assert dlg.GetValue() == 100
-            assert not dlg.IsShownOnScreen()
+            if sys.platform != "win32":
+                assert not dlg.IsShownOnScreen()
 
             # If it is hidden and a new value is given, show it again
             assert dlg.Update(value=0)
             assert dlg.GetValue() == 0
-            assert dlg.IsShownOnScreen()
+            if sys.platform != "win32":
+                assert dlg.IsShownOnScreen()
 
     def test_subscribe_for_updates(self, mocker, window):
         from pubsub import pub

@@ -60,6 +60,7 @@ class TestDialog:
             assert dlg.GetValue() == 2
 
             # When getting to the last value, hide the dialog
+            assert dlg.IsShown()
             assert dlg.Update(value=100)
             assert dlg.GetValue() == 100
             assert not dlg.IsShown()

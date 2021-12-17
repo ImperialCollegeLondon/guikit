@@ -136,7 +136,7 @@ class Dialog(wx.ProgressDialog):
                 f"Current step larger than the maximum: {value}>{self.Range}"
             )
 
-        if not self.Shown:
+        if not self.IsShown():
             self.Show()
 
         if (value % self.every) != 0:

@@ -52,20 +52,20 @@ class TestDialog:
                 dlg.Update(value=maximum + 1)
 
             # If not a multiple of 'every' not update
-            assert dlg.Update(value=1) is True
+            assert dlg.Update(value=1)
             assert dlg.GetValue() == 0
 
             # If a multiple of 'every', update
-            assert dlg.Update(value=2) is True
+            assert dlg.Update(value=2)
             assert dlg.GetValue() == 2
 
             # When getting to the last value, hide the dialog
-            assert dlg.Update(value=100) is True
+            assert dlg.Update(value=100)
             assert dlg.GetValue() == 100
             assert not dlg.IsShown()
 
             # If it is hidden and a new value is given, show it again
-            assert dlg.Update(value=0) is True
+            assert dlg.Update(value=0)
             assert dlg.GetValue() == 0
             assert dlg.IsShown()
 

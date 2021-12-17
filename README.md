@@ -8,9 +8,6 @@ pyversions](https://img.shields.io/pypi/pyversions/guikit.svg)](https://pypi.pyt
 [![PyPI
 license](https://img.shields.io/pypi/l/guikit.svg)](https://pypi.python.org/pypi/guikit/)
 [![Website guikit](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://imperialcollegelondon.github.io/guikit/)
-[![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
-[![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)
-[![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
 
 # GUIKIT <!-- omit in toc -->
 

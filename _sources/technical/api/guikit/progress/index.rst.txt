@@ -1,0 +1,119 @@
+:py:mod:`guikit.progress`
+=========================
+
+.. py:module:: guikit.progress
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   guikit.progress.Dialog
+
+
+
+
+.. py:class:: Dialog(title = '', message = '', channel = None, maximum=100, every = 1, steps = None)
+
+   Bases: :py:obj:`wx.ProgressDialog`
+
+   Opens a modal progress dialog.
+
+   This pogress dialog is pretty much identical to the wx.ProgressDialog it inherits
+   except that it predefines the style of the dialog (making it modal, including an
+   abort button, the elapsed and remaining time), and enables updating the progress -
+   as well as informing of the abort condition - via the pubsub messaging system.
+
+   For the pubsub messaging system, the dialog will be:
+
+   - Subscribed to '<channel>.update_progress_dialog', with the same inputs as the
+     progres dialog method 'Update': current step and, optionally, a new value for
+     maximum and a message.
+   - Broadcast the abort condition via '<channel>.abort_process' if the abort button is
+     pressed, with no input arguments.
+
+   If the 'channel' input argument is None, then the pubsub messaging system is not
+   used.
+
+   This dialog also gives finer control on when it should be updated - either the
+   number of times it should be updated over the whole process in total or the number
+   of steps that should happen after updating it. This is important because updating
+   the progress dialog adds some overhead to the process, which might be significant if
+   it is updated too often.
+
+   Example of use:
+
+   If the loop the dialog is informing about is immediately accessible, then a direct
+   call to Update can be used. For example:
+
+   ```python
+   with Dialog() as dlg:
+       for i in range(dlg.Range + 1):
+           dlg.Update(i)
+           # do something
+   ```
+
+   If that is not the case and the loop or recursive function is defined somewhere
+   else, possibly in another module, then the messaging system can be used to
+   communicate with the dialog:
+
+   ```python
+   def some_function():
+       maximum=300
+       pub.sendMessage("my_process.update_progress_dialog", value=0, maximum=maximum)
+       for i in range(maximum + 1):
+           pub.sendMessage("my_process.update_progress_dialog", value=i)
+           # do something
+
+   with Dialog(channel="my_process") as dlg:
+       some_function()
+   ```
+
+   :param - title: Title of the dialog window.
+   :param - message: Brief message describing the process to be carried.
+   :param - channel: Root channel in which to broadcast/listen for event using the pubsub
+   :param package.:
+   :param - maximum: The maximum number of steps.
+   :param - every: The number of steps required to update the dialog.
+   :param - steps: The number of times the dialog will be updated in total. If provided,
+   :param 'every' is overwritten by the calculated new value based on the 'maximum' and:
+   :param the 'steps'.:
+
+   .. py:method:: SetRange(self, maximum)
+
+      Sets a new maximum value for the progress dialog.
+
+
+   .. py:method:: Update(self, value, msg = '', maximum = None)
+
+      Updates the progress dialog.
+
+      A meesage is broadcast via the <channel>.abort_process if the abort button is
+      clicked and 'channel' was set.
+
+      :param - value: Current step in the process.
+      :param - msg: Message to send to the dialog.
+      :param - maxium: An optional new number of maximum steps.
+
+      :raises - ValueError if 'value' is not an integer or is larger than maximum.:
+
+      :returns: A bool value indicating if the process should NOT be cancelled.
+                - True indicates that the process should continue normally.
+                - False indicates that the process should be halted.
+
+
+   .. py:method:: subscribe_for_updates(self)
+
+      Subscribe the Update method to the relevant pubsub channel.
+
+
+   .. py:method:: broadcast_abort(self)
+
+      Broadcast the message that the process should be aborted.
+
+
+

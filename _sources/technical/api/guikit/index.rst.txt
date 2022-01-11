@@ -25,6 +25,7 @@ Submodules
    core/index.rst
    logging/index.rst
    plugins/index.rst
+   progress/index.rst
    scripts/index.rst
    threads/index.rst
 
@@ -33,7 +34,7 @@ Package Contents
 ----------------
 
 .. py:data:: VERSION
-   :annotation: = 0.2.1
+   :annotation: = 0.2.2
 
    
 

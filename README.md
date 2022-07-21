@@ -51,7 +51,7 @@ that could suit most users most of the time.
 without notice. Use it in production with caution. And please, contribute to it to
 help improving its maturity as fast as posisble!
 
-`guikit` and its dependencies can be installed with `pip` in Widnows,
+`guikit` and its dependencies can be installed with `pip` in Windows,
 [Linux](#what-about-linux) and [MacOS](#what-about-macos) (see notes below):
 
 ```bash

@@ -138,8 +138,13 @@ class ThreadPool:
         Raises:
             KeyError: If the thread identifier is not in the ThreadPool
         """
-        with self._workers_lock:
-            return self._workers[ident]
+        try:
+            with self._workers_lock:
+                return self._workers[ident]
+        except KeyError as key_err:
+            key_err_ = KeyError(f"Thread with index: {ident} is not in the ThreadPool.")
+            logger.exception(key_err_)
+            raise key_err_ from key_err
 
     def run_thread(
         self,
@@ -197,12 +202,7 @@ class ThreadPool:
         """
         ident: int = threading.get_ident()
 
-        try:
-            return self.get_worker_thread(ident).abort
-        except KeyError as key_err:
-            key_err_ = KeyError(f"Thread with index: {ident} is not in the ThreadPool.")
-            logger.exception(key_err_)
-            raise key_err_ from key_err
+        return self.get_worker_thread(ident).abort
 
     def abort_thread(self, ident: int) -> None:
         """Flag the thread with `ident` to be aborted.
@@ -213,12 +213,7 @@ class ThreadPool:
         Raises:
             KeyError: If the thread identifier is not in the ThreadPool
         """
-        try:
-            self.get_worker_thread(ident).abort = True
-        except KeyError as key_err:
-            key_err_ = KeyError(f"Thread with index: {ident} is not in the ThreadPool.")
-            logger.exception(key_err_)
-            raise key_err_ from key_err
+        self.get_worker_thread(ident).abort = True
 
     def post_event(self, event: ThreadResult):
         """Adds an event to the event loop of the main thread."""

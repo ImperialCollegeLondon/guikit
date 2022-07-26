@@ -215,6 +215,17 @@ class ThreadPool:
         """
         self.get_worker_thread(ident).abort = True
 
+    def join_thread(self, ident: int) -> None:
+        """Join the thread specified by `ident`.
+
+        Args:
+            ident: Thread identifier
+
+        Raises:
+            KeyError: If the thread identifier is not in the ThreadPool
+        """
+        self.get_worker_thread(ident).join()
+
     def post_event(self, event: ThreadResult):
         """Adds an event to the event loop of the main thread."""
         wx.PostEvent(self._window, event)

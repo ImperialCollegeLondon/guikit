@@ -189,9 +189,11 @@ class ThreadPool:
         """
         thread = WorkerThread(target, on_abort, on_complete, on_error, daemon)
         thread.connect_events(self._window)
-        thread.start()
 
+        # Ensure that thread has been added to _workers before thread could try
+        # to access it
         with self._workers_lock:
+            thread.start()
             self._workers[thread.ident] = thread
 
         return thread.ident

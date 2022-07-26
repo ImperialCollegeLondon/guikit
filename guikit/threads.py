@@ -129,7 +129,7 @@ class ThreadPool:
         self._workers: Dict[int, WorkerThread]
         self._workers_lock: threading.Lock
 
-    def get_worker_thread(self, ident: int) -> WorkerThread:
+    def get_thread(self, ident: int) -> WorkerThread:
         """Get the worker thread referred to with ident in a thread-safe manner.
 
         Args:
@@ -202,7 +202,7 @@ class ThreadPool:
         """
         ident: int = threading.get_ident()
 
-        return self.get_worker_thread(ident).abort
+        return self.get_thread(ident).abort
 
     def abort_thread(self, ident: int) -> None:
         """Flag the thread with `ident` to be aborted.
@@ -213,7 +213,7 @@ class ThreadPool:
         Raises:
             KeyError: If the thread identifier is not in the ThreadPool
         """
-        self.get_worker_thread(ident).abort = True
+        self.get_thread(ident).abort = True
 
     def join_thread(self, ident: int) -> None:
         """Join the thread specified by `ident`.
@@ -224,7 +224,7 @@ class ThreadPool:
         Raises:
             KeyError: If the thread identifier is not in the ThreadPool
         """
-        self.get_worker_thread(ident).join()
+        self.get_thread(ident).join()
 
     def post_event(self, event: ThreadResult):
         """Adds an event to the event loop of the main thread."""

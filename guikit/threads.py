@@ -46,7 +46,7 @@ class WorkerThread(threading.Thread):
             on_complete: Function to be called if the thread finished normally. Takes as
                 only argument the output of the target function when that one finishes.
             on_error: Function to be called if anything bad happens in the thread. Takes
-                as only argument the exception catched.
+                as only argument the exception caught.
         """
         super(WorkerThread, self).__init__(target=target, daemon=daemon)
         self._on_abort = on_abort

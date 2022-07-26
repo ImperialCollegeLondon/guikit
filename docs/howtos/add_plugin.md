@@ -50,9 +50,9 @@ To add a custom plugin, follow these steps:
 
 1. Create a subpackage (i.e. a folder with an `__init__.py` within) somewhere in the
    code structure to hold your plugin. Typically, this will be within the `extensions`
-   package, for exmaple in `my_app/extensions/new_plugin`.
-1. Add that location, replacig slashes by periods `.`, to the `config.PLUGINS` list.
-1. Subclass `guikit.plugins.PluginBase` class somewhere within your plugin. This is
+   package, for example in `my_app/extensions/new_plugin`.
+1. Add that location, replacing slashes by periods `.`, to the `config.PLUGINS` list.
+1. Subclass `guikit.plugins.PluginBase` somewhere within your plugin. This is
    the class that will provide the specific components of the GUI that this plugin
    contributes with. More on this below.
 1. Import that subclass in the `__init__.py` file of your plugin.
@@ -98,7 +98,7 @@ PluginBase. This class provides 4 methods that you should override so they outpu
 elements you want (by default, output is either `None` or `[]`).
 
 Each of the 4 methods deals with one type of component of the GUI: a menu item, a tool
-bar item, a tab or a centra widget. You can override only one of them, all, or anything
+bar item, a tab or a central widget. You can override only one of them, all, or anything
 in between depending on what functionality the plugin is providing.
 
 ### Adding menu entries
@@ -141,14 +141,14 @@ def load_data(_):
 
 ### Adding tools
 
-This is done with the `toolbar_items` method. This method id very similar to the
+This is done with the `toolbar_items` method. This method is very similar to the
 `menu_entries` one, but provides content to the toobar just under the menu bar. The
 output must also be a list of `guikit.plugin.MenuTool` objects, but it has some extra
 entries, a `short_help` for the tooltip and `bitmap`, which is mandatory as it is the
 icon to display.
 
 For example, the following bit of code will add the same two entries for loading and
-savinng data, but now to the toolbar. We use some standard icons provided by wxPythonn,
+saving data, but now to the toolbar. We use some standard icons provided by wxPython,
 but you can use your own bitmaps, too. See
 [`wx.ArtProvider`](https://wxpython.org/Phoenix/docs/html/wx.ArtProvider.html) for more
 information about this.
@@ -199,7 +199,7 @@ representing a different tab of the notebook.
 The `Tab` object is also just a dataclass with some fields to fill, like the name and
 the order of the tab within the notebook. The most important option is the `page`, an
 object of `wx.Window` type (or subclass of it) that will fill the entire tab. Pretty
-much anything in `wxPython` is a `wx.Window`, so you can use alsmost anything as the
+much anything in `wxPython` is a `wx.Window`, so you can use almost anything as the
 `page` option. You might have plots, tables, buttons arranged in rows and columns,
 entries, etc. The most common candidate for the `page` is a `wx.Panel` that you populate
 with whatever you want. See [this tutorial on
@@ -242,7 +242,7 @@ NOTEBOOK_LAYOUT = True
 The `central` method provides one `wx.Window` object as ouput, which will replace the
 notebook. This can be anythinng thay you could use as a `page` in the `tabs` case above.
 
-In order to use the central widget layout, you will need to disbale the notebook one in
+In order to use the central widget layout, you will need to disable the notebook one in
 the `config.py` file with:
 
 ```python
@@ -252,7 +252,7 @@ NOTEBOOK_LAYOUT = False
 #...
 ```
 
-It should eb noted that the central widget must be unique across all the plugins used
+It should be noted that the central widget must be unique across all the plugins used
 in the application. If the notebook layout is disabled, `guikit` will expect one and
 only one plugin with a `central` method returning not `None`. If that happens, an error
 will be raised.

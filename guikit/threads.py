@@ -122,8 +122,6 @@ class ThreadPool:
             cls._instance._window = window
             cls._instance._workers = {}
             cls._instance._workers_lock = threading.Lock()
-
-            window.Bind(wx.EVT_CLOSE, stop_threads_and_close_window)
         return cls._instance
 
     def __init__(self, window: Optional[wx.Frame] = None):
@@ -253,15 +251,6 @@ class ThreadPool:
         # Wait for all workers to finish
         for worker in workers:
             worker.join()
-
-
-def stop_threads_and_close_window(event: wx.CloseEvent):
-    """Stop all running threads and close main window."""
-    ThreadPool().stop_threads()
-
-    # Close main window. Note that we do this last as worker threads may
-    # be accessing the window object up until they finish.
-    event.GetEventObject().Destroy()
 
 
 def run_thread(

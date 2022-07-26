@@ -241,9 +241,19 @@ class MainApp(wx.App):
         )
         self.SetTopWindow(window)
         ThreadPool(window)
+        window.Bind(wx.EVT_CLOSE, stop_threads_and_close_window)
 
         load_plugins(self.plugins_list)
         window.populate_window()
         window.Show(True)
 
         return True
+
+
+def stop_threads_and_close_window(event: wx.CloseEvent):
+    """Stop all running threads and close main window."""
+    ThreadPool().stop_threads()
+
+    # Close main window. Note that we do this last as worker threads may
+    # be accessing the window object up until they finish.
+    event.GetEventObject().Destroy()

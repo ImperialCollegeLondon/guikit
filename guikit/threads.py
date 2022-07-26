@@ -121,11 +121,25 @@ class ThreadPool:
             cls._instance = object.__new__(cls)
             cls._instance._window = window
             cls._instance._workers = {}
+            cls._instance._workers_lock = threading.Lock()
         return cls._instance
 
     def __init__(self, window: Optional[wx.Frame] = None):
         self._window: wx.Frame
         self._workers: Dict[int, WorkerThread]
+        self._workers_lock: threading.Lock
+
+    def get_worker_thread(self, ident: int) -> WorkerThread:
+        """Get the worker thread referred to with ident in a thread-safe manner.
+
+        Args:
+            ident: Thread identifier
+
+        Raises:
+            KeyError: If the thread identifier is not in the ThreadPool
+        """
+        with self._workers_lock:
+            return self._workers[ident]
 
     def run_thread(
         self,
@@ -169,7 +183,10 @@ class ThreadPool:
         thread = WorkerThread(target, on_abort, on_complete, on_error, daemon)
         thread.connect_events(self._window)
         thread.start()
-        self._workers[thread.ident] = thread
+
+        with self._workers_lock:
+            self._workers[thread.ident] = thread
+
         return thread.ident
 
     def query_abort(self) -> bool:
@@ -181,7 +198,7 @@ class ThreadPool:
         ident: int = threading.get_ident()
 
         try:
-            return self._workers[ident].abort
+            return self.get_worker_thread(ident).abort
         except KeyError as key_err:
             key_err_ = KeyError(f"Thread with index: {ident} is not in the ThreadPool.")
             logger.exception(key_err_)
@@ -197,7 +214,7 @@ class ThreadPool:
             KeyError: If the thread identifier is not in the ThreadPool
         """
         try:
-            self._workers[ident].abort = True
+            self.get_worker_thread(ident).abort = True
         except KeyError as key_err:
             key_err_ = KeyError(f"Thread with index: {ident} is not in the ThreadPool.")
             logger.exception(key_err_)

@@ -180,3 +180,27 @@ def test_should_abort():
 
         should_abort()
         ThreadPool().query_abort.called_once_with()
+
+
+def test_worker_race():
+    with patch("guikit.threads.ThreadPool", MagicMock()):
+        from threading import get_ident
+
+        from guikit.threads import ThreadPool
+
+        failed = False
+
+        def access_self():
+            nonlocal failed
+            try:
+                ThreadPool()._workers[get_ident()]
+            except KeyError:
+                failed = True
+
+        for _ in range(100):
+            ThreadPool().run_thread(target=access_self)
+
+        for worker in ThreadPool()._workers:
+            worker.join()
+
+        assert not failed

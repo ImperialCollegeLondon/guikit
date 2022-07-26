@@ -10,7 +10,7 @@ need to build a GUI - making some opinionated decisions about the
 general layout of the application - so you can focus on adding the
 business logic and views specific to your problem.
 
-``guikit`` uses ``wXPython`` as the GUI framework, meaning that the
+``guikit`` uses ``wxPython`` as the GUI framework, meaning that the
 resulting application will have a native look and feel regadless of
 running it on Windows, Linux or MacOS.
 

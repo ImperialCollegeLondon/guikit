@@ -122,6 +122,10 @@ class ThreadPool:
             cls._instance._window = window
             cls._instance._workers = {}
             cls._instance._workers_lock = threading.Lock()
+
+            cls._instance._window.Bind(
+                wx.EVT_CLOSE, lambda _: cls._instance.stop_threads_and_close_window
+            )
         return cls._instance
 
     def __init__(self, window: Optional[wx.Frame] = None):
@@ -229,6 +233,34 @@ class ThreadPool:
     def post_event(self, event: ThreadResult):
         """Adds an event to the event loop of the main thread."""
         wx.PostEvent(self._window, event)
+
+    def stop_threads(self):
+        """Stop all worker threads and wait for them to finish.
+
+        Todo:
+            Leave daemon threads running?
+            Race condition if a thread is created while this function is running
+        """
+        # Copy the list of worker threads in case the running threads try to
+        # modify self._workers
+        with self._workers_lock:
+            workers = self._workers.values()
+
+        # Tell workers that we want to abort
+        for worker in workers:
+            worker.abort = True
+
+        # Wait for all workers to finish
+        for worker in workers:
+            worker.join()
+
+    def stop_threads_and_close_window(self):
+        """Stop all running threads and close main window."""
+        self.stop_threads()
+
+        # Close main window. Note that we do this last as worker threads may
+        # be accessing the window object up until they finish.
+        self._window.Destroy()
 
 
 def run_thread(

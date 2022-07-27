@@ -1,3 +1,4 @@
+import threading
 from unittest.mock import MagicMock, patch
 
 from pytest import mark, raises
@@ -180,3 +181,16 @@ def test_should_abort():
 
         should_abort()
         ThreadPool().query_abort.called_once_with()
+
+
+def test_stop_threads():
+    with patch("guikit.threads.ThreadPool", MagicMock()):
+        from guikit.threads import ThreadPool
+
+        _COUNT = 3
+        for _ in range(_COUNT):
+            ThreadPool().run_thread(lambda: threading.sleep(0.5))
+
+        assert len(ThreadPool()._workers) == _COUNT
+        ThreadPool().stop_threads()
+        assert not any(worker.is_alive for worker in ThreadPool()._workers)

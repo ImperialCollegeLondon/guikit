@@ -46,7 +46,7 @@ class WorkerThread(threading.Thread):
             on_complete: Function to be called if the thread finished normally. Takes as
                 only argument the output of the target function when that one finishes.
             on_error: Function to be called if anything bad happens in the thread. Takes
-                as only argument the exception catched.
+                as only argument the exception caught.
         """
         super(WorkerThread, self).__init__(target=target, daemon=daemon)
         self._on_abort = on_abort
@@ -121,11 +121,30 @@ class ThreadPool:
             cls._instance = object.__new__(cls)
             cls._instance._window = window
             cls._instance._workers = {}
+            cls._instance._workers_lock = threading.Lock()
         return cls._instance
 
     def __init__(self, window: Optional[wx.Frame] = None):
         self._window: wx.Frame
         self._workers: Dict[int, WorkerThread]
+        self._workers_lock: threading.Lock
+
+    def get_thread(self, ident: int) -> WorkerThread:
+        """Get the worker thread referred to with ident in a thread-safe manner.
+
+        Args:
+            ident: Thread identifier
+
+        Raises:
+            KeyError: If the thread identifier is not in the ThreadPool
+        """
+        try:
+            with self._workers_lock:
+                return self._workers[ident]
+        except KeyError as key_err:
+            key_err_ = KeyError(f"Thread with index: {ident} is not in the ThreadPool.")
+            logger.exception(key_err_)
+            raise key_err_ from key_err
 
     def run_thread(
         self,
@@ -168,8 +187,13 @@ class ThreadPool:
         """
         thread = WorkerThread(target, on_abort, on_complete, on_error, daemon)
         thread.connect_events(self._window)
-        thread.start()
-        self._workers[thread.ident] = thread
+
+        # Ensure that thread has been added to _workers before thread could try
+        # to access it
+        with self._workers_lock:
+            thread.start()
+            self._workers[thread.ident] = thread
+
         return thread.ident
 
     def query_abort(self) -> bool:
@@ -180,12 +204,7 @@ class ThreadPool:
         """
         ident: int = threading.get_ident()
 
-        try:
-            return self._workers[ident].abort
-        except KeyError as key_err:
-            key_err_ = KeyError(f"Thread with index: {ident} is not in the ThreadPool.")
-            logger.exception(key_err_)
-            raise key_err_ from key_err
+        return self.get_thread(ident).abort
 
     def abort_thread(self, ident: int) -> None:
         """Flag the thread with `ident` to be aborted.
@@ -196,16 +215,42 @@ class ThreadPool:
         Raises:
             KeyError: If the thread identifier is not in the ThreadPool
         """
-        try:
-            self._workers[ident].abort = True
-        except KeyError as key_err:
-            key_err_ = KeyError(f"Thread with index: {ident} is not in the ThreadPool.")
-            logger.exception(key_err_)
-            raise key_err_ from key_err
+        self.get_thread(ident).abort = True
+
+    def join_thread(self, ident: int) -> None:
+        """Join the thread specified by `ident`.
+
+        Args:
+            ident: Thread identifier
+
+        Raises:
+            KeyError: If the thread identifier is not in the ThreadPool
+        """
+        self.get_thread(ident).join()
 
     def post_event(self, event: ThreadResult):
         """Adds an event to the event loop of the main thread."""
         wx.PostEvent(self._window, event)
+
+    def stop_threads(self):
+        """Stop all worker threads and wait for them to finish.
+
+        Todo:
+            Leave daemon threads running?
+            Race condition if a thread is created while this function is running
+        """
+        # Copy the list of worker threads in case the running threads try to
+        # modify self._workers
+        with self._workers_lock:
+            workers = self._workers.values()
+
+        # Tell workers that we want to abort
+        for worker in workers:
+            worker.abort = True
+
+        # Wait for all workers to finish
+        for worker in workers:
+            worker.join()
 
 
 def run_thread(

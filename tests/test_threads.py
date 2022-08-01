@@ -85,7 +85,7 @@ class Worker:
 class TestThreadPool:
     def test_run_thread(self, window):
 
-        with patch("guikit.threads.WorkerThread", MagicMock(return_value=Worker)):
+        with patch("guikit.threads.WorkerThread", MagicMock(return_value=Worker())):
             from guikit.threads import ThreadPool
 
             pool = ThreadPool(window)
@@ -95,7 +95,7 @@ class TestThreadPool:
 
     def test_query_abort(self, window):
         with patch(
-            "guikit.threads.WorkerThread", MagicMock(return_value=Worker)
+            "guikit.threads.WorkerThread", MagicMock(return_value=Worker())
         ), patch("guikit.threads.logger", MagicMock()), patch(
             "guikit.threads.threading.get_ident",
             MagicMock(return_value=Worker.ident + 1),
@@ -116,7 +116,7 @@ class TestThreadPool:
 
     def test_abort_thread(self, window):
         with patch(
-            "guikit.threads.WorkerThread", MagicMock(return_value=Worker)
+            "guikit.threads.WorkerThread", MagicMock(return_value=Worker())
         ), patch("guikit.threads.logger", MagicMock()):
             from guikit.threads import ThreadPool, logger
 

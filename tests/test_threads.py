@@ -21,6 +21,8 @@ class TestWorkerThread:
         worker.connect_events(window)
         assert window.Connect.call_count == 3
 
+        window.Close()
+
     def test_run(self):
         class Pool:
             post_event = MagicMock()
@@ -93,6 +95,8 @@ class TestThreadPool:
 
         assert Worker.ident in pool._workers
 
+        window.Close()
+
     def test_query_abort(self, window):
         with patch(
             "guikit.threads.WorkerThread", MagicMock(return_value=Worker)
@@ -114,6 +118,8 @@ class TestThreadPool:
             )
             assert logger.exception.call_count == 1
 
+        window.Close()
+
     def test_abort_thread(self, window):
         with patch(
             "guikit.threads.WorkerThread", MagicMock(return_value=Worker)
@@ -134,6 +140,8 @@ class TestThreadPool:
         pool.abort_thread(Worker.ident)
         assert pool._workers[Worker.ident].abort
 
+        window.Close()
+
     def test_post_event(self, window):
         class WX:
             PostEvent = MagicMock()
@@ -144,6 +152,8 @@ class TestThreadPool:
             pool = ThreadPool(window)
             pool.post_event(None)
             WX.PostEvent.assert_called_once()
+
+        window.Close()
 
 
 def test_run_in_thread():

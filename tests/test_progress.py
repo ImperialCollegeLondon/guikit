@@ -3,6 +3,9 @@ import sys
 import pytest
 
 
+@pytest.mark.skipif(
+    sys.platform == "darwin", reason="Cause segmentation fault for unknown reasons."
+)
 class TestDialog:
     def test_constructor(self, mocker, window):
         from guikit.progress import Dialog

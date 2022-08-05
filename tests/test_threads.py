@@ -78,14 +78,18 @@ class TestWorkerThread:
 class Worker:
     ident = 42
     abort = False
+    joined = False
     connect_events = MagicMock()
     start = MagicMock()
+
+    def join(self) -> None:
+        self.joined = True
 
 
 class TestThreadPool:
     def test_run_thread(self, window):
 
-        with patch("guikit.threads.WorkerThread", MagicMock(return_value=Worker)):
+        with patch("guikit.threads.WorkerThread", MagicMock(return_value=Worker())):
             from guikit.threads import ThreadPool
 
             pool = ThreadPool(window)
@@ -95,7 +99,7 @@ class TestThreadPool:
 
     def test_query_abort(self, window):
         with patch(
-            "guikit.threads.WorkerThread", MagicMock(return_value=Worker)
+            "guikit.threads.WorkerThread", MagicMock(return_value=Worker())
         ), patch("guikit.threads.logger", MagicMock()), patch(
             "guikit.threads.threading.get_ident",
             MagicMock(return_value=Worker.ident + 1),
@@ -116,7 +120,7 @@ class TestThreadPool:
 
     def test_abort_thread(self, window):
         with patch(
-            "guikit.threads.WorkerThread", MagicMock(return_value=Worker)
+            "guikit.threads.WorkerThread", MagicMock(return_value=Worker())
         ), patch("guikit.threads.logger", MagicMock()):
             from guikit.threads import ThreadPool, logger
 
@@ -144,6 +148,33 @@ class TestThreadPool:
             pool = ThreadPool(window)
             pool.post_event(None)
             WX.PostEvent.assert_called_once()
+
+    def test_join_thread(self, window):
+        with patch("guikit.threads.WorkerThread", MagicMock(return_value=Worker())):
+            from guikit.threads import ThreadPool
+
+            pool = ThreadPool(window)
+            pool.run_thread(lambda: None)
+            pool.join_thread(Worker.ident)
+
+            thread = pool._workers[Worker.ident]
+            assert not thread.abort
+            assert thread.joined
+
+    def test_stop_threads(self, window):
+        with patch("guikit.threads.WorkerThread", MagicMock(return_value=Worker())):
+            from guikit.threads import ThreadPool
+
+            assert not Worker.abort
+            assert not Worker.joined
+
+            pool = ThreadPool(window)
+            pool.run_thread(lambda: None)
+            pool.stop_threads()
+
+            thread = pool._workers[Worker.ident]
+            assert thread.abort
+            assert thread.joined
 
 
 def test_run_in_thread():

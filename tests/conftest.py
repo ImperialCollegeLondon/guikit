@@ -7,7 +7,7 @@ def window():
     app = wx.App()
     frame = wx.Frame(None)
     yield frame
-    wx.CallAfter(frame.Close)
+    wx.CallLater(1000, frame.Close)
     app.MainLoop()
 
 
@@ -18,7 +18,7 @@ def main_window():
     app = wx.App()
     frame = MainWindow(None, title="My App", size=(0, 0))
     yield frame
-    wx.CallAfter(frame.Close)
+    wx.CallLater(1000, frame.Close)
     app.MainLoop()
 
 

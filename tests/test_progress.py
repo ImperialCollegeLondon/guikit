@@ -14,8 +14,6 @@ class TestDialog:
             spy_set_range.assert_called_once_with(dlg, 200)
             spy_subscribe.assert_called_once()
 
-        window.Close()
-
     def test_set_range(self, window):
         from guikit.progress import Dialog
 
@@ -36,8 +34,6 @@ class TestDialog:
             dlg.SetRange(300)
             assert dlg.Range == 300
             assert dlg.every == 300 // 20
-
-        window.Close()
 
     def test_update(self, mocker, window):
         from guikit.progress import Dialog
@@ -79,8 +75,6 @@ class TestDialog:
             if sys.platform != "win32":
                 assert dlg.IsShownOnScreen()
 
-        window.Close()
-
     def test_subscribe_for_updates(self, mocker, window):
         from pubsub import pub
 
@@ -96,8 +90,6 @@ class TestDialog:
             dlg.subscribe_for_updates()
             spy_subscribe.assert_called_once()
 
-        window.Close()
-
     def test_broadcast_abort(self, mocker, window):
         from pubsub import pub
 
@@ -112,5 +104,3 @@ class TestDialog:
             dlg.channel = "my_channel"
             dlg.broadcast_abort()
             spy_send.assert_called_once()
-
-        window.Close()

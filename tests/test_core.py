@@ -17,8 +17,6 @@ class TestStatusBar:
         assert bar.GetStatusWidth(1) == expected
         assert bar.progress_bar.GetSize()[0] == expected
 
-        window.Close()
-
 
 class TestMainWindow:
     def test_populate_window(self, main_window):
@@ -37,24 +35,18 @@ class TestMainWindow:
         main_window.populate_window()
         main_window._make_central_widget.assert_called_once()
 
-        main_window.Close()
-
     def test__make_menubar(self, main_window):
         main_window._make_menubar()
         menus = main_window.GetMenuBar().GetMenus()
         assert len(menus) > 0
         assert menus[0][1] == "File"
 
-        main_window.Close()
-
-    @pytest.mark.skip
+    @pytest.mark.xfail
     def test__make_toolbar(self, main_window):
         main_window._make_toolbar()
         assert main_window.GetToolBar().GetToolsCount() == 0
 
-        main_window.Close()
-
-    @pytest.mark.skip
+    @pytest.mark.xfail
     def test__make_notebook(self, main_window):
         import wx
 
@@ -62,9 +54,7 @@ class TestMainWindow:
         assert isinstance(main_window.notebook, wx.Notebook)
         assert main_window.notebook.PageCount == 0
 
-        main_window.Close()
-
-    @pytest.mark.skip
+    @pytest.mark.xfail
     def test__make_central_widget(self, main_window):
         import wx
 
@@ -85,8 +75,6 @@ class TestMainWindow:
 
         with pytest.raises(ValueError):
             main_window._make_central_widget()
-
-        main_window.Close()
 
 
 class TestBuiltInActions:

@@ -84,11 +84,11 @@ Attributes
    Helper class that provides a standard way to create an ABC using
    inheritance.
 
-   .. py:method:: add_arguments(self, parser)
+   .. py:method:: add_arguments(parser)
       :abstractmethod:
 
 
-   .. py:method:: run(self, args)
+   .. py:method:: run(args)
       :abstractmethod:
 
 
@@ -100,10 +100,10 @@ Attributes
    Helper class that provides a standard way to create an ABC using
    inheritance.
 
-   .. py:method:: add_arguments(self, parser)
+   .. py:method:: add_arguments(parser)
 
 
-   .. py:method:: run(self, args)
+   .. py:method:: run(args)
 
 
 
@@ -114,10 +114,10 @@ Attributes
    Helper class that provides a standard way to create an ABC using
    inheritance.
 
-   .. py:method:: add_arguments(self, parser)
+   .. py:method:: add_arguments(parser)
 
 
-   .. py:method:: run(self, args)
+   .. py:method:: run(args)
 
 
 
@@ -128,10 +128,10 @@ Attributes
    Helper class that provides a standard way to create an ABC using
    inheritance.
 
-   .. py:method:: add_arguments(self, parser)
+   .. py:method:: add_arguments(parser)
 
 
-   .. py:method:: run(self, args)
+   .. py:method:: run(args)
 
 
 

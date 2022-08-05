@@ -33,7 +33,7 @@ Classes
    Base class that defines the required API that all the views of the different plugins
    will need to provide.
 
-   .. py:method:: menu_entries(self)
+   .. py:method:: menu_entries()
 
       Return a list of menu entries provided by this plugin.
 
@@ -43,7 +43,7 @@ Classes
                 application menu bar.
 
 
-   .. py:method:: OnAboutBox(self, e)
+   .. py:method:: OnAboutBox(e)
 
 
 

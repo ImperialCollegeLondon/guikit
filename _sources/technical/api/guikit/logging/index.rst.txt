@@ -58,7 +58,7 @@ Attributes
 
 .. py:class:: Logger(app_name = APP_NAME)
 
-   .. py:method:: logger(self)
+   .. py:method:: logger()
       :property:
 
       Interface to the underlying logger.
@@ -68,15 +68,15 @@ Attributes
       :returns: A Logger object.
 
 
-   .. py:method:: __getattr__(self, item)
+   .. py:method:: __getattr__(item)
 
 
-   .. py:method:: set_console_handler(self)
+   .. py:method:: set_console_handler()
 
       Sets a handler to print the log to the terminal.
 
 
-   .. py:method:: set_file_handler(self)
+   .. py:method:: set_file_handler()
 
       Sets a handler to print the log to a file in the app directory.
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>guikit.progress &mdash; Python GUI Template 0.2.2 documentation</title>
+  <title>guikit.progress &mdash; Python GUI Template 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
@@ -14,6 +14,7 @@
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -88,12 +89,12 @@
            <div itemprop="articleBody">
              
   <div class="section" id="module-guikit.progress">
-<span id="guikit-progress"></span><h1><a class="reference internal" href="#module-guikit.progress" title="guikit.progress"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guikit.progress</span></code></a><a class="headerlink" href="#module-guikit.progress" title="Permalink to this headline"></a></h1>
+<span id="guikit-progress"></span><h1><a class="reference internal" href="#module-guikit.progress" title="guikit.progress"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guikit.progress</span></code></a><a class="headerlink" href="#module-guikit.progress" title="Permalink to this heading"></a></h1>
 <div class="section" id="module-contents">
-<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline"></a></h2>
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
 <div class="section" id="classes">
-<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline"></a></h3>
-<table class="longtable docutils align-default">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -177,7 +178,7 @@ for i in range(maximum + 1):</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.progress.Dialog.SetRange">
-<span class="sig-name descname"><span class="pre">SetRange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximum</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.progress.Dialog.SetRange" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">SetRange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maximum</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.progress.Dialog.SetRange" title="Permalink to this definition"></a></dt>
 <dd><p>Sets a new maximum value for the progress dialog.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -191,7 +192,7 @@ for i in range(maximum + 1):</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.progress.Dialog.Update">
-<span class="sig-name descname"><span class="pre">Update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.progress.Dialog.Update" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">Update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.progress.Dialog.Update" title="Permalink to this definition"></a></dt>
 <dd><p>Updates the progress dialog.</p>
 <p>A meesage is broadcast via the &lt;channel&gt;.abort_process if the abort button is
 clicked and ‘channel’ was set.</p>
@@ -220,7 +221,7 @@ clicked and ‘channel’ was set.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.progress.Dialog.subscribe_for_updates">
-<span class="sig-name descname"><span class="pre">subscribe_for_updates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.progress.Dialog.subscribe_for_updates" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">subscribe_for_updates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.progress.Dialog.subscribe_for_updates" title="Permalink to this definition"></a></dt>
 <dd><p>Subscribe the Update method to the relevant pubsub channel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -231,7 +232,7 @@ clicked and ‘channel’ was set.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.progress.Dialog.broadcast_abort">
-<span class="sig-name descname"><span class="pre">broadcast_abort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.progress.Dialog.broadcast_abort" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">broadcast_abort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.progress.Dialog.broadcast_abort" title="Permalink to this definition"></a></dt>
 <dd><p>Broadcast the message that the process should be aborted.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>

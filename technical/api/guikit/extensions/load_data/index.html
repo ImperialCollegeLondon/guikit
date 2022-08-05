@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>guikit.extensions.load_data &mdash; Python GUI Template 0.2.2 documentation</title>
+  <title>guikit.extensions.load_data &mdash; Python GUI Template 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../../_static/graphviz.css" type="text/css" />
@@ -14,6 +14,7 @@
         <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
         <script src="../../../../../_static/jquery.js"></script>
         <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../../_static/doctools.js"></script>
     <script src="../../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -83,7 +84,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="module-guikit.extensions.load_data">
-<span id="guikit-extensions-load-data"></span><h1><a class="reference internal" href="#module-guikit.extensions.load_data" title="guikit.extensions.load_data"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guikit.extensions.load_data</span></code></a><a class="headerlink" href="#module-guikit.extensions.load_data" title="Permalink to this headline"></a></h1>
+<span id="guikit-extensions-load-data"></span><h1><a class="reference internal" href="#module-guikit.extensions.load_data" title="guikit.extensions.load_data"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guikit.extensions.load_data</span></code></a><a class="headerlink" href="#module-guikit.extensions.load_data" title="Permalink to this heading"></a></h1>
 <p>This extension loads some experimental data and displays it into a table.</p>
 <dl class="simple">
 <dt>Channels:</dt><dd><dl class="simple">
@@ -100,7 +101,7 @@
 </dd>
 </dl>
 <div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guikit.extensions.load_data.model</span></code></a></li>
@@ -110,10 +111,10 @@
 </div>
 </div>
 <div class="section" id="package-contents">
-<h2>Package Contents<a class="headerlink" href="#package-contents" title="Permalink to this headline"></a></h2>
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Permalink to this heading"></a></h2>
 <div class="section" id="classes">
-<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline"></a></h3>
-<table class="longtable docutils align-default">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -138,13 +139,13 @@
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.extensions.load_data.DataLoaderTab._init_gui">
-<span class="sig-name descname"><span class="pre">_init_gui</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.extensions.load_data.DataLoaderTab._init_gui" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">_init_gui</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.extensions.load_data.DataLoaderTab._init_gui" title="Permalink to this definition"></a></dt>
 <dd><p>Initialises the GUI elements in the frame.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.extensions.load_data.DataLoaderTab.display_data">
-<span class="sig-name descname"><span class="pre">display_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.extensions.load_data.DataLoaderTab.display_data" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">display_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.extensions.load_data.DataLoaderTab.display_data" title="Permalink to this definition"></a></dt>
 <dd><p>Displays the data on a table and sets the filename</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -158,7 +159,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.extensions.load_data.DataLoaderTab.update_table">
-<span class="sig-name descname"><span class="pre">update_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.extensions.load_data.DataLoaderTab.update_table" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">update_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.extensions.load_data.DataLoaderTab.update_table" title="Permalink to this definition"></a></dt>
 <dd><p>updates the data on the table.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

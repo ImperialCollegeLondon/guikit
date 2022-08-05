@@ -43,12 +43,12 @@ Classes
 
    Bases: :py:obj:`wx.Window`
 
-   .. py:method:: _init_gui(self)
+   .. py:method:: _init_gui()
 
       Initialises the GUI elements in the frame.
 
 
-   .. py:method:: display_data(self, filename, data = None)
+   .. py:method:: display_data(filename, data = None)
 
       Displays the data on a table and sets the filename
 
@@ -56,7 +56,7 @@ Classes
       :param data: A dataframe with the data
 
 
-   .. py:method:: update_table(self, data = None)
+   .. py:method:: update_table(data = None)
 
       updates the data on the table.
 

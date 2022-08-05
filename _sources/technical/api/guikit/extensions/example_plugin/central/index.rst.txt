@@ -24,7 +24,7 @@ Classes
    Base class that defines the required API that all the views of the different plugins
    will need to provide.
 
-   .. py:method:: central(self, parent)
+   .. py:method:: central(parent)
 
       Central widget provided by this plugin.
 

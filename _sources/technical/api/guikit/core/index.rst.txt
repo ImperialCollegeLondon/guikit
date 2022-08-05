@@ -30,6 +30,14 @@ Classes
 
 
 
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   guikit.core.stop_threads_and_close_window
+
+
 
 Attributes
 ~~~~~~~~~~
@@ -60,7 +68,7 @@ Attributes
    Use `status_bar.progress_bar.SomeMethod` to manage the progress bar properties.
    See 'wx.Gauge' for more information about the options available.
 
-   .. py:method:: SetStatusWidths(self, width)
+   .. py:method:: SetStatusWidths(width)
 
       Ensures that progress bar is resized if fields are resized.
 
@@ -77,22 +85,22 @@ Attributes
 
    Bases: :py:obj:`wx.Frame`
 
-   .. py:method:: populate_window(self)
+   .. py:method:: populate_window()
 
       Adds menu items, tools and other widgets in plugins to the main window.
 
 
-   .. py:method:: _make_menubar(self)
+   .. py:method:: _make_menubar()
 
       Create the menu bar from the entries provided by the widgets.
 
 
-   .. py:method:: _make_toolbar(self)
+   .. py:method:: _make_toolbar()
 
       Create the tool bar from the entries provided by the widgets.
 
 
-   .. py:method:: _make_notebook(self, tab_style = wx.NB_TOP)
+   .. py:method:: _make_notebook(tab_style = wx.NB_TOP)
 
       Create the central widget of the window as a notebook.
 
@@ -104,7 +112,7 @@ Attributes
                         wx.NB_FIXEDWIDTH, wx.NB_MULTILINE and wx.NB_NOPAGETHEME.
 
 
-   .. py:method:: _make_central_widget(self)
+   .. py:method:: _make_central_widget()
 
       Create the central widget of the window.
 
@@ -121,7 +129,7 @@ Attributes
 
    Actions and features builtin with the core window.
 
-   .. py:method:: menu_entries(self)
+   .. py:method:: menu_entries()
 
 
 
@@ -134,7 +142,12 @@ Attributes
 
    Bases: :py:obj:`wx.App`
 
-   .. py:method:: OnInit(self)
+   .. py:method:: OnInit()
 
+
+
+.. py:function:: stop_threads_and_close_window(event)
+
+   Stop all running threads and close main window.
 
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>guikit.plugins &mdash; Python GUI Template 0.2.2 documentation</title>
+  <title>guikit.plugins &mdash; Python GUI Template 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
@@ -14,6 +14,7 @@
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -88,13 +89,13 @@
            <div itemprop="articleBody">
              
   <div class="section" id="module-guikit.plugins">
-<span id="guikit-plugins"></span><h1><a class="reference internal" href="#module-guikit.plugins" title="guikit.plugins"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guikit.plugins</span></code></a><a class="headerlink" href="#module-guikit.plugins" title="Permalink to this headline"></a></h1>
+<span id="guikit-plugins"></span><h1><a class="reference internal" href="#module-guikit.plugins" title="guikit.plugins"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guikit.plugins</span></code></a><a class="headerlink" href="#module-guikit.plugins" title="Permalink to this heading"></a></h1>
 <p>Contains all the machinery to register and load plugins.</p>
 <div class="section" id="module-contents">
-<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline"></a></h2>
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
 <div class="section" id="classes">
-<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline"></a></h3>
-<table class="longtable docutils align-default">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -113,14 +114,14 @@
 </table>
 </div>
 <div class="section" id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline"></a></h3>
-<table class="longtable docutils align-default">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#guikit.plugins.collect_plugins" title="guikit.plugins.collect_plugins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_plugins</span></code></a>(path, package = None, add_to_path = False)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guikit.plugins.collect_plugins" title="guikit.plugins.collect_plugins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_plugins</span></code></a>(path[, package, add_to_path])</p></td>
 <td><p>Collects the plugins from the given location.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#guikit.plugins.collect_builtin_extensions" title="guikit.plugins.collect_builtin_extensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_builtin_extensions</span></code></a>()</p></td>
@@ -133,8 +134,8 @@
 </table>
 </div>
 <div class="section" id="attributes">
-<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline"></a></h3>
-<table class="longtable docutils align-default">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -236,17 +237,12 @@
 will need to provide.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.plugins.PluginBase.__init_subclass__">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__init_subclass__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.plugins.PluginBase.__init_subclass__" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>cls</strong> (<em>Type</em><em>[</em><a class="reference internal" href="#guikit.plugins.PluginBase" title="guikit.plugins.PluginBase"><em>PluginBase</em></a><em>]</em>) – </p>
-</dd>
-</dl>
-</dd></dl>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__init_subclass__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.plugins.PluginBase.__init_subclass__" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.plugins.PluginBase.menu_entries">
-<span class="sig-name descname"><span class="pre">menu_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.plugins.PluginBase.menu_entries" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">menu_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.plugins.PluginBase.menu_entries" title="Permalink to this definition"></a></dt>
 <dd><p>Return a list of menu entries provided by this plugin.</p>
 <p>The items of the list must be MenuTool objects.</p>
 <dl class="field-list simple">
@@ -262,7 +258,7 @@ application menu bar.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.plugins.PluginBase.toolbar_items">
-<span class="sig-name descname"><span class="pre">toolbar_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.plugins.PluginBase.toolbar_items" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">toolbar_items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.plugins.PluginBase.toolbar_items" title="Permalink to this definition"></a></dt>
 <dd><p>Return a list of toolbar items provided by this plugin.</p>
 <p>The items of the list must be MenuTool objects.</p>
 <dl class="field-list simple">
@@ -278,7 +274,7 @@ application toolbar.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.plugins.PluginBase.tabs">
-<span class="sig-name descname"><span class="pre">tabs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.plugins.PluginBase.tabs" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">tabs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.plugins.PluginBase.tabs" title="Permalink to this definition"></a></dt>
 <dd><p>Create and return the list of tabs provided by this plugin.</p>
 <p>The elements of the list must be Tab objects.</p>
 <dl class="field-list simple">
@@ -300,7 +296,7 @@ notebook.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.plugins.PluginBase.central">
-<span class="sig-name descname"><span class="pre">central</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.plugins.PluginBase.central" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">central</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.plugins.PluginBase.central" title="Permalink to this definition"></a></dt>
 <dd><p>Central widget provided by this plugin.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

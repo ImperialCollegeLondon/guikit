@@ -42,12 +42,12 @@ Attributes
 
    Bases: :py:obj:`wx.Window`
 
-   .. py:method:: _init_gui(self)
+   .. py:method:: _init_gui()
 
       Initialises the GUI elements in the frame.
 
 
-   .. py:method:: display_data(self, filename, data = None)
+   .. py:method:: display_data(filename, data = None)
 
       Displays the data on a table and sets the filename
 
@@ -55,7 +55,7 @@ Attributes
       :param data: A dataframe with the data
 
 
-   .. py:method:: update_table(self, data = None)
+   .. py:method:: update_table(data = None)
 
       updates the data on the table.
 
@@ -67,7 +67,7 @@ Attributes
 
    Bases: :py:obj:`wx.FileDialog`
 
-   .. py:method:: open(self)
+   .. py:method:: open()
 
 
 
@@ -79,25 +79,25 @@ Attributes
 
    Example taken from: https://stackoverflow.com/a/65265739/3778792
 
-   .. py:method:: GetNumberRows(self)
+   .. py:method:: GetNumberRows()
 
 
-   .. py:method:: GetNumberCols(self)
+   .. py:method:: GetNumberCols()
 
 
-   .. py:method:: GetValue(self, row, col)
+   .. py:method:: GetValue(row, col)
 
 
-   .. py:method:: SetValue(self, row, col, value)
+   .. py:method:: SetValue(row, col, value)
 
 
-   .. py:method:: GetColLabelValue(self, col)
+   .. py:method:: GetColLabelValue(col)
 
 
-   .. py:method:: GetTypeName(self, row, col)
+   .. py:method:: GetTypeName(row, col)
 
 
-   .. py:method:: GetAttr(self, row, col, prop)
+   .. py:method:: GetAttr(row, col, prop)
 
 
 

@@ -129,11 +129,11 @@ Attributes
    Base class that defines the required API that all the views of the different plugins
    will need to provide.
 
-   .. py:method:: __init_subclass__(cls)
+   .. py:method:: __init_subclass__()
       :classmethod:
 
 
-   .. py:method:: menu_entries(self)
+   .. py:method:: menu_entries()
 
       Return a list of menu entries provided by this plugin.
 
@@ -143,7 +143,7 @@ Attributes
                 application menu bar.
 
 
-   .. py:method:: toolbar_items(self)
+   .. py:method:: toolbar_items()
 
       Return a list of toolbar items provided by this plugin.
 
@@ -153,7 +153,7 @@ Attributes
                 application toolbar.
 
 
-   .. py:method:: tabs(self, parent=None)
+   .. py:method:: tabs(parent=None)
 
       Create and return the list of tabs provided by this plugin.
 
@@ -166,7 +166,7 @@ Attributes
                 notebook.
 
 
-   .. py:method:: central(self, parent=None)
+   .. py:method:: central(parent=None)
 
       Central widget provided by this plugin.
 

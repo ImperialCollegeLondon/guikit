@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>guikit.scripts &mdash; Python GUI Template 0.2.2 documentation</title>
+  <title>guikit.scripts &mdash; Python GUI Template 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
@@ -14,6 +14,7 @@
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -88,12 +89,12 @@
            <div itemprop="articleBody">
              
   <div class="section" id="module-guikit.scripts">
-<span id="guikit-scripts"></span><h1><a class="reference internal" href="#module-guikit.scripts" title="guikit.scripts"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guikit.scripts</span></code></a><a class="headerlink" href="#module-guikit.scripts" title="Permalink to this headline"></a></h1>
+<span id="guikit-scripts"></span><h1><a class="reference internal" href="#module-guikit.scripts" title="guikit.scripts"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guikit.scripts</span></code></a><a class="headerlink" href="#module-guikit.scripts" title="Permalink to this heading"></a></h1>
 <div class="section" id="module-contents">
-<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline"></a></h2>
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
 <div class="section" id="classes">
-<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline"></a></h3>
-<table class="longtable docutils align-default">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -115,8 +116,8 @@
 </table>
 </div>
 <div class="section" id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline"></a></h3>
-<table class="longtable docutils align-default">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -134,18 +135,18 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#guikit.scripts._copy_plugin" title="guikit.scripts._copy_plugin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_copy_plugin</span></code></a>(name, target)</p></td>
 <td><p>Lists all plugins available in guikit that the user can copy.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#guikit.scripts._parse_args" title="guikit.scripts._parse_args"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_parse_args</span></code></a>(argv = None)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guikit.scripts._parse_args" title="guikit.scripts._parse_args"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_parse_args</span></code></a>([argv])</p></td>
 <td><p>Parse the input arguments list populating the relevant subcommands</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#guikit.scripts.main" title="guikit.scripts.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main</span></code></a>(argv = None)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#guikit.scripts.main" title="guikit.scripts.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main</span></code></a>([argv])</p></td>
 <td><p>Main entry point for guikit, calling the relevant subcommands.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="attributes">
-<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline"></a></h3>
-<table class="longtable docutils align-default">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -225,7 +226,7 @@ desired location.</p>
 inheritance.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.scripts.SubCommand.add_arguments">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.SubCommand.add_arguments" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.SubCommand.add_arguments" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>parser</strong> (<em>argparse.ArgumentParser</em>) – </p>
@@ -235,7 +236,7 @@ inheritance.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.scripts.SubCommand.run">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.SubCommand.run" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.SubCommand.run" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p>
@@ -253,7 +254,7 @@ inheritance.</p>
 inheritance.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.scripts.RunSubCommand.add_arguments">
-<span class="sig-name descname"><span class="pre">add_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.RunSubCommand.add_arguments" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.RunSubCommand.add_arguments" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>parser</strong> (<em>argparse.ArgumentParser</em>) – </p>
@@ -263,7 +264,7 @@ inheritance.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.scripts.RunSubCommand.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.RunSubCommand.run" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.RunSubCommand.run" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p>
@@ -281,7 +282,7 @@ inheritance.</p>
 inheritance.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.scripts.InitSubCommand.add_arguments">
-<span class="sig-name descname"><span class="pre">add_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.InitSubCommand.add_arguments" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.InitSubCommand.add_arguments" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>parser</strong> (<em>argparse.ArgumentParser</em>) – </p>
@@ -291,7 +292,7 @@ inheritance.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.scripts.InitSubCommand.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.InitSubCommand.run" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.InitSubCommand.run" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p>
@@ -309,7 +310,7 @@ inheritance.</p>
 inheritance.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.scripts.PluginSubCommand.add_arguments">
-<span class="sig-name descname"><span class="pre">add_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.PluginSubCommand.add_arguments" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.PluginSubCommand.add_arguments" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>parser</strong> (<em>argparse.ArgumentParser</em>) – </p>
@@ -319,7 +320,7 @@ inheritance.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.scripts.PluginSubCommand.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.PluginSubCommand.run" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.scripts.PluginSubCommand.run" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p>

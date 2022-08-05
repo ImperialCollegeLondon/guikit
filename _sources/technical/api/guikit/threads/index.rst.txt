@@ -48,33 +48,33 @@ Functions
 
    Worker Thread Class.
 
-   .. py:method:: connect_events(self, window)
+   .. py:method:: connect_events(window)
 
       Connect the complete, abort and error events to the functions to execute.
 
       :param window: The main window of the program.
 
 
-   .. py:method:: run(self)
+   .. py:method:: run()
 
       Run worker thread and deals with the wrapping up accordingly.
 
 
-   .. py:method:: on_abort(self, event)
+   .. py:method:: on_abort(event)
 
       To execute when the thread execution is aborted.
 
       :param event: The event object with the relevant output data
 
 
-   .. py:method:: on_complete(self, event)
+   .. py:method:: on_complete(event)
 
       To execute when the thread execution is completed normally.
 
       :param event: The event object with the relevant output data
 
 
-   .. py:method:: on_error(self, event)
+   .. py:method:: on_error(event)
 
       To execute when the thread ends with an error.
 
@@ -89,7 +89,16 @@ Functions
 
       
 
-   .. py:method:: run_thread(self, target, on_abort = None, on_complete = None, on_error = None, daemon = None)
+   .. py:method:: get_thread(ident)
+
+      Get the worker thread referred to with ident in a thread-safe manner.
+
+      :param ident: Thread identifier
+
+      :raises KeyError: If the thread identifier is not in the ThreadPool
+
+
+   .. py:method:: run_thread(target, on_abort = None, on_complete = None, on_error = None, daemon = None)
 
       Runs a new thread executing the target callable on it.
 
@@ -121,14 +130,14 @@ Functions
       :returns: The id number for the thread, needed if it is to be aborted externally.
 
 
-   .. py:method:: query_abort(self)
+   .. py:method:: query_abort()
 
       Check if the current thread is to be aborted.
 
       :raises KeyError: If the thread identifier is not in the ThreadPool
 
 
-   .. py:method:: abort_thread(self, ident)
+   .. py:method:: abort_thread(ident)
 
       Flag the thread with `ident` to be aborted.
 
@@ -137,9 +146,28 @@ Functions
       :raises KeyError: If the thread identifier is not in the ThreadPool
 
 
-   .. py:method:: post_event(self, event)
+   .. py:method:: join_thread(ident)
+
+      Join the thread specified by `ident`.
+
+      :param ident: Thread identifier
+
+      :raises KeyError: If the thread identifier is not in the ThreadPool
+
+
+   .. py:method:: post_event(event)
 
       Adds an event to the event loop of the main thread.
+
+
+   .. py:method:: stop_threads()
+
+      Stop all worker threads and wait for them to finish.
+
+      .. todo::
+
+         Leave daemon threads running?
+         Race condition if a thread is created while this function is running
 
 
 

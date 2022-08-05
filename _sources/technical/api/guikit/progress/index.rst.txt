@@ -83,12 +83,12 @@ Classes
    :param 'every' is overwritten by the calculated new value based on the 'maximum' and:
    :param the 'steps'.:
 
-   .. py:method:: SetRange(self, maximum)
+   .. py:method:: SetRange(maximum)
 
       Sets a new maximum value for the progress dialog.
 
 
-   .. py:method:: Update(self, value, msg = '', maximum = None)
+   .. py:method:: Update(value, msg = '', maximum = None)
 
       Updates the progress dialog.
 
@@ -106,12 +106,12 @@ Classes
                 - False indicates that the process should be halted.
 
 
-   .. py:method:: subscribe_for_updates(self)
+   .. py:method:: subscribe_for_updates()
 
       Subscribe the Update method to the relevant pubsub channel.
 
 
-   .. py:method:: broadcast_abort(self)
+   .. py:method:: broadcast_abort()
 
       Broadcast the message that the process should be aborted.
 

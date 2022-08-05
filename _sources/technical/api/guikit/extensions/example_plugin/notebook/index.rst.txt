@@ -24,7 +24,7 @@ Classes
    Base class that defines the required API that all the views of the different plugins
    will need to provide.
 
-   .. py:method:: tabs(self, parent)
+   .. py:method:: tabs(parent)
 
       Create and return the list of tabs provided by this plugin.
 

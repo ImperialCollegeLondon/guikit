@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>guikit.core &mdash; Python GUI Template 0.2.2 documentation</title>
+  <title>guikit.core &mdash; Python GUI Template 0.2.3 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
@@ -14,6 +14,7 @@
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -88,7 +89,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="module-guikit.core">
-<span id="guikit-core"></span><h1><a class="reference internal" href="#module-guikit.core" title="guikit.core"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guikit.core</span></code></a><a class="headerlink" href="#module-guikit.core" title="Permalink to this headline"></a></h1>
+<span id="guikit-core"></span><h1><a class="reference internal" href="#module-guikit.core" title="guikit.core"><code class="xref py py-mod docutils literal notranslate"><span class="pre">guikit.core</span></code></a><a class="headerlink" href="#module-guikit.core" title="Permalink to this heading"></a></h1>
 <p>Contains the definition of the top window of the program, including the menu bar, the
 toolbar (if any), the central widget, bottom progress bar and status area.</p>
 <p>In particular, the progress bar and the status area are the kind of things that the
@@ -96,10 +97,10 @@ plugins will be importing - or at least wanting to update - regularly. They are 
 as global aobject singletons such that even though an instance is created once, such an
 instance can be access directly from the class anywhere else where you import the class.</p>
 <div class="section" id="module-contents">
-<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this headline"></a></h2>
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading"></a></h2>
 <div class="section" id="classes">
-<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline"></a></h3>
-<table class="longtable docutils align-default">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -120,9 +121,23 @@ instance can be access directly from the class anywhere else where you import th
 </tbody>
 </table>
 </div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guikit.core.stop_threads_and_close_window" title="guikit.core.stop_threads_and_close_window"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stop_threads_and_close_window</span></code></a>(event)</p></td>
+<td><p>Stop all running threads and close main window.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="attributes">
-<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline"></a></h3>
-<table class="longtable docutils align-default">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 90%" />
@@ -165,7 +180,7 @@ See ‘wx.Gauge’ for more information about the options available.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.core.StatusBar.SetStatusWidths">
-<span class="sig-name descname"><span class="pre">SetStatusWidths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.StatusBar.SetStatusWidths" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">SetStatusWidths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.StatusBar.SetStatusWidths" title="Permalink to this definition"></a></dt>
 <dd><p>Ensures that progress bar is resized if fields are resized.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -198,13 +213,13 @@ See ‘wx.Gauge’ for more information about the options available.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.core.MainWindow.populate_window">
-<span class="sig-name descname"><span class="pre">populate_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow.populate_window" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">populate_window</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow.populate_window" title="Permalink to this definition"></a></dt>
 <dd><p>Adds menu items, tools and other widgets in plugins to the main window.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.core.MainWindow._make_menubar">
-<span class="sig-name descname"><span class="pre">_make_menubar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow._make_menubar" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">_make_menubar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow._make_menubar" title="Permalink to this definition"></a></dt>
 <dd><p>Create the menu bar from the entries provided by the widgets.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -215,13 +230,13 @@ See ‘wx.Gauge’ for more information about the options available.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.core.MainWindow._make_toolbar">
-<span class="sig-name descname"><span class="pre">_make_toolbar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow._make_toolbar" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">_make_toolbar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow._make_toolbar" title="Permalink to this definition"></a></dt>
 <dd><p>Create the tool bar from the entries provided by the widgets.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.core.MainWindow._make_notebook">
-<span class="sig-name descname"><span class="pre">_make_notebook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tab_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">wx.NB_TOP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow._make_notebook" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">_make_notebook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tab_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">wx.NB_TOP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow._make_notebook" title="Permalink to this definition"></a></dt>
 <dd><p>Create the central widget of the window as a notebook.</p>
 <p>A notebook is created as the central widget and any other view provided by the
 plugins is added as new page. Finally, the first page is selected.</p>
@@ -239,7 +254,7 @@ wx.NB_FIXEDWIDTH, wx.NB_MULTILINE and wx.NB_NOPAGETHEME.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.core.MainWindow._make_central_widget">
-<span class="sig-name descname"><span class="pre">_make_central_widget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow._make_central_widget" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">_make_central_widget</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow._make_central_widget" title="Permalink to this definition"></a></dt>
 <dd><p>Create the central widget of the window.</p>
 <p>Such a central widget is taken from the plugins. Exactly one central widget
 needs to be provided between all plugins.</p>
@@ -262,7 +277,7 @@ needs to be provided between all plugins.</p>
 <p>Actions and features builtin with the core window.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.core.BuiltInActions.menu_entries">
-<span class="sig-name descname"><span class="pre">menu_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.BuiltInActions.menu_entries" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">menu_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.BuiltInActions.menu_entries" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>List[<a class="reference internal" href="../plugins/index.html#guikit.plugins.MenuTool" title="guikit.plugins.MenuTool">guikit.plugins.MenuTool</a>]</p>
@@ -294,7 +309,7 @@ needs to be provided between all plugins.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="guikit.core.MainApp.OnInit">
-<span class="sig-name descname"><span class="pre">OnInit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainApp.OnInit" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">OnInit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainApp.OnInit" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>bool</p>
@@ -302,6 +317,17 @@ needs to be provided between all plugins.</p>
 </dl>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="guikit.core.stop_threads_and_close_window">
+<span class="sig-prename descclassname"><span class="pre">guikit.core.</span></span><span class="sig-name descname"><span class="pre">stop_threads_and_close_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.stop_threads_and_close_window" title="Permalink to this definition"></a></dt>
+<dd><p>Stop all running threads and close main window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>wx.CloseEvent</em>) – </p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

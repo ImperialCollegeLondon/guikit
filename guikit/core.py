@@ -15,7 +15,7 @@ from typing import Dict, List, Optional, Tuple
 import wx
 
 from .logging import logger
-from .plugins import KNOWN_PLUGINS, MenuTool, PluginBase, load_plugins
+from .plugins import KNOWN_PLUGINS, MenuTool, load_plugins
 from .threads import ThreadPool
 
 
@@ -95,11 +95,28 @@ class MainWindow(wx.Frame):
         self._make_menubar()
         self.SetInitialSize(wx.Size(self.size))
 
+    def on_quit(self, evt):
+        """Event to close the main window form the menu."""
+        self.Close()
+
+    def populate_built_in_menu(self):
+        """Populate the menu with some built-in capabilities."""
+        return [
+            MenuTool(
+                menu="File",
+                id=wx.ID_EXIT,
+                text="Exit",
+                description="Terminate application",
+                callback=self.on_quit,
+            ),
+        ]
+
     def _make_menubar(self) -> None:
         """Create the menu bar from the entries provided by the widgets."""
         # Collecting the menu entries
         entries = itertools.chain.from_iterable(
-            [view().menu_entries() for view in KNOWN_PLUGINS]
+            [self.populate_built_in_menu()]
+            + [view().menu_entries() for view in KNOWN_PLUGINS]
         )
 
         # Creating the menus
@@ -184,20 +201,6 @@ class MainWindow(wx.Frame):
             raise ValueError(
                 f"Exactly 1 central widget needs to be provided. {len(widget)} given."
             )
-
-
-class BuiltInActions(PluginBase):
-    """Actions and features builtin with the core window."""
-
-    def menu_entries(self) -> List[MenuTool]:
-        return [
-            MenuTool(
-                menu="File",
-                id=wx.ID_EXIT,
-                text="Exit",
-                description="Terminate application",
-            ),
-        ]
 
 
 _tab_location: Dict[str, int] = {

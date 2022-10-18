@@ -77,17 +77,6 @@ class TestMainWindow:
             main_window._make_central_widget()
 
 
-class TestBuiltInActions:
-    def test_menu_entries(self):
-        from guikit.core import BuiltInActions
-        from guikit.plugins import MenuTool
-
-        entries = BuiltInActions().menu_entries()
-        assert len(entries) > 0
-        assert all([isinstance(item, MenuTool) for item in entries])
-        assert entries[0].menu == "File"
-
-
 class TestMainApp:
     def test_on_init(self, caplog):
         import wx

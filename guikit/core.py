@@ -213,7 +213,7 @@ class MainApp(wx.App):
         self,
         *args,
         title: str,
-        size_mainwindow: Tuple[int, int],
+        size_mainwindow: Tuple[int, int] = (800, 600),
         plugins_list: Optional[List[str]] = None,
         notebook_layout: bool = True,
         tab_style: str = "top",

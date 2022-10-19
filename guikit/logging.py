@@ -9,6 +9,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
+from platformdirs import user_log_path
+
 from . import APP_NAME
 
 
@@ -85,11 +87,10 @@ class Logger:
 
     def set_file_handler(self):
         """Sets a handler to print the log to a file in the app directory."""
-        filename = (
-            app_dir(self.app_name)
-            / "logs"
-            / f"{datetime.now().strftime('%Y%m%d_%H-%M-%S')}.log"
-        )
+        log_path = user_log_path(self.app_name)
+        log_path.mkdir(parents=True, exist_ok=True)
+
+        filename = log_path / f"{datetime.now().strftime('%Y%m%d_%H-%M-%S')}.log"
         ch = logging.FileHandler(str(filename))
         ch.setLevel(logging.INFO)
 

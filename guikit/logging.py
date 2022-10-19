@@ -3,44 +3,12 @@ Contains all the custom machinery for dealing with logging in the program. It sh
 allow for new handlers to be added if any plugin requires it.
 """
 import logging
-import os
-import sys
 from datetime import datetime
-from pathlib import Path
 from typing import Optional
 
 from platformdirs import user_log_path
 
 from . import APP_NAME
-
-
-def app_dir(app_name: str = APP_NAME) -> Path:
-    """Finds the application data directory for the current platform.
-
-    If it does not exists, it creates the required directory tree.
-
-    Returns:
-        The path to the root app directory.
-    """
-    if sys.platform == "win32":
-        path = Path.home() / "AppData" / "Local" / app_name
-    elif sys.platform == "darwin":
-        path = Path.home() / "Library" / "Application Support" / app_name
-    else:
-        path = Path.home() / f".{app_name}"
-
-    _create_tree(path)
-    return path
-
-
-def _create_tree(path: Path) -> None:
-    """Creates the app directory tree.
-
-    Args:
-        path: Where the directory tree must be created
-    """
-    os.makedirs(str(path), exist_ok=True)
-    os.makedirs(str(path / "logs"), exist_ok=True)
 
 
 class Logger:

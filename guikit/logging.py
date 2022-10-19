@@ -44,9 +44,10 @@ def _create_tree(path: Path) -> None:
 
 
 class Logger:
-    def __init__(self, app_name: str = APP_NAME):
+    def __init__(self, app_name: str = APP_NAME, app_author: Optional[str] = None):
         self._logger: Optional[logging.Logger] = None
         self.app_name = app_name
+        self.app_author = app_author
 
     @property
     def logger(self) -> logging.Logger:
@@ -87,7 +88,7 @@ class Logger:
 
     def set_file_handler(self):
         """Sets a handler to print the log to a file in the app directory."""
-        log_path = user_log_path(self.app_name)
+        log_path = user_log_path(self.app_name, self.app_author)
         log_path.mkdir(parents=True, exist_ok=True)
 
         filename = log_path / f"{datetime.now().strftime('%Y%m%d_%H-%M-%S')}.log"

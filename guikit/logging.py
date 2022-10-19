@@ -8,6 +8,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
+from warnings import warn
 
 from platformdirs import user_log_path
 
@@ -22,6 +23,11 @@ def app_dir(app_name: str = APP_NAME) -> Path:
     Returns:
         The path to the root app directory.
     """
+    warn(
+        "app_dir is deprecated; use platformdirs.user_data_path instead",
+        DeprecationWarning,
+    )
+
     if sys.platform == "win32":
         path = Path.home() / "AppData" / "Local" / app_name
     elif sys.platform == "darwin":

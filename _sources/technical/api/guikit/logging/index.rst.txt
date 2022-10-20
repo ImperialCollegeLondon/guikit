@@ -56,17 +56,16 @@ Attributes
    :param path: Where the directory tree must be created
 
 
-.. py:class:: Logger(app_name = APP_NAME)
+.. py:class:: Logger(app_name = APP_NAME, app_author = None)
 
-   .. py:method:: logger()
-      :property:
+   .. py:property:: logger
+      :type: logging.Logger
 
       Interface to the underlying logger.
 
       The logger is created automatically the first time it is used.
 
       :returns: A Logger object.
-
 
    .. py:method:: __getattr__(item)
 

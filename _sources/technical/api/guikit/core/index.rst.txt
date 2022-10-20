@@ -25,7 +25,6 @@ Classes
 
    guikit.core.StatusBar
    guikit.core.MainWindow
-   guikit.core.BuiltInActions
    guikit.core.MainApp
 
 
@@ -90,6 +89,16 @@ Attributes
       Adds menu items, tools and other widgets in plugins to the main window.
 
 
+   .. py:method:: on_quit(evt)
+
+      Event to close the main window from the menu.
+
+
+   .. py:method:: populate_built_in_menu()
+
+      Populate the menu with some built-in capabilities.
+
+
    .. py:method:: _make_menubar()
 
       Create the menu bar from the entries provided by the widgets.
@@ -123,22 +132,12 @@ Attributes
 
 
 
-.. py:class:: BuiltInActions
-
-   Bases: :py:obj:`guikit.plugins.PluginBase`
-
-   Actions and features builtin with the core window.
-
-   .. py:method:: menu_entries()
-
-
-
 .. py:data:: _tab_location
    :annotation: :Dict[str, int]
 
    
 
-.. py:class:: MainApp(*args, title, size_mainwindow, plugins_list = None, notebook_layout = True, tab_style = 'top', **kwargs)
+.. py:class:: MainApp(*args, title, size_mainwindow = (800, 600), plugins_list = None, notebook_layout = True, tab_style = 'top', **kwargs)
 
    Bases: :py:obj:`wx.App`
 

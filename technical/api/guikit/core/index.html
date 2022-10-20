@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>guikit.core &mdash; Python GUI Template 0.2.3 documentation</title>
+  <title>guikit.core &mdash; Python GUI Template 0.2.4 documentation</title>
       <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
@@ -16,6 +16,7 @@
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
@@ -112,10 +113,7 @@ instance can be access directly from the class anywhere else where you import th
 <tr class="row-even"><td><p><a class="reference internal" href="#guikit.core.MainWindow" title="guikit.core.MainWindow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MainWindow</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#guikit.core.BuiltInActions" title="guikit.core.BuiltInActions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BuiltInActions</span></code></a></p></td>
-<td><p>Actions and features builtin with the core window.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#guikit.core.MainApp" title="guikit.core.MainApp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MainApp</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#guikit.core.MainApp" title="guikit.core.MainApp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MainApp</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -218,6 +216,18 @@ See ‘wx.Gauge’ for more information about the options available.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="guikit.core.MainWindow.on_quit">
+<span class="sig-name descname"><span class="pre">on_quit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow.on_quit" title="Permalink to this definition"></a></dt>
+<dd><p>Event to close the main window from the menu.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="guikit.core.MainWindow.populate_built_in_menu">
+<span class="sig-name descname"><span class="pre">populate_built_in_menu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow.populate_built_in_menu" title="Permalink to this definition"></a></dt>
+<dd><p>Populate the menu with some built-in capabilities.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="guikit.core.MainWindow._make_menubar">
 <span class="sig-name descname"><span class="pre">_make_menubar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainWindow._make_menubar" title="Permalink to this definition"></a></dt>
 <dd><p>Create the menu bar from the entries provided by the widgets.</p>
@@ -270,23 +280,6 @@ needs to be provided between all plugins.</p>
 
 </dd></dl>
 
-<dl class="py class">
-<dt class="sig sig-object py" id="guikit.core.BuiltInActions">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">guikit.core.</span></span><span class="sig-name descname"><span class="pre">BuiltInActions</span></span><a class="headerlink" href="#guikit.core.BuiltInActions" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="../plugins/index.html#guikit.plugins.PluginBase" title="guikit.plugins.PluginBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guikit.plugins.PluginBase</span></code></a></p>
-<p>Actions and features builtin with the core window.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="guikit.core.BuiltInActions.menu_entries">
-<span class="sig-name descname"><span class="pre">menu_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.BuiltInActions.menu_entries" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>List[<a class="reference internal" href="../plugins/index.html#guikit.plugins.MenuTool" title="guikit.plugins.MenuTool">guikit.plugins.MenuTool</a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
 <dl class="py data">
 <dt class="sig sig-object py" id="guikit.core._tab_location">
 <span class="sig-prename descclassname"><span class="pre">guikit.core.</span></span><span class="sig-name descname"><span class="pre">_tab_location</span></span><em class="property"><span class="w"> </span><span class="pre">:Dict[str,</span> <span class="pre">int]</span></em><a class="headerlink" href="#guikit.core._tab_location" title="Permalink to this definition"></a></dt>
@@ -294,7 +287,7 @@ needs to be provided between all plugins.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="guikit.core.MainApp">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">guikit.core.</span></span><span class="sig-name descname"><span class="pre">MainApp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_mainwindow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plugins_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notebook_layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tab_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'top'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainApp" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">guikit.core.</span></span><span class="sig-name descname"><span class="pre">MainApp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_mainwindow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(800,</span> <span class="pre">600)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plugins_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notebook_layout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tab_style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'top'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#guikit.core.MainApp" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">wx.App</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

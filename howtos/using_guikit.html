@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using guikit &mdash; Python GUI Template 0.2.3 documentation</title>
+  <title>Using guikit &mdash; Python GUI Template 0.2.4 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -16,6 +16,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -115,23 +116,23 @@ plugins you need.</p>
 <p>If you add the following <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>, <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> and <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> files at the same level that
 <code class="docutils literal notranslate"><span class="pre">my_app</span></code> (you can read more about these two files in the <a class="reference external" href="https://setuptools.pypa.io/en/latest/index.html"><code class="docutils literal notranslate"><span class="pre">setuptools</span></code>
 documentation</a>):</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># pyproject.toml</span>
-<span class="k">[build-system]</span>
-<span class="n">requires</span> <span class="o">=</span> <span class="k">[&quot;setuptools&quot;, &quot;wheel&quot;]</span>
-<span class="n">build-backend</span> <span class="o">=</span> <span class="s">&quot;setuptools.build_meta&quot;</span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># pyproject.toml</span><span class="w"></span>
+<span class="k">[build-system]</span><span class="w"></span>
+<span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;setuptools&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;wheel&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;setuptools.build_meta&quot;</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup.cfg</span>
-<span class="k">[metadata]</span>
-<span class="na">name</span> <span class="o">=</span> <span class="s">my_app</span>
-<span class="na">version</span> <span class="o">=</span> <span class="s">attr: my_app.VERSION</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup.cfg</span><span class="w"></span>
+<span class="k">[metadata]</span><span class="w"></span>
+<span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">my_app</span><span class="w"></span>
+<span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">attr: my_app.VERSION</span><span class="w"></span>
 
-<span class="k">[options]</span>
-<span class="na">packages</span> <span class="o">=</span> <span class="s">find:</span>
-<span class="na">include_package_data</span> <span class="o">=</span> <span class="s">True</span>
-<span class="na">install_requires</span> <span class="o">=</span><span class="s"></span>
-<span class="s">    guikit</span>
-<span class="s">    wxPython</span>
+<span class="k">[options]</span><span class="w"></span>
+<span class="na">packages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">find:</span><span class="w"></span>
+<span class="na">include_package_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span><span class="w"></span>
+<span class="na">install_requires</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="na">guikit</span><span class="w"></span>
+<span class="w">    </span><span class="na">wxPython</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># setup.py</span>

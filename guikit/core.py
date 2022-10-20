@@ -10,6 +10,7 @@ instance can be access directly from the class anywhere else where you import th
 from __future__ import annotations
 
 import itertools
+import sys
 from typing import Dict, List, Optional, Tuple
 
 import wx
@@ -104,7 +105,7 @@ class MainWindow(wx.Frame):
         return [
             MenuTool(
                 menu="File",
-                id=wx.ID_EXIT,
+                id=wx.ID_ANY,
                 text="Exit",
                 description="Terminate application",
                 callback=self.on_quit,
@@ -114,10 +115,11 @@ class MainWindow(wx.Frame):
     def _make_menubar(self) -> None:
         """Create the menu bar from the entries provided by the widgets."""
         # Collecting the menu entries
-        entries = itertools.chain.from_iterable(
-            [self.populate_built_in_menu()]
-            + [view().menu_entries() for view in KNOWN_PLUGINS]
-        )
+        entries_ = [view().menu_entries() for view in KNOWN_PLUGINS]
+        if sys.platform != "darwin":
+            entries_.append(self.populate_built_in_menu())
+
+        entries = itertools.chain.from_iterable(entries_)
 
         # Creating the menus
         menus = dict()

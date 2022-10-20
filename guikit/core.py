@@ -96,7 +96,7 @@ class MainWindow(wx.Frame):
         self.SetInitialSize(wx.Size(self.size))
 
     def on_quit(self, evt):
-        """Event to close the main window form the menu."""
+        """Event to close the main window from the menu."""
         self.Close()
 
     def populate_built_in_menu(self):

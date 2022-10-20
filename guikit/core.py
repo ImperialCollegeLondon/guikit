@@ -10,12 +10,13 @@ instance can be access directly from the class anywhere else where you import th
 from __future__ import annotations
 
 import itertools
+import sys
 from typing import Dict, List, Optional, Tuple
 
 import wx
 
 from .logging import logger
-from .plugins import KNOWN_PLUGINS, MenuTool, PluginBase, load_plugins
+from .plugins import KNOWN_PLUGINS, MenuTool, load_plugins
 from .threads import ThreadPool
 
 
@@ -95,12 +96,32 @@ class MainWindow(wx.Frame):
         self._make_menubar()
         self.SetInitialSize(wx.Size(self.size))
 
+    def on_quit(self, evt):
+        """Event to close the main window from the menu."""
+        self.Close()
+
+    def populate_built_in_menu(self):
+        """Populate the menu with some built-in capabilities."""
+        return [
+            MenuTool(
+                menu="File",
+                id=wx.ID_ANY,
+                text="Exit",
+                description="Terminate application",
+                callback=self.on_quit,
+            ),
+        ]
+
     def _make_menubar(self) -> None:
         """Create the menu bar from the entries provided by the widgets."""
         # Collecting the menu entries
-        entries = itertools.chain.from_iterable(
-            [view().menu_entries() for view in KNOWN_PLUGINS]
-        )
+        entries_ = [view().menu_entries() for view in KNOWN_PLUGINS]
+        if sys.platform != "darwin":
+            entries_ = [
+                self.populate_built_in_menu(),
+            ] + entries_
+
+        entries = itertools.chain.from_iterable(entries_)
 
         # Creating the menus
         menus = dict()
@@ -186,20 +207,6 @@ class MainWindow(wx.Frame):
             )
 
 
-class BuiltInActions(PluginBase):
-    """Actions and features builtin with the core window."""
-
-    def menu_entries(self) -> List[MenuTool]:
-        return [
-            MenuTool(
-                menu="File",
-                id=wx.ID_EXIT,
-                text="Exit",
-                description="Terminate application",
-            ),
-        ]
-
-
 _tab_location: Dict[str, int] = {
     "top": wx.NB_TOP,
     "bottom": wx.NB_BOTTOM,
@@ -213,7 +220,7 @@ class MainApp(wx.App):
         self,
         *args,
         title: str,
-        size_mainwindow: Tuple[int, int],
+        size_mainwindow: Tuple[int, int] = (800, 600),
         plugins_list: Optional[List[str]] = None,
         notebook_layout: bool = True,
         tab_style: str = "top",

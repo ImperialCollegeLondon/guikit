@@ -1,5 +1,8 @@
 def test_logger(caplog):
-    from guikit.logging import app_dir, logger
+    from platformdirs import user_log_path
+
+    from guikit import APP_NAME
+    from guikit.logging import logger
 
     msg = "Some function executed."
 
@@ -10,8 +13,7 @@ def test_logger(caplog):
     assert caplog.records[-1].levelname == "INFO"
     assert caplog.records[-1].message == msg
 
-    log_dir = app_dir() / "logs"
-    last_log = sorted(log_dir.glob("*.log"))[-1]
+    last_log = sorted(user_log_path(APP_NAME).glob("*.log"))[-1]
     with last_log.open() as f:
         log = list(f)
 

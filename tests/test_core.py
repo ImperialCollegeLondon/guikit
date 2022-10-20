@@ -36,10 +36,12 @@ class TestMainWindow:
         main_window._make_central_widget.assert_called_once()
 
     def test__make_menubar(self, main_window):
+        import sys
+
         main_window._make_menubar()
         menus = main_window.GetMenuBar().GetMenus()
         assert len(menus) > 0
-        assert menus[0][1] == "File"
+        assert menus[0][1] == "File" if sys.platform != "darwin" else "About"
 
     @pytest.mark.xfail
     def test__make_toolbar(self, main_window):
@@ -75,17 +77,6 @@ class TestMainWindow:
 
         with pytest.raises(ValueError):
             main_window._make_central_widget()
-
-
-class TestBuiltInActions:
-    def test_menu_entries(self):
-        from guikit.core import BuiltInActions
-        from guikit.plugins import MenuTool
-
-        entries = BuiltInActions().menu_entries()
-        assert len(entries) > 0
-        assert all([isinstance(item, MenuTool) for item in entries])
-        assert entries[0].menu == "File"
 
 
 class TestMainApp:

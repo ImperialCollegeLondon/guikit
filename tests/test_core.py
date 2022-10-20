@@ -36,10 +36,12 @@ class TestMainWindow:
         main_window._make_central_widget.assert_called_once()
 
     def test__make_menubar(self, main_window):
+        import sys
+
         main_window._make_menubar()
         menus = main_window.GetMenuBar().GetMenus()
         assert len(menus) > 0
-        assert menus[0][1] == "File"
+        assert menus[0][1] == "File" if sys.platform != "darwin" else "About"
 
     @pytest.mark.xfail
     def test__make_toolbar(self, main_window):

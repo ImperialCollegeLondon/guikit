@@ -8,6 +8,9 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
+from warnings import warn
+
+from platformdirs import user_log_path
 
 from . import APP_NAME
 
@@ -20,6 +23,11 @@ def app_dir(app_name: str = APP_NAME) -> Path:
     Returns:
         The path to the root app directory.
     """
+    warn(
+        "app_dir is deprecated; use platformdirs.user_data_path instead",
+        DeprecationWarning,
+    )
+
     if sys.platform == "win32":
         path = Path.home() / "AppData" / "Local" / app_name
     elif sys.platform == "darwin":
@@ -42,9 +50,10 @@ def _create_tree(path: Path) -> None:
 
 
 class Logger:
-    def __init__(self, app_name: str = APP_NAME):
+    def __init__(self, app_name: str = APP_NAME, app_author: Optional[str] = None):
         self._logger: Optional[logging.Logger] = None
         self.app_name = app_name
+        self.app_author = app_author
 
     @property
     def logger(self) -> logging.Logger:
@@ -85,11 +94,10 @@ class Logger:
 
     def set_file_handler(self):
         """Sets a handler to print the log to a file in the app directory."""
-        filename = (
-            app_dir(self.app_name)
-            / "logs"
-            / f"{datetime.now().strftime('%Y%m%d_%H-%M-%S')}.log"
-        )
+        log_path = user_log_path(self.app_name, self.app_author)
+        log_path.mkdir(parents=True, exist_ok=True)
+
+        filename = log_path / f"{datetime.now().strftime('%Y%m%d_%H-%M-%S')}.log"
         ch = logging.FileHandler(str(filename))
         ch.setLevel(logging.INFO)
 

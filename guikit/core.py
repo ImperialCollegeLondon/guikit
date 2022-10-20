@@ -117,7 +117,7 @@ class MainWindow(wx.Frame):
         # Collecting the menu entries
         entries_ = [view().menu_entries() for view in KNOWN_PLUGINS]
         if sys.platform != "darwin":
-            entries = [
+            entries_ = [
                 self.populate_built_in_menu(),
             ] + entries_
 

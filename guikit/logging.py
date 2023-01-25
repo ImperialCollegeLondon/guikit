@@ -66,6 +66,7 @@ class Logger:
         """
         if not isinstance(self._logger, logging.Logger):
             self._logger = logging.getLogger("root")
+            self._logger.setLevel(logging.INFO)
 
             self.set_console_handler()
             self.set_file_handler()

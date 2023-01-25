@@ -66,7 +66,7 @@ class Logger:
         """
         if not isinstance(self._logger, logging.Logger):
             self._logger = logging.getLogger("root")
-            self._logger.setLevel(logging.DEBUG)
+            self._logger.setLevel(logging.INFO)
 
             self.set_console_handler()
             self.set_file_handler()
@@ -79,7 +79,6 @@ class Logger:
     def set_console_handler(self):
         """Sets a handler to print the log to the terminal."""
         ch = logging.StreamHandler()
-        ch.setLevel(logging.DEBUG)
 
         # create and add formatter to handle
         formatter = logging.Formatter(
@@ -99,7 +98,6 @@ class Logger:
 
         filename = log_path / f"{datetime.now().strftime('%Y%m%d_%H-%M-%S')}.log"
         ch = logging.FileHandler(str(filename))
-        ch.setLevel(logging.INFO)
 
         # create and add formatter to handle
         formatter = logging.Formatter(

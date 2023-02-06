@@ -38,15 +38,9 @@ Attributes
 
 .. autoapisummary::
 
-   guikit.scripts.app_name
    guikit.scripts._SUB_COMMANDS
    guikit.scripts._SUB_COMMAND_BY_NAME
 
-
-.. py:data:: app_name
-   
-
-   
 
 .. py:function:: run()
 
@@ -136,12 +130,12 @@ Attributes
 
 
 .. py:data:: _SUB_COMMANDS
-   :annotation: :List[SubCommand]
+   :type: List[SubCommand]
 
    
 
 .. py:data:: _SUB_COMMAND_BY_NAME
-   :annotation: :Dict[str, SubCommand]
+   :type: Dict[str, SubCommand]
 
    
 

@@ -85,7 +85,7 @@ Functions
 .. py:class:: ThreadPool(window = None)
 
    .. py:attribute:: _instance
-      :annotation: :Optional[ThreadPool]
+      :type: Optional[ThreadPool]
 
       
 

@@ -29,12 +29,12 @@ Attributes
 
 
 .. py:data:: EVEN_ROW_COLOUR
-   :annotation: = #CCE6FF
+   :value: '#CCE6FF'
 
    
 
 .. py:data:: GRID_LINE_COLOUR
-   :annotation: = #ccc
+   :value: '#ccc'
 
    
 

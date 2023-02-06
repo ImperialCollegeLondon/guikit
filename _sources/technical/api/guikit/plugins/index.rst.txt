@@ -43,7 +43,8 @@ Attributes
 
 
 .. py:data:: KNOWN_PLUGINS
-   :annotation: :List[Type[PluginBase]] = []
+   :type: List[Type[PluginBase]]
+   :value: []
 
    List of plugins registered as subclasses of PluginBase.
 
@@ -52,42 +53,46 @@ Attributes
    Compiles the information required to add menu and toolbar items.
 
    .. py:attribute:: menu
-      :annotation: :str = 
+      :type: str
+      :value: ''
 
       
 
    .. py:attribute:: id
-      :annotation: :int
+      :type: int
 
       
 
    .. py:attribute:: text
-      :annotation: :str = 
+      :type: str
+      :value: ''
 
       
 
    .. py:attribute:: description
-      :annotation: :str = 
+      :type: str
+      :value: ''
 
       
 
    .. py:attribute:: short_help
-      :annotation: :str = 
+      :type: str
+      :value: ''
 
       
 
    .. py:attribute:: callback
-      :annotation: :Optional[Callable[[wx.Event], None]]
+      :type: Optional[Callable[[wx.Event], None]]
 
       
 
    .. py:attribute:: kind
-      :annotation: :wx.ItemKind
+      :type: wx.ItemKind
 
       
 
    .. py:attribute:: bitmap
-      :annotation: :Optional[wx.Bitmap]
+      :type: Optional[wx.Bitmap]
 
       
 
@@ -97,27 +102,29 @@ Attributes
    Compiles the information required to define add tabs.
 
    .. py:attribute:: page
-      :annotation: :wx.Window
+      :type: wx.Window
 
       
 
    .. py:attribute:: text
-      :annotation: :str
+      :type: str
 
       
 
    .. py:attribute:: select
-      :annotation: :bool = False
+      :type: bool
+      :value: False
 
       
 
    .. py:attribute:: imageId
-      :annotation: :int
+      :type: int
 
       
 
    .. py:attribute:: order
-      :annotation: :int = 0
+      :type: int
+      :value: 0
 
       
 

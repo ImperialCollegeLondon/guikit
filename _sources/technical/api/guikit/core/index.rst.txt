@@ -76,7 +76,7 @@ Attributes
 
 
 .. py:data:: status_bar
-   :annotation: :Optional[StatusBar]
+   :type: Optional[StatusBar]
 
    Main status bar of the program
 
@@ -133,7 +133,7 @@ Attributes
 
 
 .. py:data:: _tab_location
-   :annotation: :Dict[str, int]
+   :type: Dict[str, int]
 
    
 

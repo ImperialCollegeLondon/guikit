@@ -34,12 +34,11 @@ Package Contents
 ----------------
 
 .. py:data:: VERSION
-   :annotation: = 0.2.4
+   :value: '0.3.0'
 
    
 
 .. py:data:: APP_NAME
-   
 
    
 

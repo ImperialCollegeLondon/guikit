@@ -14,32 +14,37 @@ Module Contents
 ---------------
 
 .. py:data:: APP_LONG_NAME
-   :annotation: :str = Python GUI Template
+   :type: str
+   :value: 'Python GUI Template'
 
    Long, human meaningful app name.
 
 .. py:data:: PLUGINS
-   :annotation: :List[str] = []
+   :type: List[str]
+   :value: []
 
    Explicit list of plugins that will be loaded in the order provided.
 
 .. py:data:: AUTO_PLUGINS
-   :annotation: :List[str]
+   :type: List[str]
 
    Plugins collected from the given locations. See `plugins.collect_plugins`
 
 .. py:data:: NOTEBOOK_LAYOUT
-   :annotation: :bool = True
+   :type: bool
+   :value: True
 
    Indicate if a notebook layout should be used in contrast to a central widget only.
 
 .. py:data:: TAB_STYLE
-   :annotation: :str = top
+   :type: str
+   :value: 'top'
 
    Location of the tabs. Valid values are `top`, `bottom`, `left` and `right`.
 
 .. py:data:: SIZE_MAINWINDOW
-   :annotation: :Tuple[int, int] = [800, 600]
+   :type: Tuple[int, int]
+   :value: (800, 600)
 
    Input for main window size.
 

@@ -74,7 +74,6 @@ class TestInitSubCommand:
 
 
 def test_parse_args():
-
     with patch("argparse.ArgumentParser.parse_args", MagicMock()):
         from guikit.scripts import _SUB_COMMANDS, _parse_args
 

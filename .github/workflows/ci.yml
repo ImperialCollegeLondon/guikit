@@ -90,7 +90,7 @@ jobs:
             python -m pip install --upgrade pip setuptools wheel
             pip install -U sphinx myst-parser sphinx-autoapi sphinx-rtd-theme
           build-command: sphinx-build -n -b html . ../build/html
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v3
         with:
           name: DocumentationHTML
           path: build/html/

@@ -54,7 +54,6 @@ class TestWorkerThread:
         from guikit.threads import WorkerThread
 
         class Event:
-
             _data = MagicMock()
 
             @property
@@ -88,7 +87,6 @@ class Worker:
 
 class TestThreadPool:
     def test_run_thread(self, window):
-
         with patch("guikit.threads.WorkerThread", MagicMock(return_value=Worker())):
             from guikit.threads import ThreadPool
 

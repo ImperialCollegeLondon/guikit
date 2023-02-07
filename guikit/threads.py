@@ -109,7 +109,6 @@ class WorkerThread(threading.Thread):
 
 
 class ThreadPool:
-
     _instance: Optional[ThreadPool] = None
 
     def __new__(cls, window: Optional[wx.Frame] = None):

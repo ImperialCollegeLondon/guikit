@@ -45,7 +45,6 @@ class TestDialog:
 
         maximum = 100
         with Dialog(maximum=maximum, every=2) as dlg:
-
             # If value is not an integer, raise error
             with pytest.raises(ValueError):
                 dlg.Update(value=2.2, maximum=100)

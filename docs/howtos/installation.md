@@ -30,7 +30,7 @@ then install `guikit` as above.
 `wxPython` causes some issue on MacOS when installed with a "Non Framework" version of
 python. It typically complains with this error message:
 
-```
+```txt
 This program needs access to the screen. Please run with a
 Framework build of python, and only when you are logged in
 on the main display of your Mac.

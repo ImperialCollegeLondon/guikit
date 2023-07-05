@@ -1,3 +1,5 @@
+# GUIKIT <!-- omit in toc -->
+
 [![Test and build](https://github.com/ImperialCollegeLondon/guikit/actions/workflows/ci.yml/badge.svg)](https://github.com/ImperialCollegeLondon/guikit/actions/workflows/ci.yml)
 [![PyPI version
 shields.io](https://img.shields.io/pypi/v/guikit.svg)](https://pypi.python.org/pypi/guikit/)
@@ -8,8 +10,6 @@ pyversions](https://img.shields.io/pypi/pyversions/guikit.svg)](https://pypi.pyt
 [![PyPI
 license](https://img.shields.io/pypi/l/guikit.svg)](https://pypi.python.org/pypi/guikit/)
 [![Website guikit](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://imperialcollegelondon.github.io/guikit/)
-
-# GUIKIT <!-- omit in toc -->
 
 This little tool's purpose is to facilitate getting started building a GUI for your
 software. It takes care of most of the boilerplate code that you need to build a GUI -
@@ -51,8 +51,8 @@ that could suit most users most of the time.
 without notice. Use it in production with caution. And please, contribute to it to
 help improving its maturity as fast as posisble!
 
-`guikit` and its dependencies can be installed with `pip` in Windows,
-[Linux](#what-about-linux) and [MacOS](#what-about-macos) (see notes below):
+`guikit` and its dependencies can be installed with `pip` in Windows, Linux and MacOS
+(see notes below):
 
 ```bash
 pip install guikit
@@ -77,7 +77,7 @@ then install `guikit` as above.
 `wxPython` causes some issue on MacOS when installed with a "Non Framework" version of
 python. It typically complains with this error message:
 
-```
+```txt
 This program needs access to the screen. Please run with a
 Framework build of python, and only when you are logged in
 on the main display of your Mac.

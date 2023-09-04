@@ -6,13 +6,13 @@ jobs:
   qa:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: pre-commit/action@v3.0.0
 
   check-links:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: gaurav-nelson/github-action-markdown-link-check@v1
         name: Check links in markdown files
         with:
@@ -35,7 +35,7 @@ jobs:
             python-version: "3.11"
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - uses: conda-incubator/setup-miniconda@v2
       with:
@@ -82,7 +82,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Build docs
         uses: ammaraskar/sphinx-action@master
         with:
